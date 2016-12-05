@@ -7,8 +7,8 @@
 
 # rails g model Scale value:integer source:references category:references
 
-rails g model Topic name presentation:text most_used_words:?
+# rails g model Topic name presentation:text most_used_words:text
 
-rails g migration TopicArticles topic:references article:references
+# rails g model Article title date:date abstract:text full_text:text pic_url quoted_links:text words_count:integer time_to_read:integer unique_words:text source_url source:references category:references journalist:references
 
-rails g model Article title date:date abstract:text full_text:text pic_url quoted_links:? words_count:integer time_to_read:integer unique_words:? source_url source:references category:references journalist:references
+# rails g migration TopicArticles topic:references article:references
