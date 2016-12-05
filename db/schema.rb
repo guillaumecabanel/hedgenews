@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205171219) do
+ActiveRecord::Schema.define(version: 20161205174944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20161205171219) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "journalists", force: :cascade do |t|
@@ -68,6 +69,13 @@ ActiveRecord::Schema.define(version: 20161205171219) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "topic_articles", force: :cascade do |t|
+    t.integer "topic_id"
+    t.integer "article_id"
+    t.index ["article_id"], name: "index_topic_articles_on_article_id", using: :btree
+    t.index ["topic_id"], name: "index_topic_articles_on_topic_id", using: :btree
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string   "name"
     t.text     "presentation"
@@ -81,4 +89,6 @@ ActiveRecord::Schema.define(version: 20161205171219) do
   add_foreign_key "articles", "sources"
   add_foreign_key "scales", "categories"
   add_foreign_key "scales", "sources"
+  add_foreign_key "topic_articles", "articles"
+  add_foreign_key "topic_articles", "topics"
 end
