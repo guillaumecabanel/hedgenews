@@ -2,9 +2,10 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-$base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700");
+@import url('https://fonts.googleapis.com/css?family=Gentium+Basic:400,400i,700,700i');
+$base-font: "Gentium Basic", "Helvetica", "sans-serif";
+$header-font: "Open Sans", "Helvetica", "sans-serif";
 
 // Local fonts (uncomment following lines)
 // @font-face {
@@ -17,18 +18,49 @@ $header-font: "Raleway", "Helvetica", "sans-serif";
 // $my-font: "Font Name";
 
 // Font-size and line-height
-$base-size: 16px;
+$base-size: 18px;
 $base-height: 1.4;
 
 /* -------------------------------------
  * Colors
  * ------------------------------------- */
 // Scheme
-$brand-color: #D23333;
+$brand-color: #FF682F;
 
-$red: #EE5F5B;
-$blue: #469AE0;
-$yellow: #FDB631;
-$orange: #E67E22;
-$green: #32B796;
+$red: #FF682F;
+$blue: #00A8FF;
+$purple: #9B64FF;
+$orange: #FFA300;
+$green: #51DFD9;
 $gray: #000000;
+
+// ----------------------------------------
+// for style guide
+.demo-square {
+  height: 100px;
+  width: 100px;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-red {
+  background-color: $red;
+}
+
+.background-blue {
+  background-color: $blue;
+}
+
+.background-purple {
+  background-color: $purple;
+}
+
+.background-orange {
+  background-color: $orange;
+}
+
+.background-green {
+  background-color: $green;
+}
