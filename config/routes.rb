@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   # Styleguide
   get 'styleguide', to:'pages#styleguide'
 
+  get 'team', to: 'pages#team'
+
+  get 'about', to: 'pages#about'
+
 end
