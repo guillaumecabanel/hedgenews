@@ -49,7 +49,7 @@ international = Category.create!(name: "International")
 environment = Category.create!(name: "Environment")
 
 # Articles TO DO : add full_text, quoted_links, unique_words
-brexit_echoes = Article.create!(title: "Echoes of ‘Brexit’ in U.S. Election",
+brexit_echoes = Article.new(title: "Echoes of ‘Brexit’ in U.S. Election",
                                 date: Date.new(2016,11,01),
                                 abstract: "The British referendum on leaving the European Union and the American presidential election bear some striking similarities. Both were won with a part of the electorate largely ignored by opinion polls.",
                                 words_count: 2000,
@@ -58,8 +58,9 @@ brexit_echoes = Article.create!(title: "Echoes of ‘Brexit’ in U.S. Election"
 brexit_echoes.source = nytimes
 brexit_echoes.category = politics
 brexit_echoes.journalist = isaure
+brexit_echoes.save!
 
-theresa_may_brexit = Article.create!(title: "Exclusive: what Theresa May really thinks about Brexit shown in leaked recording",
+theresa_may_brexit = Article.new(title: "Exclusive: what Theresa May really thinks about Brexit shown in leaked recording",
                                      date: Date.new(2016,10,13),
                                      abstract: "Secret audio of Goldman Sachs talk in May shows she feared businesses would leave and wanted the UK to take a lead in Europe",
                                      words_count: 1500,
@@ -68,8 +69,9 @@ theresa_may_brexit = Article.create!(title: "Exclusive: what Theresa May really 
 theresa_may_brexit.source = guardian
 theresa_may_brexit.category = politics
 theresa_may_brexit.journalist = julie
+theresa_may_brexit.save!
 
-trump_cop_22 = Article.create!(title: "Trump election casts shadow over COP 22 climate change talks",
+trump_cop_22 = Article.new(title: "Trump election casts shadow over COP 22 climate change talks",
                                date: Date.new(2016,11,16),
                                abstract: "Donald Trump’s victory in the US presidential election reverberated around the world this week, not least in the Moroccan city of Marrakesh that is hosting the first major UN talks on global warming since last year’s landmark Paris climate deal was struck.",
                                words_count: 4000,
@@ -78,8 +80,9 @@ trump_cop_22 = Article.create!(title: "Trump election casts shadow over COP 22 c
 trump_cop_22.source = financialtimes
 trump_cop_22.category = environment
 trump_cop_22.journalist = guillaume
+trump_cop_22.save!
 
-carbon_capture = Article.create!(title: "COP21: What is carbon capture?",
+carbon_capture = Article.new(title: "COP21: What is carbon capture?",
                                  date: Date.new(2015,12,05),
                                  abstract: "Negotiators from 196 countries are trying to reach a deal at the climate change conference in Paris to curb global warming. A draft deal was reached last week but key issues still remain",
                                  words_count: 2000,
@@ -88,9 +91,10 @@ carbon_capture = Article.create!(title: "COP21: What is carbon capture?",
 carbon_capture.source = bbc
 carbon_capture.category = environment
 carbon_capture.journalist = raph
+carbon_capture.save!
 
 # Topic_articles
-TopicArticle.create!(brexit.id, brexit_echoes.id)
-TopicArticle.create!(brexit.id, theresa_may_brexit.id)
-TopicArticle.create!(cop22.id, trump_cop_22.id)
-TopicArticle.create!(cop22.id, carbon_capture.id)
+TopicArticle.create!(topic: brexit, article: brexit_echoes)
+TopicArticle.create!(topic: brexit, article: theresa_may_brexit)
+TopicArticle.create!(topic: cop22, article: trump_cop_22)
+TopicArticle.create!(topic: cop22, article: carbon_capture)
