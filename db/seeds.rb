@@ -94,7 +94,7 @@ carbon_capture.journalist = raph
 carbon_capture.save!
 
 # Topic_articles
-TopicArticle.create!(topic: brexit, article: brexit_echoes)
+TopicArticle.create!(topic_id: brexit.id, article_id: brexit_echoes.id)
 TopicArticle.create!(topic: brexit, article: theresa_may_brexit)
 TopicArticle.create!(topic: cop22, article: trump_cop_22)
 TopicArticle.create!(topic: cop22, article: carbon_capture)
