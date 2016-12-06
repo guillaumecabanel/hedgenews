@@ -8,6 +8,9 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 
+# https://newsapi.aylien.com
+gem 'aylien_news_api'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
@@ -19,7 +22,7 @@ gem 'autoprefixer-rails'
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-  
+
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
