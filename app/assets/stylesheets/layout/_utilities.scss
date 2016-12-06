@@ -10,6 +10,7 @@
   padding-bottom: 5em;
 }
 
+
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
@@ -27,4 +28,12 @@
 .flex-box-center{
   display: flex;
   justify-content: space-around;
+}
+
+
+.flex-box-space-around{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-wrap: wrap;
 }
