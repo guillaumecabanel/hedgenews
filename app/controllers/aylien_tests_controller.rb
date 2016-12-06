@@ -4,7 +4,7 @@ class AylienTestsController < ApplicationController
   end
 
   def results
-    session[:current_search] = params
+    # session[:current_search] = params
     @topic = params[:topic]
 
     api_instance = AylienNewsApi::DefaultApi.new
@@ -14,10 +14,12 @@ class AylienTestsController < ApplicationController
       # published_at_start: "NOW-31DAYS",
       # published_at_end: "NOW",
       language: ['fr'],
-      source_name: ["Libération", "Le Monde", "Le Figaro", "L'Express",
-                    "Le Parisien", "L'Humanité", "Nouvel Obs", "Le Point",
-                    "La Tribune", "Les Echos", "Marianne", "Le Canard Enchaîné",
-                    "La Croix", "20 Minutes", "Valeurs Actuelles"],
+
+      source_id: [233, 1142, 1174, 641, 675, 642,
+                  1192, 684, 251, 1234, 1243, 1615],
+
+      # source_name: [""],
+
       return: ["id", "title", "body", "summary", "source", "author", "keywords",
                   "hashtags", "words_count", "categories", "sentiment", "language", "published_at", "links"],
       sort_by: 'published_at',
