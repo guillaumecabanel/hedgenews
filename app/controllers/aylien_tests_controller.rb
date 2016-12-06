@@ -4,7 +4,7 @@ class AylienTestsController < ApplicationController
   end
 
   def results
-    @topic = params[:topic]
-    @stories = Aylien.new(topic: @topic).stories
+    @topic_search = params[:topic_search]
+    @stories = ::AylienAPI::GetStoriesService.new(topic_search: @topic_search).call
   end
 end
