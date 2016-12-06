@@ -8,7 +8,7 @@ class Aylien
                                         1192, 684, 251, 1234, 1243, 1615]
 
     @sort_by =    params[:sorted_by] || 'published_at'
-    @per_page =   params[:per_page]  || 'per_page'
+    @per_page =   params[:per_page]  || 20
 
     @parameters_to_return = ["id",
                              "title",
@@ -31,7 +31,7 @@ class Aylien
   def stories
     begin
       #List stories
-      api_instance.list_stories(options)
+      @api_instance.list_stories(options).stories
 
     rescue AylienNewsApi::ApiError => e
       puts "Exception when calling DefaultApi->list_stories: #{e}"
@@ -47,9 +47,7 @@ class Aylien
       published_at_start: "NOW-31DAYS",
       published_at_end: "NOW",
       language: @language,
-
       source_id: @sources_id,
-
       return: @parameters_to_return,
       sort_by: @sort_by,
       per_page: @per_page
