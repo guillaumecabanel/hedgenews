@@ -18,7 +18,7 @@ $header-font: "Open Sans", "Helvetica", "sans-serif";
 // $my-font: "Font Name";
 
 // Font-size and line-height
-$base-size: 18px;
+$base-size: 16px;
 $base-height: 1.4;
 
 /* -------------------------------------
@@ -32,7 +32,7 @@ $blue: #00A8FF;
 $purple: #9B64FF;
 $orange: #FFA300;
 $green: #51DFD9;
-$gray: #000000;
+$grey: #ECECEC;
 
 // ----------------------------------------
 // for style guide
@@ -63,4 +63,8 @@ $gray: #000000;
 
 .background-green {
   background-color: $green;
+}
+
+.text-red {
+  color: $red;
 }

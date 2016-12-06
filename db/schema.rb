@@ -10,14 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205162812) do
+ActiveRecord::Schema.define(version: 20161205174944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.date     "date"
+    t.text     "abstract"
+    t.text     "full_text"
+    t.string   "pic_url"
+    t.text     "quoted_links"
+    t.integer  "words_count"
+    t.integer  "time_to_read"
+    t.text     "unique_words"
+    t.string   "source_url"
+    t.integer  "source_id"
+    t.integer  "category_id"
+    t.integer  "journalist_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["category_id"], name: "index_articles_on_category_id", using: :btree
+    t.index ["journalist_id"], name: "index_articles_on_journalist_id", using: :btree
+    t.index ["source_id"], name: "index_articles_on_source_id", using: :btree
+  end
+
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "journalists", force: :cascade do |t|
@@ -47,6 +69,17 @@ ActiveRecord::Schema.define(version: 20161205162812) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "topics", force: :cascade do |t|
+    t.string   "name"
+    t.text     "presentation"
+    t.text     "most_used_words"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_foreign_key "articles", "categories"
+  add_foreign_key "articles", "journalists"
+  add_foreign_key "articles", "sources"
   add_foreign_key "scales", "categories"
   add_foreign_key "scales", "sources"
 end

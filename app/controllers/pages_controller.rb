@@ -4,4 +4,11 @@ class PagesController < ApplicationController
 
   def styleguide
   end
+
+  def team
+  end
+
+  def about
+  end
+
 end
