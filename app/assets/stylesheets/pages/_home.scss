@@ -2,8 +2,13 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.catchline {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .search-bar {
-  font-size: 34px;
+  font-size: 41px;
   font-family: $header-font;
 
   input {
@@ -11,7 +16,7 @@
     border-bottom: 1px solid $red;
     outline: none;
     text-align:right;
-    width: 50vw;
+    width: 55vw;
     background-color: transparent;
   }
 }
