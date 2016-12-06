@@ -24,10 +24,24 @@
   }
 }
 
+.main-topic-image{
+  height: 40vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    color: $white;
+  }
+}
+
+.main-topic-legend {
+    text-align: center;
+    list: line;
+}
+
 .value-proposition-style {
   padding: 70px;
 }
-
-// .title-style {
-//   font-size: 20px;
-// }
