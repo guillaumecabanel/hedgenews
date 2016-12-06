@@ -69,6 +69,13 @@ ActiveRecord::Schema.define(version: 20161205174944) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "topic_articles", force: :cascade do |t|
+    t.integer "topic_id"
+    t.integer "article_id"
+    t.index ["article_id"], name: "index_topic_articles_on_article_id", using: :btree
+    t.index ["topic_id"], name: "index_topic_articles_on_topic_id", using: :btree
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string   "name"
     t.text     "presentation"
@@ -82,4 +89,6 @@ ActiveRecord::Schema.define(version: 20161205174944) do
   add_foreign_key "articles", "sources"
   add_foreign_key "scales", "categories"
   add_foreign_key "scales", "sources"
+  add_foreign_key "topic_articles", "articles"
+  add_foreign_key "topic_articles", "topics"
 end
