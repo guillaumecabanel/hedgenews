@@ -2,3 +2,23 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.search-bar {
+  font-size: 34px;
+  font-family: $header-font;
+
+  input {
+    border: none;
+    border-bottom: 1px solid $red;
+    outline: none;
+    text-align:right;
+    width: 50vw;
+  }
+}
+
+.search-button {
+  background: none;
+  border: none;
+  img{
+    width: 50px;
+  }
+}
