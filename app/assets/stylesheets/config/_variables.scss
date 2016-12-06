@@ -6,10 +6,12 @@
 @import url('https://fonts.googleapis.com/css?family=Gentium+Basic:400,400i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=Medula+One');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display+SC');
-@import url('https://fonts.googleapis.com/css?family=Neuton');
+@import url('https://fonts.googleapis.com/css?family=Neuton:200');
 
-$base-font: "Gentium Basic", "Helvetica", "sans-serif";
-$header-font: "Open Sans", "Helvetica", "sans-serif";
+$logo-font: 'Medula One', 'cursive';
+$base-font: 'Neuton', 'serif';
+$header-font: 'Playfair Display SC', 'serif';
+
 
 // Local fonts (uncomment following lines)
 // @font-face {
