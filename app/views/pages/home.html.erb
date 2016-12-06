@@ -1,12 +1,12 @@
 <div class="flex-box-space-around">
   <div>
-    <h1>Get news</h1>
-    <h2>Make your own mind</h2>
+    <h1 class= "title-style">Informe-toi!</h1>
+    <h2>Forge ton opinion!</h2>
   </div>
 
 
   <div class="search-bar">
-    <%= form_tag(results_path, method: "get") do %>
+    <%= form_tag(articles_path, method: "get") do %>
       <div>
         <%= text_field_tag :topic, nil, placeholder: "Rechercher un sujet", require: true %>
         <%= button_tag "", class: "search-button" do %>
@@ -21,6 +21,7 @@
 
 <%= render 'main_topic' %>
 
+  <div class='container value-proposition-style'>
     <div class='row'>
       <div class='col-xs-12 col-sm-6 col-md-4'>
         <div class='text-center' >

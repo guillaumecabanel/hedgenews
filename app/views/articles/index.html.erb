@@ -1,0 +1,25 @@
+<h1>Articles trouvés pour <em><%= @topic %></em></h1>
+
+<div class='container'>
+  <div class='row'>
+    <% @result.stories.each do |story| %>
+      <div class='col-xs-12 col-sm-6'>
+        <div class="panel">
+          <div class="panel-heading">
+            <h3><%=story.title %></h3>
+            <h5><strong><%=story.source.name %></strong></h5>
+            <h6>Publié le <%= story.published_at %> par <strong><%= story.author.name %></strong></h6>
+            <h6><%= story.words_count %> mots | <%= story.sentiment %></h6>
+            <div class="list-inline">
+              <%= link_to "source", story.links.permalink %>
+            </div>
+          </div>
+          <div class="panel-body">
+            <p><%=story.summary.sentences.join("\n") %></p>
+            <!-- <p><%= story.body %></p> -->
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

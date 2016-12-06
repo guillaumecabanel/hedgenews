@@ -3,8 +3,8 @@
   <div class="panel">
     <div class="panel-body text-center">
         <%= form_tag(results_path, method: "get") do %>
-          <%= label_tag :topic, "Sujet" %>
-          <%= text_field_tag :topic, nil, placeholder: "Rechercher un sujet", require: true %>
+          <%= label_tag :topic_search, "Sujet" %>
+          <%= text_field_tag :topic_search, nil, placeholder: "Rechercher un sujet", require: true %>
           <%= button_tag "Recherche", class: "btn btn-primary" %>
         <% end %>
     </div>
