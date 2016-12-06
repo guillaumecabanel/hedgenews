@@ -28,3 +28,11 @@
   display: flex;
   justify-content: space-around;
 }
+
+
+.flex-box-space-around{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
