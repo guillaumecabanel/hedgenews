@@ -10,9 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20161205162812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "journalists", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "presentation"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "scales", force: :cascade do |t|
+    t.integer  "value"
+    t.integer  "source_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_scales_on_category_id", using: :btree
+    t.index ["source_id"], name: "index_scales_on_source_id", using: :btree
+  end
+
+  create_table "sources", force: :cascade do |t|
+    t.string   "name"
+    t.text     "presentation"
+    t.string   "logo_url"
+    t.string   "orientation"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_foreign_key "scales", "categories"
+  add_foreign_key "scales", "sources"
 end
