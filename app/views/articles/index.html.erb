@@ -1,4 +1,11 @@
-<h1>Articles trouvés pour <em><%= @topic_search %></em></h1>
+<div class="flex-box-space-around catchline">
+  <div>
+    <h3 class= "title-style">Articles trouvés pour : </h3>
+  </div>
+  <%= render 'shared/search_bar', value: @topic_search %>
+</div>
+
+<!-- <h1>Articles trouvés pour <em><%= @topic_search %></em></h1> -->
 
 <div class='container'>
   <div class='row'>
@@ -10,7 +17,7 @@
             <h5><strong><%=story.source.name %></strong></h5>
             <h6>Publié le <%= story.published_at %> par <strong><%= story.author.name %></strong></h6>
             <h6><%= time_to_read(story.words_count) %></h6>
-            <h6><%= story.words_count %> mots | <%= story.sentiment %></h6>
+<!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
           </div>
           <div class="panel-body">
             <p><%=story.summary.sentences.join("\n") %></p>
