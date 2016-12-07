@@ -51,6 +51,12 @@
   padding: 70px;
 }
 
+.text-center{
+  p{
+    text-align: vertical;
+  }
+}
+
 .topic-card-image {
   height: 50vh;
   background-repeat: no-repat;
@@ -65,6 +71,7 @@
 
 .topic-card-legend {
   text-align: justify;
+  border: $grey;
 }
 
 .logo-source {
