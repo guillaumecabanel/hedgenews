@@ -145,7 +145,7 @@
 .navbar-hedgenews {
   font-family: 'Medula One', cursive;
   font-size: 50px;
-  margin-left: 30px;
+  // margin-left: 30px;
 }
 
 .playfair-display {
@@ -171,7 +171,11 @@ font-weight: 300;
 
 }
 
-
+// To get logo + font centered on the page
+.navbar-wagon-logotype {
+  display: flex;
+  align-items: center;
+}
 
 
 
