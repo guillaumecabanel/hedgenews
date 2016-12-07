@@ -21,6 +21,11 @@
             <p><%=story.summary.sentences.join("\n") %></p>
             <!-- <p><%= story.body %></p> -->
           </div>
+          <div class="panel-body">
+            <h6><strong>Contexte :</strong></h6>
+            <h6>A propos de <%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h6>
+            <p><%= Source.where(aylien_id: story.source.id.to_i).first.presentation %></p>
+          </div>
           <div class="flex-box-center">
             <%= link_to "Lire l'article", story.links.permalink, class: "btn btn-info", target: '_blank' %>
             <%= button_tag "Découvrir une opinion différente", class: "btn btn-primary" , target: '_blank'%>
