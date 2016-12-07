@@ -3,17 +3,7 @@
     <h3 class= "title-style">Je forge ma propre opinion : </h3>
   </div>
 
-
-  <div class="search-bar">
-    <%= form_tag(articles_path, method: "get") do %>
-      <div>
-        <%= text_field_tag :topic_search, nil, placeholder: "Je m'informe", require: true %>
-        <%= button_tag "", class: "search-button" do %>
-          <%= image_tag "icone/loupe.png" %>
-        <%end%>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'shared/search_bar', value: nil %>
 
 </div>
 

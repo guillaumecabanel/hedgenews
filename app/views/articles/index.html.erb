@@ -1,4 +1,11 @@
-<h1>Articles trouvés pour <em><%= @topic_search %></em></h1>
+<div class="flex-box-space-around catchline">
+  <div>
+    <h3 class= "title-style">Articles trouvés pour : </h3>
+  </div>
+  <%= render 'shared/search_bar', value: @topic_search %>
+</div>
+
+<!-- <h1>Articles trouvés pour <em><%= @topic_search %></em></h1> -->
 
 <div class='container'>
   <div class='row'>
@@ -6,20 +13,24 @@
       <div class='col-xs-12 col-sm-6'>
         <div class="panel">
           <div class="panel-heading">
-            <h3><%=story.title %></h3>
+            <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
             <h5><strong><%=story.source.name %></strong></h5>
             <h6>Publié le <%= story.published_at %> par <strong><%= story.author.name %></strong></h6>
-            <h6><%= story.words_count %> mots | <%= story.sentiment %></h6>
-            <div class="list-inline">
-              <%= link_to "source", story.links.permalink %>
-            </div>
+            <h6><%= time_to_read(story.words_count) %></h6>
+<!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
           </div>
           <div class="panel-body">
             <p><%=story.summary.sentences.join("\n") %></p>
             <!-- <p><%= story.body %></p> -->
           </div>
+          <div class="flex-box-center">
+            <%= link_to "Lire l'article", story.links.permalink, class: "btn btn-info", target: '_blank' %>
+            <%= button_tag "Découvrir une opinion différente", class: "btn btn-primary" , target: '_blank'%>
+          </div>
+
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
