@@ -7,7 +7,10 @@ class Article < ApplicationRecord
   has_many :topics, through: :topic_articles
 
 
-  def self.random_sort(articles = [], parameters = {})
+  def self.random_sort(articles, parameters = {})
+
+    articles.sort_by(:word_count)
+    articles_quantity = parameters[:articles_quantity] || 10
 
     random_articles = []
 
@@ -18,6 +21,6 @@ class Article < ApplicationRecord
       sources_id << article.source unless sources_id.include? article.source
     end
 
-    random_articles
+    random_articles.first(articles_quantity)
   end
 end

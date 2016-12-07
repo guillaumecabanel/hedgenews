@@ -1,8 +1,8 @@
-<h1>Articles trouvés pour <em><%= @topic %></em></h1>
+<h1>Articles trouvés pour <em><%= @topic_result %></em></h1>
 
 <div class='container'>
   <div class='row'>
-    <% @result.stories.each do |story| %>
+    <% @stories.each do |story| %>
       <div class='col-xs-12 col-sm-6'>
         <div class="panel">
           <div class="panel-heading">
