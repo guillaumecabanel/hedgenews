@@ -9,7 +9,8 @@
 
 .search-bar {
   font-size: 41px;
-  font-family: $header-font;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
 
   input {
     border: none;
@@ -84,3 +85,13 @@
   text-align: center;
 }
 
+.font-oswald {
+  // font-family: 'Playfair Display SC', serif;
+font-family: 'Oswald', sans-serif;
+font-weight: 300;
+}
+
+.catchline-font {
+font-family: 'Oswald', sans-serif;
+font-weight: 300;
+}
