@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205174944) do
+ActiveRecord::Schema.define(version: 20161207125009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20161205174944) do
     t.string   "orientation"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "aylien_id"
   end
 
   create_table "topic_articles", force: :cascade do |t|

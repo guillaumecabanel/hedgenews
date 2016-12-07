@@ -5,7 +5,7 @@ module AylienAPI
       @topic_search = params[:topic_search]
 
       @language =   params[:language]  || ['fr']
-      @sources_id = params[:source_id] || [233, 1142, 1174, 641, 675, 642,
+      @sources_id = params[:source_id] || [233, 1142, 1174, 641, 675,
                                           1192, 684, 251, 1234, 1243, 1615]
 
       # "l'express":    233,
@@ -26,6 +26,7 @@ module AylienAPI
 
       @sort_by =    params[:sorted_by] || 'published_at'
       @per_page =   params[:per_page]  || 20
+      @media_images_width_min = params[:media_images_width_min] || 523
 
       @parameters_to_return = ["id",
                                "title",
@@ -40,6 +41,7 @@ module AylienAPI
                                "sentiment",
                                "language",
                                "published_at",
+                               "media",
                                "links"]
 
       @api_instance = AylienNewsApi::DefaultApi.new
