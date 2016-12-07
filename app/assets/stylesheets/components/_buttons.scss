@@ -1,19 +1,30 @@
-.btn-bordered-primary {
+.btn-bordered {
   background-color: transparent;
-  color: $red;
   border: 1px solid $red;
-  font-family: oswald;
-  height: 40px;
-  padding: 10px;
+  font-family: oswald, sans-serif;
+  font-weight: 300;
+  padding: 15px;
   margin: 10px;
 }
 
+// .btn-bordered:hover {
+//   font-weight: 400;
+// }
+
+.btn-bordered-primary {
+  color: $red;
+  border: 1px solid $red;
+}
+
+.btn-bordered-primary:hover {
+  color: $red;
+}
+
 .btn-bordered-info {
-  background-color: transparent;
   color: $blue;
   border: 1px solid $blue;
-  font-family: oswald;
-  height: 40px;
-  padding: 10px;
-  margin: 10px;
+}
+
+.btn-bordered-info:hover {
+  color: $blue;
 }
