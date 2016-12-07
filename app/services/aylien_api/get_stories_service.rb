@@ -40,6 +40,7 @@ module AylienAPI
                                "sentiment",
                                "language",
                                "published_at",
+                               "",
                                "links"]
 
       @api_instance = AylienNewsApi::DefaultApi.new
