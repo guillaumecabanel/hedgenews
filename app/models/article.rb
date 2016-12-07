@@ -9,7 +9,7 @@ class Article < ApplicationRecord
 
   def self.random_sort(articles, parameters = {})
 
-    articles.sort_by(:word_count)
+    # articles.sort_by(:word_count)
     articles_quantity = parameters[:articles_quantity] || 10
 
     random_articles = []

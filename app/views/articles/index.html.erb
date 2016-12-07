@@ -1,8 +1,8 @@
-<h1>Articles trouvés pour <em><%= @topic_result %></em></h1>
+<h1><%= pluralize(@selected_stories.count, 'article selectionné', plural: 'articles sélectionnés')%>  parmi <%= @stories.count %> pour <em><%= @topic_search %></em></h1>
 
 <div class='container'>
   <div class='row'>
-    <% @stories.each do |story| %>
+    <% @selected_stories.each do |story| %>
       <div class='col-xs-12 col-sm-6'>
         <div class="panel">
           <div class="panel-heading">
