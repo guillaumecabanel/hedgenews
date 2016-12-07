@@ -64,7 +64,7 @@
 }
 
 .topic-card-image {
-  height: 50vh;
+  height: 45vh;
   background-repeat: no-repat;
   display: flex;
   align-items: center;
@@ -77,7 +77,10 @@
 
 .topic-card-legend {
   text-align: justify;
-  border: $grey;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  top: -20px;
 }
 
 .logo-source {
