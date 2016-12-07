@@ -7,7 +7,7 @@
   <div class="search-bar">
     <%= form_tag(articles_path, method: "get") do %>
       <div>
-        <%= text_field_tag :topic, nil, placeholder: "Je m'informe", require: true %>
+        <%= text_field_tag :topic_search, nil, placeholder: "Je m'informe", require: true %>
         <%= button_tag "", class: "search-button" do %>
           <%= image_tag "loupe.png" %>
         <%end%>
