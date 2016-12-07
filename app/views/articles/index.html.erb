@@ -7,14 +7,19 @@
         <div class="panel">
           <div class="panel-heading">
             <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
-            <h5><strong><%=story.source.name %></strong></h5>
+            <h5><strong><%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h5>
             <h6>Publié le <%= story.published_at %> par <strong><%= story.author.name %></strong></h6>
             <h6><%= time_to_read(story.words_count) %></h6>
-            <h6><%= story.words_count %> mots | <%= story.sentiment %></h6>
+<!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
           </div>
           <div class="panel-body">
             <p><%=story.summary.sentences.join("\n") %></p>
             <!-- <p><%= story.body %></p> -->
+          </div>
+          <div class="panel-body">
+            <h6><strong>Contexte :</strong></h6>
+            <h6>A propos de <%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h6>
+            <p><%= Source.where(aylien_id: story.source.id.to_i).first.presentation %></p>
           </div>
           <div class="flex-box-center">
             <%= link_to "Lire l'article", story.links.permalink, class: "btn btn-info", target: '_blank' %>
