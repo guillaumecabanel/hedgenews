@@ -1,1 +1,15 @@
-<%= result %>
+<div class="topic_card">
+
+  <div class="topic-card-image" style="background-image: url(<%= image_path "Brexit.jpg" %>)">
+    <h1><%= topic.name %></h1>
+  </div>
+  <div class="topic-card-legend">
+    <p>14 Articles  3 Sources</p>
+  <div class="logo-source">
+    <%= image_tag("logo/LePoint.jpg", :alt => "rss feed", height: 25, width: 60,) %>
+    <%= image_tag("logo/Figaro.png", :alt => "rss feed", height: 25, width: 25,) %>
+    <%= image_tag("logo/L'Express.png", :alt => "rss feed", height: 25, width: 70,) %>
+  </div>
+    <p><%= topic.presentation %></p>
+  </div>
+</div>
