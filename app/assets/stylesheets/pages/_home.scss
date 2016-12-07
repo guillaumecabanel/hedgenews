@@ -43,8 +43,8 @@
 }
 
 .main-topic-legend {
-    text-align: center;
-    list: line;
+  text-align: center;
+  list: line;
 }
 
 .value-proposition-style {
@@ -54,5 +54,25 @@
 .catchline-font {
 font-family: 'Oswald', sans-serif;
 font-weight: 300;
+}
+
+.topic-card-image {
+  height: 50vh;
+  background-repeat: no-repat;
+  display: flex;
+  align-items: center;
+  h1 {
+    color: $white;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.topic-card-legend {
+  text-align: justify;
+}
+
+.logo-source {
+  text-align: center;
 }
 

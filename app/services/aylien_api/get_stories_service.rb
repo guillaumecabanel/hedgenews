@@ -5,7 +5,7 @@ module AylienAPI
       @topic_search = params[:topic_search]
 
       @language =   params[:language]  || ['fr']
-      @sources_id = params[:source_id] || [233, 1142, 1174, 641, 675, 642,
+      @sources_id = params[:source_id] || [233, 1142, 1174, 641, 675,
                                           1192, 684, 251, 1234, 1243, 1615]
 
       # "l'express":    233,

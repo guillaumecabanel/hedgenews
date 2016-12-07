@@ -1,45 +1,51 @@
-<div class="catchline wrapper-white">
-  <h2 class="catchline-font">Je forge ma propre opinion !</h2>
-  <div class="search-bar search-bar-align-right">
-    <%= form_tag(articles_path, method: "get") do %>
-      <div class= "catchline-font">
-        <%= text_field_tag :topic_search, nil, placeholder: "Je m'informe !", require: true %>
-        <%= button_tag "", class: "search-button" do %>
-          <%= image_tag "loupe.png" %>
-        <%end%>
+<div class="flex-box-space-around catchline wrapper-white">
+  <div>
+    <h3 class= "title-style">Je forge ma propre opinion : </h3>
+  </div>
+
+  <%= render 'shared/search_bar', value: nil %>
+
+</div>
+
+<div class="container">
+
+  <%= render 'main_topic' %>
+
+
+  <div class="row">
+    <% @topics.each do |topic| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render 'topic_card', topic: topic %>
       </div>
     <% end %>
   </div>
-</div>
 
 
-
-<%= render 'main_topic' %>
-
-<div class='container value-proposition-style'>
-  <div class='row'>
-    <div class='col-xs-12 col-sm-6 col-md-4'>
-      <div class='text-center' >
-        <h3 class='text-red'>Find</h3>
-        <%= image_tag("loupe 2.png", :alt => "rss feed", height: 45, width: 50,) %>
-        <p><strong>information from various sources</strong></p>
-        <p>Traditionnal press, blogs and social media</p>
+  <div class='container value-proposition-style'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-6 col-md-4'>
+        <div class='text-center' >
+          <h3 class='text-red'>Find</h3>
+          <%= image_tag("icone/loupe 2.png", :alt => "rss feed", height: 45, width: 50,) %>
+          <p><strong>information from various sources</strong></p>
+          <p>Traditionnal press, blogs and social media</p>
+        </div>
       </div>
-    </div>
-    <div class='col-xs-12 col-sm-6 col-md-4'>
-      <div class='text-center' >
-        <h3 class='text-red'>Discover</h3>
-        <%= image_tag("eye.png", :alt => "rss feed", height: 45, width: 50,) %>
-        <p><strong>significant topics</strong></p>
-        <p>Trending topics but also the important ones that do not make headlines</p>
+      <div class='col-xs-12 col-sm-6 col-md-4'>
+        <div class='text-center' >
+          <h3 class='text-red'>Discover</h3>
+          <%= image_tag("icone/eye.png", :alt => "rss feed", height: 45, width: 50,) %>
+          <p><strong>significant topics</strong></p>
+          <p>Trending topics but also the important ones that do not make headlines</p>
+        </div>
       </div>
-    </div>
-    <div class='col-xs-12 col-sm-6 col-md-4'>
-      <div class='text-center' >
-        <h3 class='text-red'>Analyse</h3>
-        <%= image_tag("chart.png", :alt => "rss feed", height: 45, width: 50,) %>
-        <p><strong>with our tools</strong></p>
-        <p>Semantic analysis and context about what you're reading.</p>
+      <div class='col-xs-12 col-sm-6 col-md-4'>
+        <div class='text-center' >
+          <h3 class='text-red'>Analyse</h3>
+          <%= image_tag("icone/chart.png", :alt => "rss feed", height: 45, width: 50,) %>
+          <p><strong>with our tools</strong></p>
+          <p>Semantic analysis and context about what you're reading.</p>
+        </div>
       </div>
     </div>
   </div>
