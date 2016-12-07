@@ -32,8 +32,8 @@
             <p><%= Source.where(aylien_id: story.source.id.to_i).first.presentation %></p>
           </div>
           <div class="flex-box-center">
-            <%= link_to "Lire l'article", story.links.permalink, class: "btn btn-info", target: '_blank' %>
-            <%= button_tag "Découvrir une opinion différente", class: "btn btn-primary" , target: '_blank'%>
+            <%= link_to "Lire l'article", story.links.permalink, class: "btn btn-bordered-info", target: '_blank' %>
+            <%= button_tag "Découvrir une opinion différente", class: "btn btn-bordered-primary" , target: '_blank'%>
           </div>
 
         </div>
