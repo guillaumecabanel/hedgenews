@@ -1,4 +1,11 @@
-<h1>Articles trouvés pour <em><%= @topic_search %></em></h1>
+<div class="flex-box-space-around catchline">
+  <div>
+    <h3 class= "title-style">Articles trouvés pour : </h3>
+  </div>
+  <%= render 'shared/search_bar', value: @topic_search %>
+</div>
+
+<!-- <h1>Articles trouvés pour <em><%= @topic_search %></em></h1> -->
 
 <div class='container'>
   <div class='row'>
