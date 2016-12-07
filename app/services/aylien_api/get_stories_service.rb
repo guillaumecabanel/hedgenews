@@ -8,6 +8,22 @@ module AylienAPI
       @sources_id = params[:source_id] || [233, 1142, 1174, 641, 675, 642,
                                           1192, 684, 251, 1234, 1243, 1615]
 
+      # "l'express":    233,
+      # "la croix":     1142,
+      # "la tribune":   1174,
+      # "le figaro":    641,
+      # "le monde":     675,
+      # "le parisien":  642,
+      # "le point":     1192,
+      # "les échos":    684,
+      # "libération":   251,
+      # "marianne":     1234,
+      # "mediapart":    1243,
+      # "valeurs actuelles": 1615
+
+      @published_at_start = params[:published_at_start] || "NOW-31DAYS"
+      @published_at_end = params[:published_at_end] || "NOW"
+
       @sort_by =    params[:sorted_by] || 'published_at'
       @per_page =   params[:per_page]  || 20
 
@@ -45,8 +61,8 @@ module AylienAPI
     def options
       {
         title: @topic_search,
-        published_at_start: "NOW-31DAYS",
-        published_at_end: "NOW",
+        published_at_start: @published_at_start,
+        published_at_end: @published_at_end,
         language: @language,
         source_id: @sources_id,
         return: @parameters_to_return,
