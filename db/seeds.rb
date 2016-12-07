@@ -19,6 +19,8 @@ brexit = Topic.create!(name: "Brexit",
                        presentation: "The United Kingdom's withdrawal from the European Union is widely known as Brexit, a portmanteau of 'British exit'. Following a referendum held in June 2016, in which 52% of votes were cast in favour of leaving the EU")
 cop22 = Topic.create!(name: "Cop22",
                       presentation: "The United Nations Climate Change Conferences are yearly conferences held in the framework of the United Nations Framework Convention on Climate Change (UNFCCC). They serve as the formal meeting of the UNFCCC Parties (Conference of the Parties, COP) to assess progress in dealing with climate change, and beginning in the mid-1990s, to negotiate the Kyoto Protocol to establish legally binding obligations for developed countries to reduce their greenhouse gas emissions.")
+election = Topic.create!(name: "Election",
+                        presentation: "En France, l'élection présidentielle détermine la personne qui sera élue président de la République pour un mandat de cinq ans (quinquennat), contre sept (septennat) avant 2000. Le premier président français fut Louis-Napoléon Bonaparte en 1848, qui fut aussi le plus jeune (40 ans).")
 
 
 # Journalists

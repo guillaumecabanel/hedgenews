@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    @topics = Topic.all.sample(3)
   end
 
   def styleguide
