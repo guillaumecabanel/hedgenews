@@ -1,0 +1,16 @@
+.animate-logo{
+
+  animation: move-right 5s forwards;
+  animation-delay: 1s;
+}
+
+
+@keyframes move-right {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(600px, 0);
+  }
+}
