@@ -15,3 +15,26 @@ h6 {
 p {
  line-height: 26px;
 }
+
+// Fix grid vertical alignment
+// using this solution: http://www.bootply.com/1Tq35rlkbx
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+
+.row-fix {
+  -moz-column-width: 30em;
+  -webkit-column-width: 30em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap:1em;
+}
+
+.card {
+  display: inline-block;
+  padding:  .25rem;
+  width:  100%;
+}
+
+.card-body {
+  position:relative;
+  display: block;
+}
