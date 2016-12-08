@@ -7,9 +7,12 @@
   margin-bottom: 50px;
 }
 
+.font-header-app {
+  font-family: $header-app;
+}
+
 .search-bar {
   font-size: 41px;
-  font-family: 'Oswald', sans-serif;
   font-weight: 300;
 
   input {
@@ -64,6 +67,7 @@
   }
 }
 
+
 .catchline-font {
   font-family: 'Oswald', sans-serif;
   font-weight: 300;
@@ -72,6 +76,7 @@
 .topic-card{
   margin: auto;
 }
+
 
 .topic-card-image {
   height: 45vh;
@@ -97,12 +102,8 @@
   text-align: center;
 }
 
-.font-oswald {
-  // font-family: 'Playfair Display SC', serif;
-font-family: 'Oswald', sans-serif;
-font-weight: 300;
-}
 
+<<<<<<< HEAD
 .catchline-font {
 font-family: 'Oswald', sans-serif;
 font-weight: 300;
@@ -111,3 +112,5 @@ font-weight: 300;
 .presentation-card{
   background-color: $white;
 }
+=======
+>>>>>>> master

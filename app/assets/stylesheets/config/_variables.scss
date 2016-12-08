@@ -2,17 +2,12 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700");
-@import url('https://fonts.googleapis.com/css?family=Gentium+Basic:400,400i,700,700i');
+// @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700");
+// @import url('https://fonts.googleapis.com/css?family=Gentium+Basic:400,400i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=Medula+One');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display+SC');
 @import url('https://fonts.googleapis.com/css?family=Neuton:200');
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700');
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css?family=Average+Sans');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
-@import url('https://fonts.googleapis.com/css?family=Oswald:300,400');
-@import url('https://fonts.googleapis.com/css?family=Wire+One');
+@import url('https://fonts.googleapis.com/css?family=Oswald:300');
 
 @font-face {
   font-family: 'Bavro';
@@ -28,10 +23,7 @@ $base-font: 'Neuton', 'serif';
 // $header-font: 'Oswald', sans-serif, 300;
 $header-font: 'Playfair Display SC', 'serif';
 // $header-font: 'PT Sans', 'sans-serif';
-
-
-
-
+$header-app: 'Oswald', 'sans-serif';
 
 
 // Local fonts (uncomment following lines)

@@ -1,8 +1,8 @@
 <% if @selected_stories.empty? %>
 
-  <div class="flex-box-space-around catchline">
+  <div class="flex-box-space-around catchline font-header-app">
     <div>
-      <h3 class= "title-style">Pas d'article trouvé pour <em><%= @topic_search %></em></h3>
+      <h3 class= "font-header-app">Pas d'article trouvé pour <em><%= @topic_search %></em></h3>
     </div>
     <%= render 'shared/search_bar', value: @topic_search %>
   </div>
@@ -11,9 +11,9 @@
 
 <% else %>
 
-  <div class="flex-box-space-around catchline">
+  <div class="flex-box-space-around font-header-app">
     <div>
-      <h3 class= "title-style"><%= pluralize(@selected_stories.count, 'article selectionné', plural: 'articles sélectionnés')%>  parmi <%= @stories.count %> pour <em><%= @topic_search %></em></h3>
+      <h3 class="font-header-app"><%= pluralize(@selected_stories.count, 'article selectionné', plural: 'articles sélectionnés')%>  parmi <%= @stories.count %> pour <em><%= @topic_search %></em></h3>
     </div>
     <%= render 'shared/search_bar', value: @topic_search %>
   </div>
@@ -56,3 +56,9 @@
   </div>
 
 <% end %>
+
+<div class="container text-center">
+    <%= link_to root_path do %>
+      <%= image_tag "icone/rewind.FF682F.png", class: 'image-small' %>
+    <%end%>
+</div>
