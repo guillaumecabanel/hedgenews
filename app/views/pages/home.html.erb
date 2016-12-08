@@ -1,7 +1,4 @@
-
 <div class="container">
-
-
 
   <div class="flex-box-space-around catchline wrapper-white font-header-app">
 
@@ -58,5 +55,27 @@
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+      var i = 0;
+      window.setInterval(function(){
+        var topics = ["Valls", "Trump", "Brexit", "Cop22"];
+        if ($('#topic_search').data('clicked') == true){
+          $('#topic_search').attr('placeholder', "");
+        }
+        else{
+          $('#topic_search').attr('placeholder', topics[i]);
+          i = (i +1)%(topics.length);
+        }
+      }.bind(i), 500);
+
+      $('#topic_search').click(function(){
+        $('#topic_search').data('clicked', true)
+      });
+    })
+  </script>
+<% end %>
 
 
