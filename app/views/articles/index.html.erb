@@ -69,3 +69,17 @@
   </div>
 
 <% end %>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+      if ($('#topic_search').data('clicked') == true){
+        $('#topic_search').attr('value', "");
+      };
+
+      $('#topic_search').click(function(){
+        $('#topic_search').data('clicked', true)
+      });
+    })
+  </script>
+<% end %>
