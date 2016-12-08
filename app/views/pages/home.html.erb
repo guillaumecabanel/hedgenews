@@ -60,3 +60,28 @@
 </div>
 
 
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      $(".topic-card-legend").mouseenter(function(e){
+        $card = $(this);
+        $p = $card.find("#collapseExample");
+
+        $p.removeClass("collapse");
+        $p.addClass("collapsing");
+        $p.removeClass("collapsing");
+        $p.addClass("collapse.in");
+      });
+
+      $(".topic-card-legend").mouseleave(function(e){
+        $card = $(this);
+        $p = $card.find("#collapseExample");
+
+        $p.removeClass("collapse.in");
+        $p.addClass("collapsing");
+        $p.removeClass("collapsing");
+        $p.addClass("collapse");
+      });
+    });
+  </script>
+<% end %>
