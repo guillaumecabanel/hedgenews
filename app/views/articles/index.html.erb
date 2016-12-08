@@ -21,13 +21,13 @@
   <div class='container'>
     <div class='row'>
       <% @selected_stories.each do |story| %>
-        <div class='col-xs-12 col-sm-6'>
+        <div class='card'>
           <div class='image-article-card'>
             <% unless story.media.empty?%>
               <%= image_tag story.media[0].url %>
             <% end %>
           </div>
-          <div class="panel article-panel">
+          <div class="panel article-panel card-body">
             <div class="panel-heading">
               <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
               <h5><strong><%=story.source.name %></strong></h5>
@@ -62,4 +62,3 @@
       <%= image_tag "icone/rewind.FF682F.png", class: 'image-small' %>
     <%end%>
 </div>
-
