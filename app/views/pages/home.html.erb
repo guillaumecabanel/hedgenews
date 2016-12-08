@@ -63,7 +63,7 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
-      $(".topic-card").mouseenter(function(e){
+      $(".topic-card-legend").mouseenter(function(e){
         $card = $(this);
         $p = $card.find("#collapseExample");
 
@@ -73,7 +73,7 @@
         $p.addClass("collapse.in");
       });
 
-      $(".topic-card").mouseleave(function(e){
+      $(".topic-card-legend").mouseleave(function(e){
         $card = $(this);
         $p = $card.find("#collapseExample");
 
