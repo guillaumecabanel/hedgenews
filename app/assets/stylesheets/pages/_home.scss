@@ -7,9 +7,12 @@
   margin-bottom: 50px;
 }
 
+.font-header-app {
+  font-family: $header-app;
+}
+
 .search-bar {
   font-size: 41px;
-  font-family: 'Oswald', sans-serif;
   font-weight: 300;
 
   input {
@@ -59,11 +62,6 @@
   }
 }
 
-.catchline-font {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 300;
-}
-
 .topic-card-image {
   height: 45vh;
   background-repeat: no-repat;
@@ -88,13 +86,4 @@
   text-align: center;
 }
 
-.font-oswald {
-  // font-family: 'Playfair Display SC', serif;
-font-family: 'Oswald', sans-serif;
-font-weight: 300;
-}
 
-.catchline-font {
-font-family: 'Oswald', sans-serif;
-font-weight: 300;
-}
