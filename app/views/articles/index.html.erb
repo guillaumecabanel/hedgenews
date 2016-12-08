@@ -1,21 +1,28 @@
 <% if @selected_stories.empty? %>
 
-  <div class="flex-box-space-around catchline font-header-app">
-    <div>
-      <h3 class= "font-header-app">Pas d'article trouvé pour <em><%= @topic_search %></em></h3>
+  <div class='container'>
+    <div class="flex-box-space-around catchline wrapper-white font-header-app">
+      <div>
+        <h2 class= "font-header-app">Aucun article trouvé pour <em><%= @topic_search %></em>.</h2>
+        <h2 class= "font-header-app">Modifiez votre recherche :</h2>
+      </div>
+      <%= render 'shared/search_bar', value: @topic_search %>
     </div>
-    <%= render 'shared/search_bar', value: @topic_search %>
+    <%= link_to root_path do %>
+      <%= image_tag "icone/hedgenews_logo.FF682F.png", class: "animate-logo" %>
+    <%end%>
   </div>
 
-  <%= image_tag "icone/hedgenews_logo.FF682F.png", class: "animate-logo" %>
-
 <% else %>
-
-  <div class="flex-box-space-around font-header-app">
-    <div>
-      <h3 class="font-header-app"><%= pluralize(@selected_stories.count, 'article selectionné', plural: 'articles sélectionnés')%>  parmi <%= @stories.count %> pour <em><%= @topic_search %></em></h3>
+  <div class="container">
+    <div class="flex-box-space-around font-header-app">
+      <div class = "wrapper-white">
+        <div>
+          <h2 class="font-header-app"><%= pluralize(@selected_stories.count, 'article selectionné', plural: 'articles sélectionnés')%>  parmi <%= @stories.count %> pour <em><%= @topic_search %></em></h2>
+        </div>
+        <%= render 'shared/search_bar', value: @topic_search %>
+      </div>
     </div>
-    <%= render 'shared/search_bar', value: @topic_search %>
   </div>
 
   <div class='container'>
@@ -55,10 +62,10 @@
     </div>
   </div>
 
-<% end %>
-
-<div class="container text-center">
+  <div class="container text-center">
     <%= link_to root_path do %>
       <%= image_tag "icone/rewind.FF682F.png", class: 'image-small' %>
     <%end%>
-</div>
+  </div>
+
+<% end %>
