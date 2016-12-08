@@ -3,14 +3,12 @@
   <div class="flex-box-space-around catchline wrapper-white font-header-app">
 
     <div>
-      <h2 class= "font-header-app">Je forge ma propre opinion : </h2>
+      <h2 class= "font-header-app">Je forge ma propre opinion sur : </h2>
     </div>
 
     <%= render 'shared/search_bar', value: nil %>
 
   </div>
-
-
 
   <%= render 'main_topic' %>
 
@@ -69,7 +67,7 @@
           $('#topic_search').attr('placeholder', topics[i]);
           i = (i +1)%(topics.length);
         }
-      }.bind(i), 500);
+      }.bind(i), 800);
 
       $('#topic_search').click(function(){
         $('#topic_search').data('clicked', true)
@@ -77,5 +75,3 @@
     })
   </script>
 <% end %>
-
-
