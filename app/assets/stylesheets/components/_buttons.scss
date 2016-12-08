@@ -8,6 +8,7 @@
   padding-left: 20px;
   padding-right: 20px;
   margin: 10px;
+
 }
 
 // .btn-bordered:hover {
@@ -16,18 +17,35 @@
 
 .btn-bordered-primary {
   color: $red;
-  border: 1px solid $red;
+  border-top: 1px solid $red ;
+  border-right: 1px solid $red;
+  border-left: 1px solid $red;
+  border-bottom: 1px solid $red;
+  transition: border 0.1s;
+
 }
 
 .btn-bordered-primary:hover {
   color: $red;
+  border-top: 1px solid $white;
+  border-right: 1px solid $white;
+  border-left: 1px solid $white;
+  border-bottom: 1px solid $red;
 }
 
 .btn-bordered-info {
   color: $blue;
-  border: 1px solid $blue;
+  border-top: 1px solid $blue ;
+  border-right: 1px solid $blue;
+  border-left: 1px solid $blue;
+  border-bottom: 1px solid $blue;
+  transition: border 0.1s;
 }
 
 .btn-bordered-info:hover {
   color: $blue;
+  border-top: 1px solid $white;
+  border-right: 1px solid $white;
+  border-left: 1px solid $white;
+  border-bottom: 1px solid $blue;
 }
