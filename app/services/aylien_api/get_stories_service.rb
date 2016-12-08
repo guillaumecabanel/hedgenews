@@ -24,7 +24,7 @@ module AylienAPI
       @published_at_start = params[:published_at_start] || "NOW-31DAYS"
       @published_at_end = params[:published_at_end] || "NOW"
 
-      @sort_by =    params[:sorted_by] || 'published_at'
+      @sort_by =    params[:sorted_by] || "relevance"
       @per_page =   params[:per_page]  || 20
       @media_images_width_min = params[:media_images_width_min] || 523
 
