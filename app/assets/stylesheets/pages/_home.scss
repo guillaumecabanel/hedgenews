@@ -34,7 +34,7 @@
 }
 
 .main-topic-image{
-  height: 40vh;
+  height: 45vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-origin: center;
@@ -67,6 +67,17 @@
   }
 }
 
+
+.catchline-font {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+}
+
+.topic-card{
+  margin: auto;
+}
+
+
 .topic-card-image {
   height: 45vh;
   background-repeat: no-repat;
@@ -80,11 +91,11 @@
 }
 
 .topic-card-legend {
-  margin-left: 20px;
-  margin-right: 20px;
+  width: 80%;
   position: relative;
   top: -20px;
   padding: 10px;
+  margin: 0 auto;
 }
 
 .logo-source {
@@ -92,3 +103,14 @@
 }
 
 
+<<<<<<< HEAD
+.catchline-font {
+font-family: 'Oswald', sans-serif;
+font-weight: 300;
+}
+
+.presentation-card{
+  background-color: $white;
+}
+=======
+>>>>>>> master
