@@ -95,6 +95,22 @@
   position: relative;
   padding: 10px;
   margin: 0 auto;
+
+  .presentation{
+    transition: max-height 0.5s, opacity 0.3s ease-out;
+    transition-delay: 0.2s;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  &:hover {
+    .presentation{
+      opacity: 1;
+      height: auto;
+      max-height: 400px;
+    }
+  }
 }
 
 .logo-source {
