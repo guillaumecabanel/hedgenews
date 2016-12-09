@@ -13,7 +13,11 @@
         <%= image_tag("logo/L'Express.png", :alt => "rss feed", height: 25, width: 70,) %>
       </div>
 
-      <p><%= topic.presentation %></p>
+      <!-- <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Link with href
+      </a> -->
+
+      <p class="collapse" id="collapseExample"><%= topic.presentation %></p>
     </div>
   </div>
 

@@ -54,6 +54,7 @@ module AylienAPI
 
       rescue AylienNewsApi::ApiError => e
         puts "Exception when calling DefaultApi->list_stories: #{e}"
+        return []
       end
 
     end
