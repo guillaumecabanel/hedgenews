@@ -12,17 +12,15 @@
 
   <%= render 'main_topic' %>
 
-  <div class="container">
-    <div class="row">
-      <% @topics.each do |topic| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
 
-            <%= render 'topic_card', topic: topic %>
-
-        </div>
-      <% end %>
-    </div>
+  <div class="row">
+    <% @topics.each do |topic| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render 'topic_card', topic: topic %>
+      </div>
+    <% end %>
   </div>
+
 
   <div class='container value-proposition-style'>
     <div class='row font-oswald presentation-card'>
