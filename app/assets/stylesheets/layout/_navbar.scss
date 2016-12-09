@@ -51,7 +51,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $brand-primary;
   text-decoration: none;
 }
 
@@ -170,7 +170,11 @@
 
 // sub-navbar on home
 
-.sub-navbar a:hover {
+// .sub-navbar a:hover {
+//   color: $brand-primary;
+// }
+
+.navbar-wagon-item a:hover {
   color: $brand-primary;
 }
 
