@@ -7,11 +7,11 @@
 
   <div class="panel topic-card-legend">
     <div class="panel-body">
-      <p class= "font-header-app">14 Articles  3 Sources</p>
-      <div class="logo-source">
-        <%= image_tag("logo/LePoint.jpg", :alt => "rss feed", height: 25, width: 60,) %>
-        <%= image_tag("logo/Figaro.png", :alt => "rss feed", height: 80, width: 60,) %>
-        <%= image_tag("logo/L'Express.png", :alt => "rss feed", height: 25, width: 70,) %>
+      <p class= "font-header-app"><%= topic.number_sources %></p>
+      <div>
+        <% topic.logos.split(" ").each do |logo| %>
+          <%= image_tag logo, width: '60px' %>
+        <% end %>
       </div>
 
       <!-- <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
