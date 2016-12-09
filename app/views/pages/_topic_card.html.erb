@@ -1,8 +1,10 @@
+
 <div class="topic-card">
+<%= link_to 'http://www.google.com', target: '_blank' do %>
   <div class="topic-card-image" style="background-image: url(<%= image_path topic.image_url %>)" >
     <h1><%= topic.name %></h1>
   </div>
-
+<%end%>
 
   <div class="panel topic-card-legend">
     <div class="panel-body">
@@ -22,3 +24,4 @@
   </div>
 
 </div>
+
