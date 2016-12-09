@@ -59,7 +59,7 @@
     $(document).ready(function(){
       var i = 0;
       window.setInterval(function(){
-        var topics = ["Valls", "Trump", "Cop22", "Le Brexit"];
+        var topics = ["Valls", "La Cop22", "Trump", "Park Geun-hye", "Le Brexit"];
         if ($('#topic_search').data('clicked') == true){
           $('#topic_search').attr('placeholder', "");
         }
@@ -92,6 +92,7 @@
         $p.removeClass("collapsing");
         $p.addClass("collapse");
       });
+
     })
   </script>
 <% end %>
