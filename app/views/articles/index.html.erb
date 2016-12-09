@@ -1,6 +1,3 @@
-<%= @hash_source_url %>
-<%= @opposite_media %>
-
 <% if @selected_stories.empty? %>
 
   <div class='container'>
@@ -47,8 +44,6 @@
             <div class="panel-heading">
               <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
               <h5><strong><%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h5>
-              <h5>Opposite media <%= @opposite_media[Source.where(aylien_id: story.source.id.to_i).first.name] %></h5>
-              <h6>URL média opposite <%= @hash_source_url[@opposite_media[Source.where(aylien_id: story.source.id.to_i).first.name]] %></h6>
               <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> par <strong><%= story.author.name %></strong></h6>
               <h6><%= time_to_read(story.words_count) %></h6>
   <!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
