@@ -15,6 +15,8 @@ class Topic < ApplicationRecord
 
     sorted_stories = sort_by_source(stories)
 
+    # FIX-ME: try 2 loops one after the other...
+
     sorted_stories.each do |source, stories|
 
       not_enough_stories = true
