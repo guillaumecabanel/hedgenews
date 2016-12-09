@@ -17,12 +17,15 @@ class Topic < ApplicationRecord
 
     sorted_stories.each do |source, stories|
 
-      not_enough_sources = true
+      not_enough_stories = true
 
-      while not_enough_sources
-        stories.each do |story|
+      stories.each do |story|
+        while not_enough_stories
+
+          next if story.hashtags.empty?
+
           # remove the'#' from the hashtag
-          clean_words = source.hashtags.first[1..-1]
+          clean_words = story.hashtags.first[1..-1]
 
           next if clean_words.length > 20
 
@@ -32,9 +35,8 @@ class Topic < ApplicationRecord
           related_stories = ::AylienAPI::GetStoriesService.new(topic_search: string_words).call.count
 
           if related_stories > 10
-            not_enough_sources = false
+            not_enough_stories = false
             topics << Topic.new(name: string_words)
-            puts topics
           end
         end
       end
