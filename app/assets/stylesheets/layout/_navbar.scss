@@ -32,10 +32,11 @@
 }
 
 /* Navbar right section (with form, links, button) */
-.navbar-wagon-right {
+.navbar-wagon-second {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 20px;
 }
 
 /* Navbar item */
@@ -156,7 +157,6 @@
 }
 
 
-
 // Search bar on home
 
 .search-bar-align-right {
@@ -170,14 +170,21 @@
 
 // sub-navbar on home
 
+.sub-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+}
+
 .sub-navbar a:hover {
   color: $brand-primary;
 }
 
 .font-oswald {
   // font-family: 'Playfair Display SC', serif;
-font-family: 'Oswald', sans-serif;
-font-weight: 300;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
 }
 
 // To get logo + font centered on the page

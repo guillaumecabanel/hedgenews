@@ -1,13 +1,10 @@
 <div class="container">
 
   <div class="flex-box-space-around catchline wrapper-white font-header-app">
-
     <div>
-      <h2 class= "font-header-app">Je forge ma propre opinion sur : </h2>
+      <h2 class= "font-header-app">Je forge mon opinion sur : </h2>
     </div>
-
     <%= render 'shared/search_bar', value: nil %>
-
   </div>
 
   <%= render 'main_topic' %>
@@ -16,9 +13,7 @@
     <div class="row">
       <% @topics.each do |topic| %>
         <div class="col-xs-12 col-sm-6 col-md-4">
-
             <%= render 'topic_card', topic: topic %>
-
         </div>
       <% end %>
     </div>

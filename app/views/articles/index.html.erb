@@ -46,9 +46,9 @@
               <h5><strong><%=story.source.name %></strong></h5>
               </i><h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> par <strong><%= story.author.name %></strong></h6>
               <ul class= "list-inline">
-              <li><h6><%= time_to_read(story.words_count) %></h6></li>
-<!--               <li><i class="fa fa-clock-o" aria-hidden="true"></i></li></ul>
- -->  <!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
+              <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+              <li><h6><%= time_to_read(story.words_count) %></h6></li></ul>
+  <!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
             </div>
             <div class="panel-body">
               <p><%=story.summary.sentences.join("\n") %></p>
