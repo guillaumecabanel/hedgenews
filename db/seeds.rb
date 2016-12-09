@@ -126,8 +126,8 @@ croix = Source.create!(name: "La Croix",
                        aylien_id: 1142)
 
 tribune = Source.create!(name: "La Tribune",
-                         presentation: "",
-                         orientation: "",
+                         presentation: "La Tribune est un journal économique et financier français, créé en janvier 1985 par Bruno Bertez, principal concurrent du quotidien Les Échos jusqu'à la fin de son édition papier quotidienne en janvier 2012, remplacée depuis par une édition hebdomadaire.",
+                         orientation: "droite",
                          aylien_id: 1174)
 
 mediapart = Source.create!(name: "Médiapart",
