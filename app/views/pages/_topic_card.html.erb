@@ -1,6 +1,5 @@
 <div class="topic-card">
-
-  <div class="topic-card-image" style="background-image: url(<%= image_path 'Brexit.jpg' %>)">
+  <div class="topic-card-image" style="background-image: url(<%= image_path topic.image_url %>)" >
     <h1><%= topic.name %></h1>
   </div>
 
@@ -14,14 +13,8 @@
           <%= image_tag("logo/L'Express.png", :alt => "rss feed", height: 25, width: 70,) %>
         </div>
 
-        <!-- <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Link with href
-        </a> -->
-
-        <!-- <p class="collapse" id="collapseExample"><%= topic.presentation %></p> -->
         <p class="presentation"><%= topic.presentation %></p>
       </div>
     </div>
   </div>
-
 </div>
