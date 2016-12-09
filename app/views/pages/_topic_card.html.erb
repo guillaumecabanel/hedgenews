@@ -1,10 +1,10 @@
 
 <div class="topic-card">
-<%= link_to articles_path(topic_search: topic.name), target: '_blank' do %>
-  <div class="topic-card-image" style="background-image: url(<%= image_path topic.image_url %>)" >
-    <h1><%= topic.name %></h1>
-  </div>
-<%end%>
+  <%= link_to articles_path(topic_search: topic.name) do %>
+    <div class="topic-card-image" style="background-image: url(<%= image_path topic.image_url %>)" >
+      <h1><%= topic.name %></h1>
+    </div>
+  <%end%>
 
   <div class="panel">
     <div class="panel-body">
