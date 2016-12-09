@@ -1,19 +1,14 @@
-
 <div class="container">
-
-
 
   <div class="flex-box-space-around catchline wrapper-white font-header-app">
 
     <div>
-      <h2 class= "font-header-app">Je forge ma propre opinion : </h2>
+      <h2 class= "font-header-app">Je forge ma propre opinion sur : </h2>
     </div>
 
     <%= render 'shared/search_bar', value: nil %>
 
   </div>
-
-
 
   <%= render 'main_topic' %>
 
@@ -59,4 +54,45 @@
   </div>
 </div>
 
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+      var i = 0;
+      window.setInterval(function(){
+        var topics = ["Valls", "La Cop22", "Trump", "Park Geun-hye", "Le Brexit"];
+        if ($('#topic_search').data('clicked') == true){
+          $('#topic_search').attr('placeholder', "");
+        }
+        else{
+          $('#topic_search').attr('placeholder', topics[i]);
+          i = (i +1)%(topics.length);
+        }
+      }.bind(i), 800);
 
+      $('#topic_search').click(function(){
+        $('#topic_search').data('clicked', true)
+      });
+
+    $(".topic-card-legend").mouseenter(function(e){
+        $card = $(this);
+        $p = $card.find("#collapseExample");
+
+        $p.removeClass("collapse");
+        $p.addClass("collapsing");
+        $p.removeClass("collapsing");
+        $p.addClass("collapse.in");
+      });
+
+      $(".topic-card-legend").mouseleave(function(e){
+        $card = $(this);
+        $p = $card.find("#collapseExample");
+
+        $p.removeClass("collapse.in");
+        $p.addClass("collapsing");
+        $p.removeClass("collapsing");
+        $p.addClass("collapse");
+      });
+
+    })
+  </script>
+<% end %>
