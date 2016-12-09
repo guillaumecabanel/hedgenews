@@ -22,7 +22,6 @@
   border-left: 1px solid $red;
   border-bottom: 1px solid $red;
   transition: border 0.1s;
-
 }
 
 .btn-bordered-primary:hover {
@@ -30,7 +29,13 @@
   border-top: 1px solid $white;
   border-right: 1px solid $white;
   border-left: 1px solid $white;
-  border-bottom: 1px solid $red;
+}
+
+.btn-bordered-primary-on-grey-background:hover {
+  color: $red;
+  border-top: 1px solid $grey;
+  border-right: 1px solid $grey;
+  border-left: 1px solid $grey;
 }
 
 .btn-bordered-info {
@@ -47,5 +52,4 @@
   border-top: 1px solid $white;
   border-right: 1px solid $white;
   border-left: 1px solid $white;
-  border-bottom: 1px solid $blue;
 }

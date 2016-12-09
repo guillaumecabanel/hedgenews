@@ -23,6 +23,12 @@
         <%= render 'shared/search_bar', value: @topic_search %>
       </div>
     </div>
+    <div class="flex-box-center">
+      <a href="#" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
+      <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
+      <% end %>
+    </div>
+    <br><br>
   </div>
 
   <div class='container'>
@@ -52,7 +58,7 @@
               <p><%= Source.where(aylien_id: story.source.id.to_i).first.presentation %></p>
             </div>
             <div class="flex-box-center">
-              <%= link_to "Lire l'article", story.links.permalink, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
+              <%= link_to "Lire l'article complet", story.links.permalink, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
               <%= button_tag "Découvrir une opinion différente", class: "btn btn-bordered btn-bordered-primary" , target: '_blank'%>
             </div>
 
@@ -73,13 +79,23 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function(){
-      if ($('#topic_search').data('clicked') == true){
-        $('#topic_search').attr('value', "");
-      };
 
       $('#topic_search').click(function(){
-        $('#topic_search').data('clicked', true)
+        $(this).val("");
       });
+
+
+      $('a.open-all').click(function(e) {
+        e.preventDefault();
+        $('.selected_urls').data('url').forEach(function(url_source) {
+          window.open(url_source);
+          // if(!win){
+          //   //Broswer has blocked it
+          //   alert('Please allow popups for this site');
+          // }
+        });
+      });
+
     })
   </script>
 <% end %>
