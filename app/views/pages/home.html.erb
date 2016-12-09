@@ -9,15 +9,14 @@
 
   <%= render 'main_topic' %>
 
-  <div class="container">
-    <div class="row">
-      <% @topics.each do |topic| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <%= render 'topic_card', topic: topic %>
-        </div>
-      <% end %>
-    </div>
+  <div class="row">
+    <% @topics.each do |topic| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render 'topic_card', topic: topic %>
+      </div>
+    <% end %>
   </div>
+
 
   <div class='container value-proposition-style'>
     <div class='row font-oswald presentation-card'>
@@ -68,25 +67,25 @@
         $('#topic_search').data('clicked', true)
       });
 
-    $(".topic-card-legend").mouseenter(function(e){
-        $card = $(this);
-        $p = $card.find("#collapseExample");
+    // $(".topic-card-legend").mouseenter(function(e){
+    //     $card = $(this);
+    //     $p = $card.find("#collapseExample");
 
-        $p.removeClass("collapse");
-        $p.addClass("collapsing");
-        $p.removeClass("collapsing");
-        $p.addClass("collapse.in");
-      });
+    //     $p.removeClass("collapse");
+    //     $p.addClass("collapsing");
+    //     $p.removeClass("collapsing");
+    //     $p.addClass("collapse.in");
+    //   });
 
-      $(".topic-card-legend").mouseleave(function(e){
-        $card = $(this);
-        $p = $card.find("#collapseExample");
+    //   $(".topic-card-legend").mouseleave(function(e){
+    //     $card = $(this);
+    //     $p = $card.find("#collapseExample");
 
-        $p.removeClass("collapse.in");
-        $p.addClass("collapsing");
-        $p.removeClass("collapsing");
-        $p.addClass("collapse");
-      });
+    //     $p.removeClass("collapse.in");
+    //     $p.addClass("collapsing");
+    //     $p.removeClass("collapsing");
+    //     $p.addClass("collapse");
+    //   });
 
     })
   </script>
