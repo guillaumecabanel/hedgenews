@@ -79,19 +79,20 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function(){
-      if ($('#topic_search').data('clicked') == true){
-        console.log("clicked")
-        $('#topic_search').attr('value', "");
-      };
 
       $('#topic_search').click(function(){
-        $('#topic_search').data('clicked', true)
+        $(this).val("");
       });
+
 
       $('a.open-all').click(function(e) {
         e.preventDefault();
         $('.selected_urls').data('url').forEach(function(url_source) {
           window.open(url_source);
+          // if(!win){
+          //   //Broswer has blocked it
+          //   alert('Please allow popups for this site');
+          // }
         });
       });
 

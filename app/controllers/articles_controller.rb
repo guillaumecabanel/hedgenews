@@ -7,10 +7,7 @@ class ArticlesController < ApplicationController
 
     @selected_stories = Article.random_sort(@stories)
 
-    @url = 'www.google.com'
-
     @selected_urls = []
-
     @selected_stories.each do |story|
       @selected_urls << story.links.permalink
     end
