@@ -18,21 +18,21 @@ User.destroy_all
 puts("Creating Topics")
 brexit = Topic.create!(name: "Brexit",
                        presentation: "L'opposition à l'intégration européenne est présente au Royaume-Uni dès les premiers moments de l'intégration à la Communauté économique européenne (CEE) au début des années 1970. Cette question au sein de la société britannique donne lieu à deux différents référendums : un premier en 1975, où les Britanniques décident de se maintenir dans la Communauté économique européenne (CEE), et un second en 2016, au cours duquel les Britanniques décident de quitter l'Union européenne avec 51,9 % des voix3 exprimées.",
-                        image_url: "Brexit.jpg",
-                        number_sources: "23 Articles 3 Sources",
-                        logos: "logo/LePoint.jpg logo/Figaro.png logo/L'Express.png")
+                       image_url: "Brexit.jpg",
+                       number_sources: "23 Articles 3 Sources",
+                       logos: "logo/LePoint.jpg logo/Figaro.png logo/L'Express.png")
 
 cop22 = Topic.create!(name: "COP22",
                       presentation: "La Conférence de Marrakech est une conférence sur le réchauffement climatique qui a lieu à Marrakech du 7 au 18 novembre 20161. Elle est la 22e conférence des parties (COP22) de la Convention-cadre des Nations unies sur les changements climatiques2. 196 États sont attendus3.",
-                        image_url: "cop22.jpg",
-                        number_sources: "15 Articles 4 Sources",
-                        logos: "logo/LaTribune.jpg logo/Figaro.png logo/Libération.png logo/Marianne.png")
+                      image_url: "cop22.jpg",
+                      number_sources: "15 Articles 4 Sources",
+                      logos: "logo/LaTribune.jpg logo/Figaro.png logo/Libération.png logo/Marianne.png")
 
 election = Topic.create!(name: "Park Geun-hye",
                         presentation: "Ancienne présidente du premier parti d'opposition, le Grand parti national (GPN, conservateur), elle est la fille de l'ancien dictateur militaire Park Chung-hee, qui dirigea la Corée du Sud entre 1961 et 1979. De 1998 à 2012, elle est députée à l'Assemblée nationale sud-coréenne. Elle est élue présidente de la République en décembre 2012 et prend ses fonctions le 25 février 2013, devenant ainsi la première femme chef de l'État sud-coréen. En novembre 2016, des centaines de milliers de ses compatriotes défilent dans les rues pour demander sa destitution, à la suite d'un scandale de corruption, la considérant comme étant sous l'influence de sa confidente Choi Soon-Sil. Ses pouvoirs sont suspendus par le Parlement le 9 décembre 20161.",
-                          image_url: "presidente-Park-Geun.jpg",
-                          number_sources: "18 Articles 2 Sources",
-                          logos: "logo/L'Humanité.png logo/Les-Echos.png")
+                        image_url: "presidente-Park-Geun.jpg",
+                        number_sources: "18 Articles 2 Sources",
+                        logos: "logo/L'Humanité.png logo/Les-Echos.png")
 
 
 # Journalists
@@ -169,57 +169,57 @@ international = Category.create!(name: "International")
 environment = Category.create!(name: "Environment")
 
 # Articles TO DO : add full_text, quoted_links, unique_words
-puts("Creating Articles")
-brexit_echoes = Article.new(title: "Echoes of ‘Brexit’ in U.S. Election",
-                                date: Date.new(2016,11,01),
-                                abstract: "The British referendum on leaving the European Union and the American presidential election bear some striking similarities. Both were won with a part of the electorate largely ignored by opinion polls.",
-                                words_count: 2000,
-                                time_to_read: 10,
-                                source_url: "http://www.nytimes.com/video/world/europe/100000004757894/echoes-of-brexit-in-us-election.html")
-brexit_echoes.source = nytimes
-brexit_echoes.category = politics
-brexit_echoes.journalist = isaure
-brexit_echoes.save!
+# puts("Creating Articles")
+# brexit_echoes = Article.new(title: "Echoes of ‘Brexit’ in U.S. Election",
+#                                 date: Date.new(2016,11,01),
+#                                 abstract: "The British referendum on leaving the European Union and the American presidential election bear some striking similarities. Both were won with a part of the electorate largely ignored by opinion polls.",
+#                                 words_count: 2000,
+#                                 time_to_read: 10,
+#                                 source_url: "http://www.nytimes.com/video/world/europe/100000004757894/echoes-of-brexit-in-us-election.html")
+# brexit_echoes.source = nytimes
+# brexit_echoes.category = politics
+# brexit_echoes.journalist = isaure
+# brexit_echoes.save!
 
-theresa_may_brexit = Article.new(title: "Exclusive: what Theresa May really thinks about Brexit shown in leaked recording",
-                                     date: Date.new(2016,10,13),
-                                     abstract: "Secret audio of Goldman Sachs talk in May shows she feared businesses would leave and wanted the UK to take a lead in Europe",
-                                     words_count: 1500,
-                                     time_to_read: 8,
-                                     source_url: "https://www.theguardian.com/politics/2016/oct/25/exclusive-leaked-recording-shows-what-theresa-may-really-thinks-about-brexit")
-theresa_may_brexit.source = guardian
-theresa_may_brexit.category = politics
-theresa_may_brexit.journalist = julie
-theresa_may_brexit.save!
+# theresa_may_brexit = Article.new(title: "Exclusive: what Theresa May really thinks about Brexit shown in leaked recording",
+#                                      date: Date.new(2016,10,13),
+#                                      abstract: "Secret audio of Goldman Sachs talk in May shows she feared businesses would leave and wanted the UK to take a lead in Europe",
+#                                      words_count: 1500,
+#                                      time_to_read: 8,
+#                                      source_url: "https://www.theguardian.com/politics/2016/oct/25/exclusive-leaked-recording-shows-what-theresa-may-really-thinks-about-brexit")
+# theresa_may_brexit.source = guardian
+# theresa_may_brexit.category = politics
+# theresa_may_brexit.journalist = julie
+# theresa_may_brexit.save!
 
-trump_cop_22 = Article.new(title: "Trump election casts shadow over COP 22 climate change talks",
-                               date: Date.new(2016,11,16),
-                               abstract: "Donald Trump’s victory in the US presidential election reverberated around the world this week, not least in the Moroccan city of Marrakesh that is hosting the first major UN talks on global warming since last year’s landmark Paris climate deal was struck.",
-                               words_count: 4000,
-                               time_to_read: 16,
-                               source_url: "https://www.ft.com/content/09a302c6-9459-11e6-a1dc-bdf38d484582")
-trump_cop_22.source = financialtimes
-trump_cop_22.category = environment
-trump_cop_22.journalist = guillaume
-trump_cop_22.save!
+# trump_cop_22 = Article.new(title: "Trump election casts shadow over COP 22 climate change talks",
+#                                date: Date.new(2016,11,16),
+#                                abstract: "Donald Trump’s victory in the US presidential election reverberated around the world this week, not least in the Moroccan city of Marrakesh that is hosting the first major UN talks on global warming since last year’s landmark Paris climate deal was struck.",
+#                                words_count: 4000,
+#                                time_to_read: 16,
+#                                source_url: "https://www.ft.com/content/09a302c6-9459-11e6-a1dc-bdf38d484582")
+# trump_cop_22.source = financialtimes
+# trump_cop_22.category = environment
+# trump_cop_22.journalist = guillaume
+# trump_cop_22.save!
 
-carbon_capture = Article.new(title: "COP21: What is carbon capture?",
-                                 date: Date.new(2015,12,05),
-                                 abstract: "Negotiators from 196 countries are trying to reach a deal at the climate change conference in Paris to curb global warming. A draft deal was reached last week but key issues still remain",
-                                 words_count: 2000,
-                                 time_to_read: 11,
-                                 source_url: "http://www.bbc.com/news/science-environment-35029984")
-carbon_capture.source = bbc
-carbon_capture.category = environment
-carbon_capture.journalist = raph
-carbon_capture.save!
+# carbon_capture = Article.new(title: "COP21: What is carbon capture?",
+#                                  date: Date.new(2015,12,05),
+#                                  abstract: "Negotiators from 196 countries are trying to reach a deal at the climate change conference in Paris to curb global warming. A draft deal was reached last week but key issues still remain",
+#                                  words_count: 2000,
+#                                  time_to_read: 11,
+#                                  source_url: "http://www.bbc.com/news/science-environment-35029984")
+# carbon_capture.source = bbc
+# carbon_capture.category = environment
+# carbon_capture.journalist = raph
+# carbon_capture.save!
 
-# Topic_articles
-puts("Creating TopicArticles")
-TopicArticle.create!(topic_id: brexit.id, article_id: brexit_echoes.id)
-TopicArticle.create!(topic: brexit, article: theresa_may_brexit)
-TopicArticle.create!(topic: cop22, article: trump_cop_22)
-TopicArticle.create!(topic: cop22, article: carbon_capture)
+# # Topic_articles
+# puts("Creating TopicArticles")
+# TopicArticle.create!(topic_id: brexit.id, article_id: brexit_echoes.id)
+# TopicArticle.create!(topic: brexit, article: theresa_may_brexit)
+# TopicArticle.create!(topic: cop22, article: trump_cop_22)
+# TopicArticle.create!(topic: cop22, article: carbon_capture)
 
 #Look for topics through aylien API
 puts("Look for topics through aylien API")
