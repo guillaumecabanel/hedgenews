@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :team, :about, :styleguide]
+
   def home
     @topics = Topic.all.sample(3)
   end
