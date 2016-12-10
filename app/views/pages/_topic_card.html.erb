@@ -15,7 +15,9 @@
             <%= image_tag logo, width: '60px' %>
           <% end %>
         </div>
-        <p class="presentation"><%= topic.presentation %></p>
+        <p class="presentation"><%= topic.presentation %>
+          <%= link_to "Découvrir le sujet", articles_path(topic_search: topic.name), class: "btn btn-bordered btn-bordered-primary"%>
+        </p>
       </div>
     </div>
   </div>
