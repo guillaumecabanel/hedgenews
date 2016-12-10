@@ -7,7 +7,7 @@ class Topic < ApplicationRecord
 
     topics = []
 
-    stories = ::AylienAPI::GetStoriesService.new(source_id: [675, 641, 251, 684], sort_by: "social_shares_count").call
+    stories = ::AylienAPI::GetStoriesService.new(source_id: [675, 641, 251, 684], sorted_by: "published_at").call
     # "le figaro":    641,
     # "le monde":     675,
     # "les échos":    684,
@@ -15,31 +15,32 @@ class Topic < ApplicationRecord
 
     sorted_stories = sort_by_source(stories)
 
-    # FIX-ME: try 2 loops one after the other...
-
     sorted_stories.each do |source, stories|
 
-      not_enough_stories = true
+      # For each source, find the first storie with an hashtag that could get more than 20 stories has a search
+      stories.find do |story|
+        next if story.hashtags.empty?
 
-      stories.each do |story|
-        while not_enough_stories
+        # remove the'#' from the hashtag
+        clean_words = story.hashtags.first[1..-1]
 
-          next if story.hashtags.empty?
+        next if clean_words.length > 20
 
-          # remove the'#' from the hashtag
-          clean_words = story.hashtags.first[1..-1]
+        # transform 'CamelCase' to 'String with spaces'
+        string_words = clean_words.gsub(/([A-ZÉ]+)([A-ZÉ][a-z])/,'\1 \2').gsub(/([a-z\d])([A-ZÉ])/,'\1 \2')
 
-          next if clean_words.length > 20
+        # Number of results for this search
+        related_stories = ::AylienAPI::GetStoriesService.new(topic_search: string_words).call.count
 
-          # transform 'CamelCase' to 'String with space'
-          string_words = clean_words.gsub(/([A-ZÉ]+)([A-ZÉ][a-z])/,'\1 \2').gsub(/([a-z\d])([A-ZÉ])/,'\1 \2')
-
-          related_stories = ::AylienAPI::GetStoriesService.new(topic_search: string_words).call.count
-
-          if related_stories > 10
-            not_enough_stories = false
+        if related_stories > 19
+          if topics.find {|topic| topic.name == string_words}
+            false # Topic already exists: keep trying to find relevant topic
+          else
             topics << Topic.new(name: string_words)
+            true
           end
+        else
+          false
         end
       end
 

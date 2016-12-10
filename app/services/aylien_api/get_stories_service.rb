@@ -38,6 +38,15 @@ module AylienAPI
       @published_at_end = params[:published_at_end] || "NOW"
 
       @sort_by =    params[:sorted_by] || "relevance"
+
+      # sort_by: [default to published_at]
+      # Other possible values:
+      # relevance, recency, hotness, published_at, social_shares_count,
+      # social_shares_count.facebook, social_shares_count.linkedin,
+      # social_shares_count.google_plus, social_shares_count.reddit,
+      # media.images.count, media.videos.count
+
+
       @per_page =   params[:per_page]  || 20
       @media_images_width_min = params[:media_images_width_min] || 523
 
