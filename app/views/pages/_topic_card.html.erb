@@ -9,10 +9,20 @@
   <div class="panel">
     <div class="panel-body">
       <div class="topic-card-legend">
-        <p class= "font-header-app"><%= topic.number_sources %></p>
+        <p class= "font-header-app"><%= topic.number_sources %> Sources</p>
         <div>
-          <% topic.logos.split(" ").each do |logo| %>
-            <%= image_tag logo, width: '60px' %>
+          <% if topic.logos.nil? %>
+
+             <% topic.sources_array.split(", ").each do |source| %>
+              <%= source %>
+            <% end %>
+
+          <% else %>
+
+            <% topic.logos.split(" ").each do |logo| %>
+              <%= image_tag logo, width: '60px' %>
+            <% end %>
+
           <% end %>
         </div>
         <p class="presentation"><%= topic.presentation %>
