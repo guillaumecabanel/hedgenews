@@ -1,0 +1,10 @@
+<% logos = ["l_express", "la_croix", "la_tribune", "le_figaro",
+            "le_monde", "les_echos", "liberation", "marianne", "mediapart", "valeurs_actuelles"] %>
+
+<div class="list-inline">
+  <% logos.each do |logo| %>
+    <li>
+      <%= image_tag "logo/logos_custom/#{logo}-logo-black.png", width: '150px' %>
+    </li>
+  <% end %>
+</div>
