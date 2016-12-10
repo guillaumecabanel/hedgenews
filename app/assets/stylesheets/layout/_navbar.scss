@@ -52,6 +52,10 @@
   padding: 0 20px;
 }
 
+.navbar-wagon-item::hover {
+  color: $brand-color;
+}
+
 /* Navbar standard link */
 .navbar-wagon-link {
   color: #616668;
@@ -59,7 +63,7 @@
 }
 
 .red-hover:hover {
-  color: $brand-primary;
+  color: $red;
   text-decoration: none;
 }
 
@@ -128,14 +132,14 @@
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
-  color: #999999 !important;
+  color: #999999;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: black !important;
+  color: $brand-color;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';
@@ -158,9 +162,9 @@
   background-color:#0421A9;
   border-color:#0421A9;
 }
-.navbar-wagon-button:hover {
-  background-color:#0421A9;
-}
+// .navbar-wagon-button:hover {
+//   color: $red;
+// }
 
 .navbar-hedgenews {
   font-family: 'Medula One', cursive;
