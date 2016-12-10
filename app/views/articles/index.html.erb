@@ -28,7 +28,7 @@
       <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
       <% end %>
     </div>
-    <br><br>
+    <br>
   </div>
 
   <div class='container'>
@@ -84,6 +84,8 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function(){
+
+      window.scroll(0, 140);
 
       $('#topic_search').click(function(){
         $(this).val("");
