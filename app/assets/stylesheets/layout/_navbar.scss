@@ -57,8 +57,14 @@
   color: #616668;
   font-size: 14px;
 }
-.navbar-wagon-link:hover {
+
+.red-hover:hover {
   color: $brand-primary;
+  text-decoration: none;
+}
+
+.blue-hover:hover {
+  color: $brand-info;
   text-decoration: none;
 }
 
@@ -181,14 +187,6 @@
   align-items: center;
   justify-content: flex-end;
 
-}
-
-.blue-hover:hover {
-  color: $blue;
-}
-
-.sub-navbar a:hover {
-  color: $brand-primary;
 }
 
 .font-oswald {
