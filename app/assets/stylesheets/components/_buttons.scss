@@ -31,6 +31,11 @@
   border-left: 1px solid $white;
 }
 
+.btn-bordered-primary-on-grey-background {
+  color: $brand-primary;
+}
+
+
 .btn-bordered-primary-on-grey-background:hover {
   color: $brand-primary;
   border-top: 1px solid $grey;
