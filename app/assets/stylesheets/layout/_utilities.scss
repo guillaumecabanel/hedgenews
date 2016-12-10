@@ -43,6 +43,11 @@
   flex-wrap: wrap;
 }
 
+.flex-box-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .wrapper-grey {
   background-color: $grey;
   // #B3B5BB
