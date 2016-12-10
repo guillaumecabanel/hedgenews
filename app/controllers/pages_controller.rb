@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
-    @topics = Topic.all.sample(3)
+    @topics = Topic.all[-4..-2]
+    @main_topic = Topic.last
   end
 
   def styleguide

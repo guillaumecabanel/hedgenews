@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209141029) do
+ActiveRecord::Schema.define(version: 20161210133113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20161209141029) do
     t.string   "image_url"
     t.string   "number_sources"
     t.string   "logos"
+    t.string   "sources_array"
   end
 
   add_foreign_key "articles", "categories"
