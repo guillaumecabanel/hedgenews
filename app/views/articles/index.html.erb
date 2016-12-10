@@ -51,7 +51,12 @@
                 <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
                 <li><h6><%= time_to_read(story.words_count) %></h6></li>
               </ul>
-              <h6><%= link_to 'Bookmark' %></h6>
+              <%= form_tag bookmark_path, method: :post, id: 'article' do %>
+                <%= hidden_field_tag "article[aylien_id]", value: story.id %>
+                <%= hidden_field_tag "article[source_url]", value: story.links.permalink %>
+                <%= submit_tag 'Bookmark', class: 'btn btn-primary' %>
+              <% end %>
+
   <!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
             </div>
             <div class="panel-body">
