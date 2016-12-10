@@ -1,19 +1,23 @@
 
 <div class="main-topic">
- <div class="main-topic-image" style="background-image: url(<%= image_path "Valls.png" %>)">
-    <h1>Valls Démissionne</h1>
-</div>
+
+  <%= link_to articles_path(topic_search: 'Valls') do %>
+    <div class='main-topic-image' style='background-image: url(<%= image_path 'Valls.png' %>)' >
+      <h1>Valls Démissionne</h1>
+    </div>
+  <%end%>
+
 
   <div class="panel main-topic-legend">
     <div class="panel-body">
-     <div class= "font-header-app">
+      <div class= "font-header-app">
         <p>14 Articles  3 Sources</p>
       </div>
-     <div class="logo-source">
+      <div class="logo-source">
           <%= image_tag("logo/L'Humanité.png", :alt => "rss feed", height: 25, width: 70,) %>
           <%= image_tag("logo/LaTribune.jpg", :alt => "rss feed", height: 25, width: 50,) %>
           <%= image_tag("logo/Valeurs-Actuelles.jpg", :alt => "rss feed", height: 60, width: 100,) %>
-    </div>
+      </div>
     </div>
   </div>
 </div>

@@ -57,8 +57,14 @@
   color: #616668;
   font-size: 14px;
 }
-.navbar-wagon-link:hover {
-  color: #da552f;
+
+.red-hover:hover {
+  color: $brand-primary;
+  text-decoration: none;
+}
+
+.blue-hover:hover {
+  color: $brand-info;
   text-decoration: none;
 }
 
@@ -183,10 +189,6 @@
 
 }
 
-.sub-navbar a:hover {
-  color: $brand-primary;
-}
-
 .font-oswald {
   // font-family: 'Playfair Display SC', serif;
   font-family: 'Oswald', sans-serif;
@@ -199,7 +201,3 @@
 //   z-index: 2;
 //   width: 100%;
 // }
-
-
-
-
