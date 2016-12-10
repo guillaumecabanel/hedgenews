@@ -48,9 +48,10 @@
               <h5><strong><%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h5>
               <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> par <strong><%= story.author.name %></strong></h6>
               <ul class= "list-inline">
-              <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-              <li><h6><%= time_to_read(story.words_count) %></h6></li></ul>
-
+                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+                <li><h6><%= time_to_read(story.words_count) %></h6></li>
+              </ul>
+              <h6><%= link_to 'Bookmark' %></h6>
   <!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
             </div>
             <div class="panel-body">

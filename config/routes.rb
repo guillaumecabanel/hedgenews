@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :articles, only: [:index]
+  resources :articles, only: [:index] do
+    post 'bookmark', to: 'article_bookmarks#create'
+    delete 'bookmark', to: 'article_bookmarks#destroy'
+  end
 
   # Styleguide
   get 'styleguide', to:'pages#styleguide'

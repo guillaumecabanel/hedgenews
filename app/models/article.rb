@@ -5,7 +5,7 @@ class Article < ApplicationRecord
 
   has_many :topic_articles
   has_many :topics, through: :topic_articles
-
+  has_many :article_bookmarks
 
   def self.random_sort(articles, parameters = {})
 
