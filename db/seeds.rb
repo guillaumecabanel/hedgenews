@@ -16,11 +16,22 @@ Topic.destroy_all
 # Topics TO DO : add most_used_words
 puts("Creating Topics")
 brexit = Topic.create!(name: "Brexit",
-                       presentation: "The United Kingdom's withdrawal from the European Union is widely known as Brexit, a portmanteau of 'British exit'. Following a referendum held in June 2016, in which 52% of votes were cast in favour of leaving the EU")
-cop22 = Topic.create!(name: "Cop22",
-                      presentation: "The United Nations Climate Change Conferences are yearly conferences held in the framework of the United Nations Framework Convention on Climate Change (UNFCCC). They serve as the formal meeting of the UNFCCC Parties (Conference of the Parties, COP) to assess progress in dealing with climate change, and beginning in the mid-1990s, to negotiate the Kyoto Protocol to establish legally binding obligations for developed countries to reduce their greenhouse gas emissions.")
-election = Topic.create!(name: "Election",
-                        presentation: "En France, l'élection présidentielle détermine la personne qui sera élue président de la République pour un mandat de cinq ans (quinquennat), contre sept (septennat) avant 2000. Le premier président français fut Louis-Napoléon Bonaparte en 1848, qui fut aussi le plus jeune (40 ans).")
+                       presentation: "L'opposition à l'intégration européenne est présente au Royaume-Uni dès les premiers moments de l'intégration à la Communauté économique européenne (CEE) au début des années 1970. Cette question au sein de la société britannique donne lieu à deux différents référendums : un premier en 1975, où les Britanniques décident de se maintenir dans la Communauté économique européenne (CEE), et un second en 2016, au cours duquel les Britanniques décident de quitter l'Union européenne avec 51,9 % des voix3 exprimées.",
+                        image_url: "Brexit.jpg",
+                        number_sources: "23 Articles 3 Sources",
+                        logos: "logo/LePoint.jpg logo/Figaro.png logo/L'Express.png")
+
+cop22 = Topic.create!(name: "COP22",
+                      presentation: "La Conférence de Marrakech est une conférence sur le réchauffement climatique qui a lieu à Marrakech du 7 au 18 novembre 20161. Elle est la 22e conférence des parties (COP22) de la Convention-cadre des Nations unies sur les changements climatiques2. 196 États sont attendus3.",
+                        image_url: "cop22.jpg",
+                        number_sources: "15 Articles 4 Sources",
+                        logos: "logo/LaTribune.jpg logo/Figaro.png logo/Libération.png logo/Marianne.png")
+
+election = Topic.create!(name: "Park Geun-hye",
+                        presentation: "Ancienne présidente du premier parti d'opposition, le Grand parti national (GPN, conservateur), elle est la fille de l'ancien dictateur militaire Park Chung-hee, qui dirigea la Corée du Sud entre 1961 et 1979. De 1998 à 2012, elle est députée à l'Assemblée nationale sud-coréenne. Elle est élue présidente de la République en décembre 2012 et prend ses fonctions le 25 février 2013, devenant ainsi la première femme chef de l'État sud-coréen. En novembre 2016, des centaines de milliers de ses compatriotes défilent dans les rues pour demander sa destitution, à la suite d'un scandale de corruption, la considérant comme étant sous l'influence de sa confidente Choi Soon-Sil. Ses pouvoirs sont suspendus par le Parlement le 9 décembre 20161.",
+                          image_url: "presidente-Park-Geun.jpg",
+                          number_sources: "18 Articles 2 Sources",
+                          logos: "logo/L'Humanité.png logo/Les-Echos.png")
 
 
 # Journalists
@@ -126,8 +137,8 @@ croix = Source.create!(name: "La Croix",
                        aylien_id: 1142)
 
 tribune = Source.create!(name: "La Tribune",
-                         presentation: "",
-                         orientation: "",
+                         presentation: "La Tribune est un journal économique et financier français, créé en janvier 1985 par Bruno Bertez, principal concurrent du quotidien Les Échos jusqu'à la fin de son édition papier quotidienne en janvier 2012, remplacée depuis par une édition hebdomadaire.",
+                         orientation: "droite",
                          aylien_id: 1174)
 
 mediapart = Source.create!(name: "Médiapart",

@@ -21,6 +21,19 @@ module AylienAPI
       # "mediapart":    1243,
       # "valeurs actuelles": 1615
 
+      #Opposite media :
+      # "marianne":     gauche dure           la tribune
+      # "libération":   gauche                les échos
+      # "mediapart":    gauche                le figaro
+      # "la croix":     droite                marianne
+      # "le monde":     centre                valeurs actuelles
+      # "la tribune":   droite                marianne
+      # "les échos":    droite                libération
+      # "le point":     droite                médiapart
+      # "l'express":    droite                marianne
+      # "le figaro":    droite                médiapart
+      # "valeurs actuelles": extreme droite   le monde
+
       @published_at_start = params[:published_at_start] || "NOW-31DAYS"
       @published_at_end = params[:published_at_end] || "NOW"
 
