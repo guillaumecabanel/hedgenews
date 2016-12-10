@@ -47,6 +47,14 @@
   }
 }
 
+a {
+  .main-topic-image {
+    h1:hover {
+      text-decoration: none;
+    }
+  }
+}
+
 .main-topic-legend {
   text-align: center;
   list: line;
@@ -116,15 +124,9 @@
   }
 }
 
-.topic-card:hover  {
-  text-decoration: none;
-  color: inherit;
-}
-
 .logo-source {
   text-align: center;
 }
-
 
 .catchline-font {
 font-family: 'Oswald', sans-serif;
@@ -134,4 +136,16 @@ font-weight: 300;
 .presentation-card{
   background-color: $white;
   padding: 20px;
+}
+
+.main-topic {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.topic-card {
+  a:hover {
+    text-decoration: none;
+  }
 }
