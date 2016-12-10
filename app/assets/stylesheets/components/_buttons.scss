@@ -31,11 +31,18 @@
   border-left: 1px solid $white;
 }
 
+.btn-bordered-primary-on-grey-background {
+  color: $brand-primary;
+}
+
+
 .btn-bordered-primary-on-grey-background:hover {
-  color: $red;
+  color: $brand-primary;
   border-top: 1px solid $grey;
   border-right: 1px solid $grey;
   border-left: 1px solid $grey;
+  border-bottom: 1px solid $red;
+  background-color: transparent;
 }
 
 .btn-bordered-info {

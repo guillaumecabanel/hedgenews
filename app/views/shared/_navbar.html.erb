@@ -1,4 +1,4 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon ">
   <!-- Logo -->
     <div class="navbar-wagon-logotype">
         <a href="/" class="navbar-wagon-brand text-center">
@@ -30,13 +30,33 @@
       <a href="" class="navbar-wagon-item navbar-wagon-link red-hover">CULTURE</a>
     </div>
 
+<!-- Notification link-->
+    <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">
+      <div class="badge-container">
+        <i class="fa fa-envelope-o"></i>
+        <div class="badge badge-blue">3</div>
+      </div>
+    </a> -->
+
     <!-- Right Navigation -->
     <div class="navbar-wagon-right">
       <!-- Button (call-to-action) -->
       <div class='sub-navbar'>
-      <a href="" class="navbar-wagon-item navbar-wagon-link font-oswald blue-hover">Mes Bookmarks</a>
-
-      <a href="" class="navbar-wagon-item  btn btn-bordered btn-bordered-primary">Se connecter</a>
+      <% if current_user %>
+        <a href="" class="navbar-wagon-item navbar-wagon-link font-oswald blue-hover">Mes Bookmarks</a>
+        <!-- Profile picture and dropdown -->
+        <div class="navbar-wagon-item">
+          <div class="dropdown">
+            <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li><%= link_to 'Mon compte', edit_user_registration_path %></li>
+              <li><%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+        </div>
+      <%else%>
+        <%= link_to 'Se connecter', new_user_session_path, class: "navbar-wagon-item  btn btn-bordered btn-bordered-primary" %>
+      <% end %>
       </div>
     </div>
 

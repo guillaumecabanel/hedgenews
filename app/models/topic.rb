@@ -30,13 +30,22 @@ class Topic < ApplicationRecord
         string_words = clean_words.gsub(/([A-ZÉ]+)([A-ZÉ][a-z])/,'\1 \2').gsub(/([a-z\d])([A-ZÉ])/,'\1 \2')
 
         # Number of results for this search
-        related_stories = ::AylienAPI::GetStoriesService.new(topic_search: string_words).call.count
+        results_for_hashtag = ::AylienAPI::GetStoriesService.new(topic_search: string_words).call
+        related_stories = results_for_hashtag.count
 
         if related_stories > 19
           if topics.find {|topic| topic.name == string_words}
             false # Topic already exists: keep trying to find relevant topic
           else
-            topics << Topic.new(name: string_words)
+            array_of_sources = sort_by_source(results_for_hashtag).keys
+
+            new_topic = Topic.new(name: string_words,
+                                  number_sources: array_of_sources.count,
+                                  image_url: story.media[0].url,
+                                  sources_array: array_of_sources)
+            new_topic.save
+
+            topics << new_topic
             true
           end
         else
@@ -64,6 +73,7 @@ class Topic < ApplicationRecord
     end
     stories_by_source
   end
+
 
   # @hashtags = []
 

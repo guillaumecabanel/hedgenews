@@ -12,6 +12,7 @@ Category.destroy_all
 Source.destroy_all
 Journalist.destroy_all
 Topic.destroy_all
+User.destroy_all
 
 # Topics TO DO : add most_used_words
 puts("Creating Topics")
@@ -219,3 +220,14 @@ TopicArticle.create!(topic_id: brexit.id, article_id: brexit_echoes.id)
 TopicArticle.create!(topic: brexit, article: theresa_may_brexit)
 TopicArticle.create!(topic: cop22, article: trump_cop_22)
 TopicArticle.create!(topic: cop22, article: carbon_capture)
+
+#Look for topics through aylien API
+puts("Look for topics through aylien API")
+Topic.get
+
+# Topic_articles
+puts("Creating Users")
+User.create!(email: 'raphaelle.coudin@gmail.com', password: 'coucou')
+User.create!(email: 'julie.moiton@bluewin.ch', password: 'coucou')
+User.create!(email: 'guillaume.cabanel@gmail.com', password: 'coucou')
+User.create!(email: 'isauretroesch@gmail.com', password: 'coucou')
