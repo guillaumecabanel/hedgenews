@@ -38,10 +38,10 @@
             <div class="panel-heading">
               <h3><%= link_to article.title, article.source_url, target: '_blank' %></h3>
               <h5><strong><%= Source.find(article.source_id).name %></strong></h5>
-              <h6>Publié il y a <%= distance_of_time_in_words(article.date, Time.now) %>
+              <h6>Publié il y a <%= distance_of_time_in_words(article.date, Time.now) %></h6>
               <ul class= "list-inline">
                 <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-                <li><h6><%= article.time_to_read %></h6></li>
+                <li><h6><%= time_to_read(article.words_count) %></h6></li>
               </ul>
 
               <div class='unbookmark-parent'>
@@ -51,20 +51,19 @@
                   <div class="unbookmark-confirmation">Article unbookmarked !</div>
                 <% end %>
               </div>
-          </div>
+            </div>
             <div class="panel-body">
               <p><%= article.abstract %></p>
             </div>
             <div class="panel-body">
               <h6><strong>Contexte :</strong></h6>
-              <h6>A propos de <%= Source.find(article.source_id).name  %></strong></h6>
+              <h6>A propos de <%= Source.find(article.source_id).name  %></h6>
               <p><%= Source.find(article.source_id).presentation %></p>
             </div>
             <div class="flex-box-center">
               <%= link_to "Lire l'article complet", article.source_url, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
-
+              <%= link_to "Découvrir une opinion différente", article.opposite_url, class: "btn btn-bordered btn-bordered-primary" , target: '_blank' %>
             </div>
-
           </div>
         </div>
       <% end %>
