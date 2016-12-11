@@ -1,1 +1,114 @@
-<p>Coucou</p>
+<% if @articles_bookmarked.empty? %>
+
+  <div class='container'>
+    <div class="flex-box-space-around catchline wrapper-white font-header-app">
+      <div>
+        <h2 class= "font-header-app">Vous n'avez pas encore d'articles sauvegardés</h2>
+        <h4 class= "font-header-app">Faites une recherche pour trouver des articles intéressants à lire, que vous pourrez ajouter à cette section :</h4>
+      </div>
+      <%= render 'shared/search_bar', value: "" %>
+    </div>
+    <%= link_to root_path do %>
+      <%= image_tag "icone/hedgenews_logo.FF682F.png", class: "animate-logo" %>
+    <%end%>
+  </div>
+
+<% else %>
+  <div class="container">
+    <div class="flex-box-space-around font-header-app">
+      <div class = "wrapper-white">
+        <div>
+          <h2 class="font-header-app"><%= pluralize(@articles_bookmarked.count, 'article sauvegardé', plural: 'articles sauvegardés')%></h2>
+        </div>
+      </div>
+    </div>
+    <div class="flex-box-center">
+      <a href="#" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
+      <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
+      <% end %>
+    </div>
+    <br>
+  </div>
+
+  <div class='container'>
+    <div class='row-fix'>
+      <% @articles_bookmarked.each do |article| %>
+        <div class='card'>
+          <div class="panel article-panel card-body">
+            <div class="panel-heading">
+              <h3><%= link_to article.title, article.source_url, target: '_blank' %></h3>
+              <h5><strong><%= Source.find(article.source_id).name %></strong></h5>
+              <h6>Publié il y a <%= distance_of_time_in_words(article.date, Time.now) %>
+              <ul class= "list-inline">
+                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+                <li><h6><%= article.time_to_read %></h6></li>
+              </ul>
+
+              <div class='unbookmark-parent'>
+                <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
+                  <%= hidden_field_tag "article[aylien_id]", article.aylien_id %>
+                  <%= submit_tag 'Unbookmark', class: 'btn btn-info unbookmark' %>
+                  <div class="unbookmark-confirmation">Article unbookmarked !</div>
+                <% end %>
+              </div>
+          </div>
+            <div class="panel-body">
+              <p><%= article.abstract %></p>
+            </div>
+            <div class="panel-body">
+              <h6><strong>Contexte :</strong></h6>
+              <h6>A propos de <%= Source.find(article.source_id).name  %></strong></h6>
+              <p><%= Source.find(article.source_id).presentation %></p>
+            </div>
+            <div class="flex-box-center">
+              <%= link_to "Lire l'article complet", article.source_url, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
+
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container text-center">
+    <%= link_to root_path do %>
+      <%= image_tag "icone/rewind.FF682F.png", class: 'image-small' %>
+    <%end%>
+  </div>
+
+<% end %>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+
+      $('.unbookmark-confirmation').hide();
+
+      // window.scroll(0, 140);
+
+      // $('#topic_search').click(function(){
+      //   $(this).val("");
+      // });
+
+
+      $('a.open-all').click(function(e) {
+        e.preventDefault();
+        $('.selected_urls').data('url').forEach(function(url_source) {
+          window.open(url_source);
+          // if(!win){
+          //   //Broswer has blocked it
+          //   alert('Please allow popups for this site');
+          // }
+        });
+      });
+
+      $('.unbookmark').click( function() {
+        $(this).hide(50);
+        $(this).closest('.unbookmark-parent').children('.unbookmark-confirmation').show(50);
+      });
+
+
+    })
+  </script>
+<% end %>

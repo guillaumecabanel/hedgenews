@@ -1,6 +1,14 @@
 class ArticleBookmarksController < ApplicationController
 
   def index
+    @articles_bookmarked = current_user.articles
+
+    @selected_urls = []
+    @hash_source_url = {}
+    @articles_bookmarked.each do |article|
+      @selected_urls << article.source_url
+      @hash_source_url[Source.find(article.source_id).name] = article.source_url
+    end
   end
 
   def create
@@ -27,7 +35,7 @@ class ArticleBookmarksController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:aylien_id, :source_url)
+    params.require(:article).permit(:source_id, :title, :date, :abstract, :words_count, :time_to_read, :aylien_id, :source_url)
   end
 
 end
