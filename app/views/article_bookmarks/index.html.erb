@@ -18,7 +18,9 @@
     <div class="flex-box-space-around font-header-app">
       <div class = "wrapper-white">
         <div>
-          <h2 class="font-header-app"><%= pluralize(@articles_bookmarked.count, 'article sauvegardé', plural: 'articles sauvegardés')%></h2>
+          <h2 id="number_articles_bookmarked" class="font-header-app"><%= pluralize(@articles_bookmarked.count, 'article sauvegardé', plural: 'articles sauvegardés')%></h2>
+          <%= content_tag :div, class: "articles_bookmarked", data: {number: @articles_bookmarked.count} do %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -51,13 +53,10 @@
                 <li><h6><%= time_to_read(article.words_count) %></h6></li>
               </ul>
 
-              <div class='unbookmark-parent'>
-                <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
+              <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
                   <%= hidden_field_tag "article[aylien_id]", article.aylien_id %>
                   <%= submit_tag 'Unbookmark', class: 'btn btn-info unbookmark' %>
-                  <div class="unbookmark-confirmation">Article unbookmarked !</div>
-                <% end %>
-              </div>
+              <% end %>
             </div>
             <div class="panel-body">
               <p><%= article.abstract %></p>
@@ -89,14 +88,14 @@
   <script>
     $(document).ready(function(){
 
-      $('.unbookmark-confirmation').hide();
-
       // window.scroll(0, 140);
 
       // $('#topic_search').click(function(){
       //   $(this).val("");
       // });
 
+      console.log('number of articles saved');
+      console.log($('.articles_bookmarked').data('number'));
 
       $('a.open-all').click(function(e) {
         e.preventDefault();
@@ -109,9 +108,15 @@
         });
       });
 
+      var nbarticle = $('.articles_bookmarked').data('number')
+
       $('.unbookmark').click( function() {
-        $(this).hide(50);
-        $(this).closest('.unbookmark-parent').children('.unbookmark-confirmation').show(50);
+        nbarticle = nbarticle - 1
+        console.log(nbarticle);
+        $(this).closest('.card').fadeOut('slow', function(){
+          $(this).remove();
+        });
+        $('#number_articles_bookmarked').replaceWith("<h2 class='font-header-app'>" + nbarticle + " article(s) sauvegardé(s)</h2>");
       });
 
 
