@@ -1,7 +1,14 @@
 class ArticleBookmarksController < ApplicationController
 
+  def index
+  end
+
   def create
-    @article = Article.create!(article_params)
+    if Article.find_by_aylien_id(params[:article][:aylien_id])
+      @article = Article.find_by_aylien_id(params[:article][:aylien_id])
+    else
+      @article = Article.create!(article_params)
+    end
     # @article.save # TODO add if error
     @article_bookmark = ArticleBookmark.new()
     @article_bookmark.user = current_user

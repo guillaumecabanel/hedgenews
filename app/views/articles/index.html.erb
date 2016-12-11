@@ -58,7 +58,7 @@
                     <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
                       <%= hidden_field_tag "article[aylien_id]", story.id %>
                       <%= submit_tag 'Unbookmark', class: 'btn btn-info unbookmark' %>
-                      <%= submit_tag 'Article unbookmarked !', class: 'btn btn-primary unbookmark-confirmation' %>
+                      <div class="unbookmark-confirmation">Article unbookmarked !</div>
                     <% end %>
                   </div>
                 <% else %>
