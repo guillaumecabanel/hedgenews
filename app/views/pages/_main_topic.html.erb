@@ -12,9 +12,9 @@
     <div class="panel-body">
       <p class= "font-header-app"><%= topic.number_sources %> Sources</p>
       <div class="logo-source">
-          <%= image_tag("logo/L'Humanité.png", :alt => "rss feed", height: 25, width: 70,) %>
-          <%= image_tag("logo/LaTribune.jpg", :alt => "rss feed", height: 25, width: 50,) %>
-          <%= image_tag("logo/Valeurs-Actuelles.jpg", :alt => "rss feed", height: 60, width: 100,) %>
+          <% JSON.parse(topic.sources_json)["sources"].each do |source| %>
+            <%= image_tag "logo/logos_custom/#{source}-logo-black.png", width: "150px" %>
+          <% end %>
       </div>
     </div>
   </div>

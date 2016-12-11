@@ -37,12 +37,13 @@ class Topic < ApplicationRecord
           if topics.find {|topic| topic.name == string_words}
             false # Topic already exists: keep trying to find relevant topic
           else
-            array_of_sources = sort_by_source(results_for_hashtag).keys
+            sources_array = sort_by_source(results_for_hashtag).keys
+            sources_hash = {sources: sources_array}
 
             new_topic = Topic.new(name: string_words,
-                                  number_sources: array_of_sources.count,
+                                  number_sources: sources_array.count,
                                   image_url: story.media[0].url,
-                                  sources_array: array_of_sources)
+                                  sources_json: JSON.generate(sources_hash))
             new_topic.save
 
             topics << new_topic

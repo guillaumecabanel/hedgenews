@@ -96,8 +96,7 @@ ActiveRecord::Schema.define(version: 20161211170746) do
     t.datetime "updated_at",      null: false
     t.string   "image_url"
     t.string   "number_sources"
-    t.string   "logos"
-    t.string   "sources_array"
+    t.text     "sources_json"
   end
 
   create_table "users", force: :cascade do |t|
