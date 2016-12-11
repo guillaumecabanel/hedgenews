@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210133113) do
+ActiveRecord::Schema.define(version: 20161210175120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_bookmarks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_article_bookmarks_on_article_id", using: :btree
+    t.index ["user_id"], name: "index_article_bookmarks_on_user_id", using: :btree
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -31,6 +40,7 @@ ActiveRecord::Schema.define(version: 20161210133113) do
     t.integer  "journalist_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "aylien_id"
     t.index ["category_id"], name: "index_articles_on_category_id", using: :btree
     t.index ["journalist_id"], name: "index_articles_on_journalist_id", using: :btree
     t.index ["source_id"], name: "index_articles_on_source_id", using: :btree
@@ -106,6 +116,8 @@ ActiveRecord::Schema.define(version: 20161210133113) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "article_bookmarks", "articles"
+  add_foreign_key "article_bookmarks", "users"
   add_foreign_key "articles", "categories"
   add_foreign_key "articles", "journalists"
   add_foreign_key "articles", "sources"
