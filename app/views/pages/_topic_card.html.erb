@@ -4,8 +4,8 @@
     <div class="topic-card-image" style="background-image: url(<%= image_path topic.image_url %>)" >
       <h1><%= topic.name %></h1>
       <div>
-          <%= JSON.parse(topic.sources_json)["sources"].each do |source| %>
-            <%= image_tag "#{source}-logo-white", width: "150px" %>
+          <% JSON.parse(topic.sources_json)["sources"].each do |source| %>
+            <%= image_tag "logo/logos_custom/#{source}-logo-white.png", width: "90px" %>
           <% end %>
         </div>
     </div>

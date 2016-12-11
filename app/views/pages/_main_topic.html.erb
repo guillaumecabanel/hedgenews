@@ -12,8 +12,8 @@
     <div class="panel-body">
       <p class= "font-header-app"><%= topic.number_sources %> Sources</p>
       <div class="logo-source">
-          <%= JSON.parse(topic.sources_json)["sources"].each do |source| %>
-            <%= image_tag "#{source}-logo-black", width: "150px" %>
+          <% JSON.parse(topic.sources_json)["sources"].each do |source| %>
+            <%= image_tag "logo/logos_custom/#{source}-logo-black.png", width: "150px" %>
           <% end %>
       </div>
     </div>
