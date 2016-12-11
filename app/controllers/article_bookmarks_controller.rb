@@ -16,6 +16,7 @@ class ArticleBookmarksController < ApplicationController
     else
       @article = Article.create!(article_params)
     end
+
     # @article.save # TODO add if error
     @article_bookmark = ArticleBookmark.new()
     @article_bookmark.user = current_user
@@ -34,7 +35,7 @@ class ArticleBookmarksController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:source_id, :title, :date, :abstract, :words_count, :aylien_id, :source_url, :opposite_url)
+    params.require(:article).permit(:source_id, :title, :pic_url, :date, :abstract, :words_count, :aylien_id, :source_url, :opposite_url)
   end
 
 end
