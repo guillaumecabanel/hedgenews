@@ -43,7 +43,7 @@
       <!-- Button (call-to-action) -->
       <div class='sub-navbar'>
       <% if current_user %>
-        <a href="" class="navbar-wagon-item navbar-wagon-link font-oswald blue-hover">Mes Bookmarks</a>
+        <%= link_to 'Mes Bookmarks', article_bookmarks_path, class: "navbar-wagon-item navbar-wagon-link font-oswald blue-hover" %>
         <!-- Profile picture and dropdown -->
         <div class="navbar-wagon-item">
           <div class="dropdown">

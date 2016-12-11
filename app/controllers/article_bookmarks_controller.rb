@@ -1,6 +1,13 @@
 class ArticleBookmarksController < ApplicationController
 
   def index
+    @articles_bookmarked = current_user.articles
+
+    @selected_urls = []
+    @articles_bookmarked.each do |article|
+      @selected_urls << article.source_url
+    end
+
   end
 
   def create
@@ -9,6 +16,7 @@ class ArticleBookmarksController < ApplicationController
     else
       @article = Article.create!(article_params)
     end
+
     # @article.save # TODO add if error
     @article_bookmark = ArticleBookmark.new()
     @article_bookmark.user = current_user
@@ -27,7 +35,7 @@ class ArticleBookmarksController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:aylien_id, :source_url)
+    params.require(:article).permit(:source_id, :title, :pic_url, :date, :abstract, :words_count, :aylien_id, :source_url, :opposite_url)
   end
 
 end
