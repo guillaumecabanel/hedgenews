@@ -3,6 +3,11 @@
   <%= link_to articles_path(topic_search: topic.name) do %>
     <div class="topic-card-image" style="background-image: url(<%= image_path topic.image_url %>)" >
       <h1><%= topic.name %></h1>
+      <div>
+          <%= JSON.parse(topic.sources_json)["sources"].each do |source| %>
+            <%= image_tag "#{source}-logo-white", width: "150px" %>
+          <% end %>
+        </div>
     </div>
   <%end%>
 
@@ -10,21 +15,6 @@
     <div class="panel-body">
       <div class="topic-card-legend">
         <p class= "font-header-app"><%= topic.number_sources %> Sources</p>
-        <div>
-          <% if topic.logos.nil? %>
-
-             <% topic.sources_array.split(", ").each do |source| %>
-              <%= source %>
-            <% end %>
-
-          <% else %>
-
-            <% topic.logos.split(" ").each do |logo| %>
-              <%= image_tag logo, width: '60px' %>
-            <% end %>
-
-          <% end %>
-        </div>
         <p class="presentation"><%= topic.presentation %>
           <%= link_to "Découvrir le sujet", articles_path(topic_search: topic.name), class: "btn btn-bordered btn-bordered-primary"%>
         </p>
