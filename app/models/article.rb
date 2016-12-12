@@ -23,4 +23,5 @@ class Article < ApplicationRecord
 
     random_articles.first(articles_quantity)
   end
+
 end
