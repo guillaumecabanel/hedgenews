@@ -39,6 +39,8 @@ class TopicsController < ApplicationController
     @topic.image_url = @stories.first.media[0].url
     @topic.sources_json = { sources: @hash_source_url.keys }.to_json.gsub("é", "e")
     @topic.save
+    @topic.number_sources = JSON.parse(@topic.sources_json)["sources"].size
+    @topic.save
     redirect_to topics_path
   end
 
