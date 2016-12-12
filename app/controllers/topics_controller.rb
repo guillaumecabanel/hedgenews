@@ -42,13 +42,16 @@ class TopicsController < ApplicationController
 
     # faire la topic image url
     @topic.image_url = @stories.first.media[0].url
-    @topic.sources_json = { sources: @hash_source_url.keys }.to_json.gsub("é", "e")
+    @topic.sources_json = { sources: @hash_source_url.keys }.to_json.gsub("é", "e").gsub("É", "E")
     @topic.save
     @topic.number_sources = JSON.parse(@topic.sources_json)["sources"].size
     @topic.save
     redirect_to topics_path
   end
 
+  def edit
+    @topic = Topic.find(params[:id])
+  end
 
   def destroy
     @topic = Topic.find(params[:topic][:id])
