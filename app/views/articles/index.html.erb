@@ -16,7 +16,7 @@
 <% else %>
   <div class="container">
     <div class="flex-box-space-around font-header-app">
-      <div class = "wrapper-white">
+      <div id="search-wrapper" class="wrapper-white">
         <div>
           <h2 class="font-header-app"><%= pluralize(@selected_stories.count, 'article selectionné', plural: 'articles sélectionnés')%>  parmi <%= @stories.count %> pour <em><%= @topic_search %></em></h2>
         </div>
