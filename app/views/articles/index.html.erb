@@ -45,7 +45,7 @@
           <div class="panel article-panel card-body">
             <div class="panel-heading">
               <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
-              <h5><strong><%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h5>
+              <h5><strong><%= image_tag "logo/logos_custom/#{Source.where(aylien_id: story.source.id.to_i).first.name}-logo-black.png", width: "80px" %></strong></h5>
               <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> <% if story.author.name != "" %>par <%= story.author.name %><% end %></h6>
               <ul class= "list-inline">
                 <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
