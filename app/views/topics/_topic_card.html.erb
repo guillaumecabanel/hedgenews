@@ -1,0 +1,18 @@
+<div class="topic-card">
+  <%= link_to articles_path(topic_search: topic.name) do %>
+    <div class="topic-card-image" style="background-image: url(<%= image_path topic.image_url %>)" >
+      <h1><%= topic.name %></h1>
+
+    </div>
+  <%end%>
+
+  <div class="panel">
+    <div class="panel-body">
+      <div class="topic-card-legend">
+        <p class= "font-header-app"><%= topic.number_sources %> Sources - <%= topic.articles.count %> Articles </p>
+        <p><%= link_to 'Visualiser', articles_path(topic_search: topic.name) %> - Éditer - Supprimer</p>
+      </div>
+    </div>
+  </div>
+</div>
+
