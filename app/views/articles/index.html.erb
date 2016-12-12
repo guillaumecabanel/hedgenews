@@ -48,8 +48,40 @@
               <h5><strong><%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h5>
               <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> par <strong><%= story.author.name %></strong></h6>
               <ul class= "list-inline">
-              <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-              <li><h6><%= time_to_read(story.words_count) %></h6></li></ul>
+                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+                <li><h6><%= time_to_read(story.words_count) %></h6></li>
+              </ul>
+
+              <% if current_user %>
+                <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
+                  <div class='unbookmark-parent'>
+                    <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
+                      <%= hidden_field_tag "article[aylien_id]", story.id %>
+                      <%= submit_tag 'Unbookmark', class: 'btn btn-info unbookmark' %>
+                      <div class="unbookmark-confirmation">Article unbookmarked !</div>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <%= form_tag bookmark_path, method: :post, id: 'article' do %>
+                    <div class='bookmark-parent'>
+                      <%= hidden_field_tag "article[source_id]", Source.where(aylien_id: story.source.id.to_i).first.id %>
+                      <%= hidden_field_tag "article[title]", story.title %>
+                      <% unless story.media[0].nil? %>
+                        <%= hidden_field_tag "article[pic_url]", story.media[0].url %>
+                      <% end %>
+                      <%= hidden_field_tag "article[date]", story.published_at %>
+                      <%= hidden_field_tag "article[abstract]", story.summary.sentences.join("\n") %>
+                      <%= hidden_field_tag "article[words_count]", story.words_count %>
+                      <%= hidden_field_tag "article[aylien_id]", story.id %>
+                      <%= hidden_field_tag "article[source_url]", story.links.permalink %>
+                      <%= hidden_field_tag "article[opposite_url]", @hash_source_url[@opposite_media[Source.where(aylien_id: story.source.id.to_i).first.name]] %>
+                      <%= submit_tag 'Bookmark', class: 'btn btn-primary bookmark' %>
+                      <%= submit_tag 'Article bookmarked !', class: 'btn btn-info bookmark-confirmation' %>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+
 
   <!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
             </div>
@@ -85,6 +117,9 @@
   <script>
     $(document).ready(function(){
 
+      $('.bookmark-confirmation').hide();
+      $('.unbookmark-confirmation').hide();
+
       window.scroll(0, 140);
 
       $('#topic_search').click(function(){
@@ -102,6 +137,18 @@
           // }
         });
       });
+
+      $('.bookmark').click( function() {
+        // setTimeout(function() {}, 10);
+        $(this).hide(50);
+        $(this).closest('.bookmark-parent').children('.bookmark-confirmation').show(50);
+      });
+
+      $('.unbookmark').click( function() {
+        $(this).hide(50);
+        $(this).closest('.unbookmark-parent').children('.unbookmark-confirmation').show(50);
+      });
+
 
     })
   </script>
