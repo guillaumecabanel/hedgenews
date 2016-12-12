@@ -51,6 +51,14 @@
                 <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
                 <li><h6><%= time_to_read(story.words_count) %></h6></li>
               </ul>
+              <ul class= "list-inline">
+                <li>
+                  <% story.hashtags.each_with_index do |hashtag, index| %>
+                    <% next if index > 4%>
+                    <span class="label label-info"><%= hashtag[1..-1] %></span>
+                  <% end %>
+                </li>
+              </ul>
 
               <% if current_user %>
                 <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
