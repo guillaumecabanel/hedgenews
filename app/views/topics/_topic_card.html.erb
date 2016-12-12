@@ -10,9 +10,27 @@
     <div class="panel-body">
       <div class="topic-card-legend">
         <p class= "font-header-app"><%= topic.number_sources %> Sources - <%= topic.articles.count %> Articles </p>
-        <p><%= link_to 'Visualiser', articles_path(topic_search: topic.name) %> - Éditer - Supprimer</p>
+        <p class="font-header-app"><%= link_to 'Visualiser', articles_path(topic_search: topic.name) %> - Éditer </p>
+        <%= form_tag topic_path, method: :delete, id: 'topic' do %>
+          <%= hidden_field_tag "topic[id]", topic.id %>
+          <%= submit_tag 'Supprimer', class: 'btn btn-bordered btn-bordered-info suppress' %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+
+      $('.suppress').click( function() {
+        $(this).closest('.topic-card').fadeOut('slow', function(){
+          $(this).remove();
+        });
+      });
+
+    })
+  </script>
+<% end %>

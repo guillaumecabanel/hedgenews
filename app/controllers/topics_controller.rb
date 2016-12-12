@@ -6,6 +6,7 @@ class TopicsController < ApplicationController
   end
 
   def create
+
     @topic = Topic.new(topic_params)
     @topic.user = current_user
 
@@ -17,10 +18,14 @@ class TopicsController < ApplicationController
     end
 
     @stories.each do |story|
+      if Journalist.find_by_aylien_id(story.author.id)
+        @journalist = Journalist.find_by_aylien_id(story.author.id)
+      else
+        @journalist = Journalist.create!(last_name: story.author.name, aylien_id: story.author.id)
+      end
       article = Article.where(aylien_id: story.id).first
-
       unless article
-        article = Article.create(source_id: Source.where(aylien_id: story.source.id.to_i).first.id,
+        article = Article.create!(source_id: Source.where(aylien_id: story.source.id.to_i).first.id,
                                  title: story.title,
                                  pic_url: story.media[0].url,
                                  date: story.published_at,
@@ -29,9 +34,9 @@ class TopicsController < ApplicationController
                                  aylien_id: story.id,
                                  source_url: story.links.permalink,
                                  opposite_url: story_opposite_url(story, @hash_source_url),
+                                 journalist_id: Journalist.where(aylien_id: story.author.id).first.id,
                                  )
       end
-
       @topic.topic_articles.new(article: article)
     end
 
@@ -44,7 +49,10 @@ class TopicsController < ApplicationController
     redirect_to topics_path
   end
 
+
   def destroy
+    @topic = Topic.find(params[:topic][:id])
+    @topic.destroy
   end
 
   private

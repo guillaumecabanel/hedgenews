@@ -70,7 +70,7 @@ financialtimes = Source.create!(name: "The Financial Times",
           # "la tribune":   1174,
           # "le figaro":    641,
           # "le monde":     675,
-      # "le parisien":  642,
+          # "le parisien":  642,
           # "le point":     1192,
           # "les échos":    684,
           # "libération":   251,
@@ -97,7 +97,7 @@ figaro = Source.create!(name: "Le Figaro",
 liberation = Source.create!(name: "Libération",
                             presentation: "Libération est un quotidien français paraissant le matin, disponible également dans une version en ligne. Fondé sous l'égide de Jean-Paul Sartre, le journal paraît pour la première fois le 18 avril 1973 et reprend le nom d'un titre de presse similaire créé en 1927 par le libertaire Jules Vignes, nom qui sera également celui d'un des journaux de la Résistance dirigé par Emmanuel d'Astier de La Vigerie. \n
                             Situé à l'extrême gauche à ses débuts, Libération évolue vers la gauche sociale-démocrate à la fin des années 1970 après la démission de Jean-Paul Sartre en 1974. Aujourd'hui, sa ligne éditoriale est toujours de centre gauche ou de gauche sociale-démocrate. \n
-                             Libération a pour actionnaires de référence les hommes d'affaires Bruno Ledoux — propriétaire du siège du journal — et Patrick Drahi — président-fondateur du consortium luxembourgeois Altice.",
+                            Libération a pour actionnaires de référence les hommes d'affaires Bruno Ledoux — propriétaire du siège du journal — et Patrick Drahi — président-fondateur du consortium luxembourgeois Altice.",
                             orientation: "gauche",
                             aylien_id: 251)
 
@@ -138,7 +138,7 @@ point = Source.create!(name: "Le Point",
 marianne = Source.create!(name: "Marianne",
                           presentation: "Marianne est un magazine d'information hebdomadaire français créé par Jean-François Kahn et Maurice Szafran en 1997. Refondu à partir du 29 juin 2013, le titre reprend celui de Marianne, un ancien journal politique et littéraire orienté à gauche qui fut publié à Paris dans les années 1930. \n
                           Le Marianne actuel combat ce qu'il nomme la pensée unique. Il se veut centriste révolutionnaire. \n
-                          Les principaux actionnaires sont aujourd'hui à 57% Yves de Chaisemartin, à 31% Marianne Fiances (Maurice Szafran), ainsi que Paul Lederman, Guy Sitbon, Thierry Verret et Frank Ullman."
+                          Les principaux actionnaires sont aujourd'hui à 57% Yves de Chaisemartin, à 31% Marianne Fiances (Maurice Szafran), ainsi que Paul Lederman, Guy Sitbon, Thierry Verret et Frank Ullman.",
                           orientation: "extrême gauche",
                           aylien_id: 1234)
 
@@ -146,14 +146,15 @@ marianne = Source.create!(name: "Marianne",
 croix = Source.create!(name: "La Croix",
                        presentation: "La Croix est un journal quotidien français, propriété du groupe Bayard Presse depuis 1880. Fondé par la congrégation des assomptionnistes, le journal se réclame ouvertement chrétien et catholique, même si ce positionnement a pu évoluer au cours de son histoire. \n
                        Depuis l'élection de Benoît XVI, le journal qui se dit toujours très attaché au concile Vatican II, a modéré sa critique vis-à-vis des positions du Saint-Siège mais « reste reconnu pour ses prises de position progressistes24 ». Son traitement de l'information reste plutôt défavorable aux tendances traditionnelles. \n
-                        Il est possédé par le Groupe Bayard Presse et depuis 2015, Guillaume Goubert est le nouveau directeur de La Croix."
+                       Il est possédé par le Groupe Bayard Presse et depuis 2015, Guillaume Goubert est le nouveau directeur de La Croix.",
                        orientation: "droite",
                        aylien_id: 1142)
 
 tribune = Source.create!(name: "La Tribune",
                          presentation: "La Tribune est un journal économique hebdomadaire et financier français, créé en janvier 1985 par Bruno Bertez, principal concurrent du quotidien Les Échos. Il aborde principalement les secteurs de l'industrie, des services, des hautes technologies, des médias, des pays émergents et du management. \n
-                          Il est aujourd'hui posédé par le Groupe Hima (Jean-Christophe Tortora) à 68%, Laurant Alexandre à 28% et JCG Médias : 4%."
-                          orientation: "liberal"
+                         Il est aujourd'hui posédé par le Groupe Hima (Jean-Christophe Tortora) à 68%, Laurant Alexandre à 28% et JCG Médias : 4%.",
+                         orientation: "liberal",
+                         aylien_id: 1174)
 
 mediapart = Source.create!(name: "Médiapart",
                            presentation: "Mediapart est un site web d'information et d'opinion créé en 2008 par François Bonnet, Gérard Desportes, Laurent Mauduit et Edwy Plenel1. Il est l'un des rares « tout en ligne » grand public payant du marché français de l'information. Il a atteint son équilibre financier à l'automne 20102. \n
