@@ -65,6 +65,14 @@ a {
   padding: 10px;
 }
 
+.logo-source {
+  text-align: center;
+}
+
+.logo-main-card {
+  padding-right: 10px;
+}
+
 .value-proposition-style {
   padding: 70px;
 }
@@ -104,8 +112,8 @@ a {
 
 .topic-card-legend {
   position: relative;
-  padding: 10px;
-  margin: 0 auto;
+  padding: 25px;
+
 
   .presentation{
     transition: max-height 0.5s, opacity 0.3s ease-out;
@@ -128,9 +136,19 @@ a {
   text-align: center;
 }
 
+.logos-card {
+  text-align: center;
+  text-align: justify;
+}
+
+.logo-topic-card {
+  padding-top: 15px;
+  padding-right: 5px;
+}
+
 .catchline-font {
-font-family: 'Oswald', sans-serif;
-font-weight: 300;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
 }
 
 .presentation-card{
@@ -150,3 +168,7 @@ font-weight: 300;
   }
 }
 
+.list-inline {
+  text-align: center;
+  padding-right: 20px;
+}
