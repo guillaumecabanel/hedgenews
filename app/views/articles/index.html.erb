@@ -24,8 +24,13 @@
       </div>
     </div>
     <div class="flex-box-center">
-      <a href="#" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
-      <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
+      <div>
+        <a href="#" id="open-all" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
+        <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
+        <% end %>
+      </div>
+      <%if current_user %>
+        <%= link_to 'Ajouter le sujet à mes revues de presse', root_path, class: "btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background open-all" %>
       <% end %>
     </div>
     <br>
@@ -45,8 +50,8 @@
           <div class="panel article-panel card-body">
             <div class="panel-heading">
               <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
-              <h5><strong><%= image_tag "logo/logos_custom/#{Source.where(aylien_id: story.source.id.to_i).first.name}-logo-black.png", width: "80px" %></strong></h5>
-              <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> par <strong><%= story.author.name %></strong></h6>
+              <h5><strong><%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %></strong></h5>
+              <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> <% if story.author.name != "" %>par <%= story.author.name %><% end %></h6>
               <ul class= "list-inline">
                 <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
                 <li><h6><%= time_to_read(story.words_count) %></h6></li>
@@ -62,13 +67,13 @@
 
               <% if current_user %>
                 <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
-                  <div class='unbookmark-parent'>
-                    <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
+                  <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
+                    <div class='unbookmark-parent'>
                       <%= hidden_field_tag "article[aylien_id]", story.id %>
                       <%= submit_tag 'Unbookmark', class: 'btn btn-info unbookmark' %>
-                      <div class="unbookmark-confirmation">Article unbookmarked !</div>
-                    <% end %>
-                  </div>
+                      <%= submit_tag 'Article unbookmarked !', class: 'btn btn-info unbookmark-confirmation' %>
+                    </div>
+                  <% end %>
                 <% else %>
                   <%= form_tag bookmark_path, method: :post, id: 'article' do %>
                     <div class='bookmark-parent'>
@@ -77,6 +82,8 @@
                       <% unless story.media[0].nil? %>
                         <%= hidden_field_tag "article[pic_url]", story.media[0].url %>
                       <% end %>
+                      <%= hidden_field_tag "journalist[aylien_id]", story.author.id %>
+                      <%= hidden_field_tag "journalist[last_name]", story.author.name %>
                       <%= hidden_field_tag "article[date]", story.published_at %>
                       <%= hidden_field_tag "article[abstract]", story.summary.sentences.join("\n") %>
                       <%= hidden_field_tag "article[words_count]", story.words_count %>
@@ -99,7 +106,13 @@
             </div>
             <div class="panel-body">
               <h6><strong>Contexte :</strong></h6>
-              <h6>A propos de <%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h6>
+              <% if ["Le Monde", "Le Figaro", "Le Point"].include?(Source.where(aylien_id: story.source.id.to_i).first.name) %>
+                <h6>A propos du <%= Source.where(aylien_id: story.source.id.to_i).first.name.split(" ").last %></strong></h6>
+              <% elsif ["Les Échos"].include?(Source.where(aylien_id: story.source.id.to_i).first.name) %>
+                <h6>A propos des <%= Source.where(aylien_id: story.source.id.to_i).first.name.split(" ").last %></strong></h6>
+              <% else %>
+                <h6>A propos de <%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h6>
+              <% end %>
               <p><%= Source.where(aylien_id: story.source.id.to_i).first.presentation %></p>
             </div>
             <div class="flex-box-center">
@@ -134,11 +147,12 @@
         $(this).val("");
       });
 
-
-      $('a.open-all').click(function(e) {
+      $('#open-all').click(function(e) {
         e.preventDefault();
         $('.selected_urls').data('url').forEach(function(url_source) {
+          setTimeout(function() {}, 1000);
           window.open(url_source);
+          self.focus();
           // if(!win){
           //   //Broswer has blocked it
           //   alert('Please allow popups for this site');
@@ -150,6 +164,7 @@
         // setTimeout(function() {}, 10);
         $(this).hide(50);
         $(this).closest('.bookmark-parent').children('.bookmark-confirmation').show(50);
+        // $(this).closest('.panel-heading').find('.unbookmark').show(50);
       });
 
       $('.unbookmark').click( function() {
