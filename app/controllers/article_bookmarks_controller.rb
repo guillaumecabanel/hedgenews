@@ -11,11 +11,18 @@ class ArticleBookmarksController < ApplicationController
   end
 
   def create
-    raise
+    if Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
+      @journalist = Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
+    else
+      @journalist = Journalist.create!(journalist_params)
+    end
+
     if Article.find_by_aylien_id(params[:article][:aylien_id])
       @article = Article.find_by_aylien_id(params[:article][:aylien_id])
     else
-      @article = Article.create!(article_params)
+      @article = Article.new(article_params)
+      @article.journalist = @journalist
+      @article.save
     end
 
     # @article.save # TODO add if error
@@ -37,6 +44,9 @@ class ArticleBookmarksController < ApplicationController
   private
   def article_params
     params.require(:article).permit(:source_id, :title, :pic_url, :date, :abstract, :words_count, :aylien_id, :source_url, :opposite_url)
+  end
+  def journalist_params
+    params.require(:journalist).permit(:last_name, :aylien_id)
   end
 
 end
