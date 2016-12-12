@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :articles, only: [:index]
 
+  resources :topics, only: [:index]
+  post 'topic', to: 'topics#create'
+  delete 'topic', to: 'topics#destroy'
+
   post 'bookmark', to: 'article_bookmarks#create'
   delete 'bookmark', to: 'article_bookmarks#destroy'
 

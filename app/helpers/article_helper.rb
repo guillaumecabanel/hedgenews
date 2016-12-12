@@ -9,4 +9,18 @@ module ArticleHelper
       return "#{time} minutes à lire"
     end
   end
+
+  def story_opposite_url(story, source_urls)
+    source_name = Source.where(aylien_id: story.source.id.to_i).first.name
+
+    opposite_media = Article::OPPOSITE_MEDIA[source_name]
+    return unless opposite_media
+
+    opposite_media.each do |opposite_medium|
+      opposite_url = source_urls[opposite_medium]
+      return opposite_url if opposite_url
+    end
+
+    return nil
+  end
 end

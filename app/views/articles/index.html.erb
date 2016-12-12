@@ -24,13 +24,14 @@
       </div>
     </div>
     <div class="flex-box-center">
-      <div>
-        <a href="#" id="open-all" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
-        <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
-        <% end %>
-      </div>
+      <a href="#" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
+      <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
+      <% end %>
       <%if current_user %>
-        <%= link_to 'Ajouter le sujet à mes revues de presse', root_path, class: "btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background open-all" %>
+        <%= form_tag topic_path, method: :post, id: 'topic' do %>
+          <%= hidden_field_tag "topic[name]", @topic_search %>
+          <%= submit_tag 'Ajouter le sujet à mes revues de presse', class: 'btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background' %>
+        <% end %>
       <% end %>
     </div>
     <br>
@@ -81,7 +82,7 @@
                       <%= hidden_field_tag "article[words_count]", story.words_count %>
                       <%= hidden_field_tag "article[aylien_id]", story.id %>
                       <%= hidden_field_tag "article[source_url]", story.links.permalink %>
-                      <%= hidden_field_tag "article[opposite_url]", @hash_source_url[@opposite_media[Source.where(aylien_id: story.source.id.to_i).first.name]] %>
+                      <%= hidden_field_tag "article[opposite_url]", story_opposite_url(story, @hash_source_url) %>
                       <%= submit_tag 'Bookmark', class: 'btn btn-primary bookmark' %>
                       <%= submit_tag 'Article bookmarked !', class: 'btn btn-info bookmark-confirmation' %>
                     </div>
@@ -109,7 +110,7 @@
             </div>
             <div class="flex-box-center">
               <%= link_to "Lire l'article complet", story.links.permalink, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
-              <%= link_to "Découvrir une opinion différente", @hash_source_url[@opposite_media[Source.where(aylien_id: story.source.id.to_i).first.name]], class: "btn btn-bordered btn-bordered-primary" , target: '_blank'%>
+              <%= link_to "Découvrir une opinion différente", story_opposite_url(story, @hash_source_url), class: "btn btn-bordered btn-bordered-primary" , target: '_blank'%>
             </div>
 
           </div>
@@ -139,7 +140,7 @@
         $(this).val("");
       });
 
-      $('#open-all').click(function(e) {
+      $('a.open-all').click(function(e) {
         e.preventDefault();
         $('.selected_urls').data('url').forEach(function(url_source) {
           setTimeout(function() {}, 1000);

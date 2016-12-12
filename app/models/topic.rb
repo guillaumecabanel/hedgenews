@@ -1,7 +1,7 @@
 class Topic < ApplicationRecord
-  has_many :topic_articles
+  has_many :topic_articles, dependent: :destroy
   has_many :articles, through: :topic_articles
-
+  belongs_to :user
 
   def self.get
 
@@ -41,6 +41,7 @@ class Topic < ApplicationRecord
             sources_hash = {sources: sources_array}
 
             new_topic = Topic.new(name: string_words,
+                                  user: User.find_by_email('hedgy@hedgenews.eu'),
                                   number_sources: sources_array.count,
                                   image_url: story.media[0].url,
                                   sources_json: JSON.generate(sources_hash))
