@@ -1,10 +1,17 @@
 <div class="container">
-  <div class="flex-box-space-around catchline wrapper-white wrapper-white font-header-app">
-    <div>
-      <h2 class= "font-header-app">1 actualité a plusieurs sources</h2>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="flex-box-space-around catchline padding-home-search-bar wrapper-white font-header-app">
+        <div>
+          <h2 class= "font-header-app">1 actualité a plusieurs sources</h2>
+        </div>
+        <%= render 'shared/search_bar', value: nil %>
+      </div>
     </div>
-    <%= render 'shared/search_bar', value: nil %>
   </div>
+
+
 
   <%= render 'main_topic', topic: @main_topic %>
 
