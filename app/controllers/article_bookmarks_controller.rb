@@ -11,6 +11,7 @@ class ArticleBookmarksController < ApplicationController
   end
 
   def create
+    raise
     if Article.find_by_aylien_id(params[:article][:aylien_id])
       @article = Article.find_by_aylien_id(params[:article][:aylien_id])
     else

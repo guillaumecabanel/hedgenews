@@ -101,7 +101,7 @@ liberation = Source.create!(name: "Libération",
                             orientation: "gauche",
                             aylien_id: 251)
 
-echos = Source.create!(name: "Les Echos",
+echos = Source.create!(name: "Les Échos",
                        presentation: "Les Échos est un quotidien français d’information économique et financière qui traite et analyse l'ensemble de l'actualité nationale, régionale et internationale ayant des répercussions sur la vie des affaires. Fondé en 1908 par les frères Robert et Émile Servan-Schreiber, le journal est d'orientation libérale et est actuellement propriété du Groupe Les Échos, pôle média du groupe LVMH.",
                        orientation: "libéral",
                        aylien_id: 684)
