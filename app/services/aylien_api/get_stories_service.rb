@@ -90,6 +90,7 @@ module AylienAPI
         published_at_end: @published_at_end,
         language: @language,
         source_id: @sources_id,
+        media_images_width_min: @media_images_width_min,
         return: @parameters_to_return,
         sort_by: @sort_by,
         per_page: @per_page
