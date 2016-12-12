@@ -35,7 +35,6 @@
   color: $brand-primary;
 }
 
-
 .btn-bordered-primary-on-grey-background:hover {
   color: $brand-primary;
   border-top: 1px solid $grey;
@@ -59,4 +58,17 @@
   border-top: 1px solid $white;
   border-right: 1px solid $white;
   border-left: 1px solid $white;
+}
+
+.btn-bordered-info-on-grey-background {
+  color: $brand-info;
+}
+
+.btn-bordered-info-on-grey-background:hover {
+  color: $brand-info;
+  border-top: 1px solid $grey;
+  border-right: 1px solid $grey;
+  border-left: 1px solid $grey;
+  border-bottom: 1px solid $blue;
+  background-color: transparent;
 }

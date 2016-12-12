@@ -24,8 +24,13 @@
       </div>
     </div>
     <div class="flex-box-center">
-      <a href="#" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
-      <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
+      <div>
+        <a href="#" id="open-all" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
+        <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
+        <% end %>
+      </div>
+      <%if current_user %>
+        <%= link_to 'Ajouter le sujet à mes revues de presse', root_path, class: "btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background open-all" %>
       <% end %>
     </div>
     <br>
@@ -134,7 +139,7 @@
         $(this).val("");
       });
 
-      $('a.open-all').click(function(e) {
+      $('#open-all').click(function(e) {
         e.preventDefault();
         $('.selected_urls').data('url').forEach(function(url_source) {
           setTimeout(function() {}, 1000);
