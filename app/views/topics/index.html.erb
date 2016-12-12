@@ -1,0 +1,15 @@
+<div class="container">
+  <div class = "wrapper-white">
+    <div>
+      <h2 class="font-header-app"><%= pluralize(@topics.count, 'sujet selectionné', plural: 'sujets sélectionnés')%></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @topics.each do |topic| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render 'topic_card', topic: topic %>
+      </div>
+    <% end %>
+  </div>
+</div>

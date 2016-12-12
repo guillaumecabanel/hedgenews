@@ -234,13 +234,16 @@ environment = Category.create!(name: "Environment")
 # TopicArticle.create!(topic: cop22, article: trump_cop_22)
 # TopicArticle.create!(topic: cop22, article: carbon_capture)
 
-#Look for topics through aylien API
-puts("Look for topics through aylien API")
-Topic.get
-
 # Topic_articles
 puts("Creating Users")
+User.create!(email: 'hedgy@hedgenews.eu', password: 'coucou')
 User.create!(email: 'raphaelle.coudin@gmail.com', password: 'coucou')
 User.create!(email: 'julie.moiton@bluewin.ch', password: 'coucou')
 User.create!(email: 'guillaume.cabanel@gmail.com', password: 'coucou')
 User.create!(email: 'isauretroesch@gmail.com', password: 'coucou')
+
+#Look for topics through aylien API
+#A topic needs to have a user
+puts("Look for topics through aylien API")
+Topic.get
+Topic.get
