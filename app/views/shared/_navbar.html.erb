@@ -1,15 +1,6 @@
 <div class="navbar-wagon navbar-wagon-fixed">
   <!-- Logo -->
-  <div class="search-bar search-bar-xs hidden" id="navbar-search">
-    <%= form_tag(articles_path, method: "get") do %>
-      <div>
-        <%= text_field_tag :topic_search, nil, placeholder: "", required: true, value: @topic_search %>
-        <%= button_tag "", class: "search-button" do %>
-          <%= image_tag "icone/loupe.png" %>
-        <%end%>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'shared/search_bar_in_navbar' %>
   <div class="navbar-wagon-logotype">
       <a href="/" class="navbar-wagon-brand text-center">
         <h2 class= "navbar-hedgenews">
