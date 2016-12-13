@@ -118,7 +118,7 @@
               <% else %>
                 <h6>A propos de <%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h6>
               <% end %>
-              <p><%= Source.where(aylien_id: story.source.id.to_i).first.presentation %></p>
+              <%= raw(Source.where(aylien_id: story.source.id.to_i).first.presentation) %>
             </div>
             <div class="flex-box-center">
               <%= link_to "Lire l'article complet", story.links.permalink, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
