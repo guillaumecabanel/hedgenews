@@ -48,19 +48,25 @@
               <% end %>
             </div>
           <% end %>
+
           <div class="panel article-panel card-body">
             <div class="panel-heading">
-              <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
 
+          <div class="flex-box-space-between">
+            <div>
+              <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
+            </div>
+            <div>
               <% if current_user %>
                 <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
                   <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
                     <div class='unbookmark-parent'>
                       <%= hidden_field_tag "article[aylien_id]", story.id %>
-                      <%= submit_tag 'Unbookmark', class: 'btn btn-info unbookmark' %>
-                      <%= submit_tag 'Article unbookmarked !', class: 'btn btn-info unbookmark-confirmation' %>
+                      <%= submit_tag 'Supprimer des favoris', class: 'btn btn-info unbookmark' %>
+                      <%= submit_tag 'Ajouter aux favoris', class: 'btn btn-info unbookmark-confirmation' %>
                     </div>
                   <% end %>
+
                 <% else %>
                   <%= form_tag bookmark_path, method: :post, id: 'article' do %>
                     <div class='bookmark-parent'>
@@ -77,12 +83,14 @@
                       <%= hidden_field_tag "article[aylien_id]", story.id %>
                       <%= hidden_field_tag "article[source_url]", story.links.permalink %>
                       <%= hidden_field_tag "article[opposite_url]", story_opposite_url(story, @hash_source_url) %>
-                      <%= submit_tag 'Bookmark', class: 'btn btn-primary bookmark' %>
-                      <%= submit_tag 'Article bookmarked !', class: 'btn btn-primary bookmark-confirmation' %>
+                      <%= submit_tag 'Ajouter aux favoris', class: 'btn btn-primary bookmark' %>
+                      <%= submit_tag 'Favoris', class: 'btn btn-primary bookmark-confirmation' %>
                     </div>
                   <% end %>
                 <% end %>
               <% end %>
+            </div>
+          </div>
 
               <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
               <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> <% if story.author.name != "" %>par <%= story.author.name %><% end %></h6>

@@ -28,6 +28,7 @@ module Hedgenews
     # -- all .rb files in that directory are automatically loaded.
 
     config.i18n.default_locale = :fr
+    config.active_job.queue_adapter = :sidekiq
 
   end
 end
