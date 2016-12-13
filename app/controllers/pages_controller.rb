@@ -8,8 +8,14 @@ class PagesController < ApplicationController
     #   @topic_names << topic.name
     # end
 
-    @topics = Topic.all[-4..-2]
+    if Topic.count >= 4
+      @topics = Topic.all[-4..-2].reverse
+    else
+      @topics = Topic.all
+    end
+
     @main_topic = Topic.last
+
   end
 
   def styleguide
