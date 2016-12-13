@@ -11,6 +11,13 @@ gem 'redis'
 gem 'devise'
 gem 'devise-i18n'
 
+# Bck ground jobs
+gem 'sidekiq'
+gem 'sidekiq-failures'
+# Dependency for the Sidekiq Web UI
+#   => https://github.com/mperham/sidekiq/wiki/Monitoring
+gem 'sinatra', ">= 2.0.0.beta2", require: false
+
 # https://newsapi.aylien.com
 gem 'aylien_news_api'
 

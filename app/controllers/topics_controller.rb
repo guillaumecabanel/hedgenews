@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  include ArticleHelper
+  include ArticlesHelper
 
   def index
     @topics = current_user.topics
