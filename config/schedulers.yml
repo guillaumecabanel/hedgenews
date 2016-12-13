@@ -1,7 +1,7 @@
 queue_documents_for_indexing:
     # cron: "0 0 * * *"
     # you can use rufus-scheduler "every" syntax in place of cron if you prefer
-    every: 1m
+    every: 6h
 
     # By default the job name (Hash key) will be taken as worker class name.
     # If you want to have a different job name and class name, provide the 'class' option

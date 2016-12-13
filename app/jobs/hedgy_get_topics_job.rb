@@ -3,7 +3,7 @@ class HedgyGetTopicsJob < ApplicationJob
 
   def perform(*args)
     puts "Hedgy is going to get topics..."
-    # Topic.get
+    Topic.get
     puts "Hedgy: 'I'm done!'"
   end
 end
