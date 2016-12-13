@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  include ArticleHelper
+  include ArticlesHelper
 
   def index
     @topics = current_user.topics
@@ -57,7 +57,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find(params[:topic][:id])
+    @topic = Topic.find(params[:id])
     @topic.destroy
   end
 

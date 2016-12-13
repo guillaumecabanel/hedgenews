@@ -1,4 +1,4 @@
-module ArticleHelper
+module ArticlesHelper
   def time_to_read(words_count)
     time = words_count / 250
     if time < 1
