@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     # end
 
     if Topic.count >= 4
-      @topics = Topic.last(4).reverse
+      @topics = Topic.all[-4..-2].reverse
     else
       @topics = Topic.all
     end
