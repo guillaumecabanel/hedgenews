@@ -34,7 +34,7 @@ module AylienAPI
       # "le figaro":    droite                médiapart
       # "valeurs actuelles": extreme droite   le monde
 
-      @published_at_start = params[:published_at_start] || "NOW-31DAYS"
+      @published_at_start = params[:published_at_start] || "NOW-10DAYS"
       @published_at_end = params[:published_at_end] || "NOW"
 
       @sort_by =    params[:sorted_by] || "relevance"
