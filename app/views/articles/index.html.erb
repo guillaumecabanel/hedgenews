@@ -50,21 +50,7 @@
           <% end %>
           <div class="panel article-panel card-body">
             <div class="panel-heading">
-              <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
-              <h5><strong><%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %></strong></h5>
-              <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> <% if story.author.name != "" %>par <%= story.author.name %><% end %></h6>
-              <ul class= "list-inline">
-                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-                <li><h6><%= time_to_read(story.words_count) %></h6></li>
-              </ul>
-              <ul class= "list-inline">
-                <li>
-                  <% story.hashtags.each_with_index do |hashtag, index| %>
-                    <% next if index > 4%>
-                    <span class="label label-info"><%= hashtag[1..-1] %></span>
-                  <% end %>
-                </li>
-              </ul>
+              <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
 
               <% if current_user %>
                 <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
@@ -92,17 +78,35 @@
                       <%= hidden_field_tag "article[source_url]", story.links.permalink %>
                       <%= hidden_field_tag "article[opposite_url]", story_opposite_url(story, @hash_source_url) %>
                       <%= submit_tag 'Bookmark', class: 'btn btn-primary bookmark' %>
-                      <%= submit_tag 'Article bookmarked !', class: 'btn btn-info bookmark-confirmation' %>
+                      <%= submit_tag 'Article bookmarked !', class: 'btn btn-primary bookmark-confirmation' %>
                     </div>
                   <% end %>
                 <% end %>
               <% end %>
 
+              <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
+              <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> <% if story.author.name != "" %>par <%= story.author.name %><% end %></h6>
+              <ul class= "list-inline">
+                <li>
+                  <% story.hashtags.each_with_index do |hashtag, index| %>
+                    <% next if index > 4%>
+                    <span class="hashtag"><%= hashtag %></span>
+                  <% end %>
+                </li>
+              </ul>
+              <ul class= "list-inline">
+                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+                <li><h6><%= time_to_read(story.words_count) %></h6></li>
+              </ul>
 
   <!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
             </div>
             <div class="panel-body">
-              <p><%=story.summary.sentences.join("\n") %></p>
+              <% if story.summary.sentences.join("\n") == ""%>
+                <p>Nous n'avons pas pu accéder à un extrait de cet article.</p>
+              <% else %>
+                <p><%=story.summary.sentences.join("\n") %></p>
+              <% end %>
               <!-- <p><%= story.body %></p> -->
             </div>
             <div class="panel-body">
