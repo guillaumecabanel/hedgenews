@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :articles, only: [:index]
+  resources :articles, only: [:index, :destroy]
 
   resources :topics
 

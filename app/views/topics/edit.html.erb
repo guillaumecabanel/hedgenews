@@ -1,20 +1,54 @@
-<div class="list-group">
-  <% @topic.articles.each do |article| %>
-    <div class="list-group-item font-header-app">
-      <div class='flex-box-space-between'>
-        <div class='article-box'>
-          <%= link_to article.source_url do %>
-            <%= image_tag article.pic_url, width:'100px' %>
-          <%end%>
-          <%= link_to article.title, article.source_url, target: '_blank'%>
-          <%= article.source.name %>
-        </div>
-        <div>
-          <i class="fa fa-angle-up" aria-hidden="true"></i>
-          <i class="fa fa-angle-down" aria-hidden="true"></i>
-          <i class="fa fa-trash-o" aria-hidden="true"></i>
+<div class="container">
+  <div class = "wrapper-white">
+    <div>
+      <h2 class="font-header-app">Revue de presse : "Titre"</h2>
+      <h4 class="font-header-app">X Articles - Y sources</h4>
+    </div>
+  </div>
+
+
+  <div class="list-group">
+    <% @topic.articles.each do |article| %>
+      <div class="list-group-item font-header-app">
+        <div class='flex-box-space-between'>
+          <div class='article-box'>
+            <%= link_to article.source_url do %>
+              <%= image_tag article.pic_url, width:'100px' %>
+            <%end%>
+            <%= link_to article.title, article.source_url, target: '_blank'%>
+            <%= article.source.name %>
+          </div>
+          <div>
+            <%= link_to 'Haut', class: 'btn btn-bordered btn-bordered-info up' %>
+            <%= link_to 'Bas', class: 'btn btn-bordered btn-bordered-info down' %>
+            <%= form_tag article_path(article), method: :delete do %>
+              <%= submit_tag 'Supprimer', class: 'btn btn-bordered btn-bordered-info suppress' %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+
+      $('.suppress').click( function() {
+        $(this).closest('.list-group-item').fadeOut('slow', function(){
+          $(this).remove();
+        });
+      });
+
+      $('.up').click( function() {
+        $row = $(this).closest('.list-group-item')
+        function moveUp($row) {
+          $before = $row.prev();
+          $row.insertBefore($before);
+        }
+      });
+
+    })
+  </script>
+<% end %>
