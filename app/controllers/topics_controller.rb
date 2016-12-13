@@ -51,7 +51,11 @@ class TopicsController < ApplicationController
     end
 
     # faire la topic image url
-    @topic.image_url = @stories.first.media[0].url
+    if @stories.first.media[0].url.empty?
+      @topic.image_url = @stories.last.media[0].url
+    else
+      @topic.image_url = @stories.first.media[0].url
+    end
     @topic.sources_json = { sources: @hash_source_url.keys }.to_json.gsub("é", "e").gsub("É", "E")
     @topic.save
     @topic.number_sources = JSON.parse(@topic.sources_json)["sources"].size

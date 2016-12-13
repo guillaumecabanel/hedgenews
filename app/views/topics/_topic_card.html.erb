@@ -4,7 +4,7 @@
       <h1><%= topic.name %></h1>
 
     </div>
-  <%end%>
+  <% end %>
 
   <div class="panel">
     <div class="panel-body">
@@ -31,9 +31,15 @@
     $(document).ready(function(){
 
       $('.suppress').click( function() {
+        var nbtopic = $('.topics_bookmarked').data('number')
+        nbtopic = nbtopic - 1;
+
+        $('.topics_bookmarked').data('number', nbtopic);
+
         $(this).closest('.topic-card').fadeOut('slow', function(){
           $(this).remove();
         });
+        $('#number_topics_bookmarked').html(nbtopic + " revue(s) de presse sauvegardée(s)");
       });
 
     })

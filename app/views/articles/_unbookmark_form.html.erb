@@ -5,6 +5,8 @@
     <% else %>
       <%= hidden_field_tag "article[aylien_id]", article.aylien_id %>
     <% end %>
-    <%= submit_tag 'Supprimer des favoris', class: 'btn btn-info unbookmark' %>
+    <%= button_tag '' do %>
+      <%= image_tag 'icone/bookmark_full.png' %>
+    <% end %>
   </div>
 <% end %>

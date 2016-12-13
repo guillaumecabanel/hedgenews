@@ -29,6 +29,8 @@
       <%= hidden_field_tag "article[source_url]", article.source_url %>
       <%= hidden_field_tag "article[opposite_url]", article.opposite_url %>
     <% end %>
-    <%= submit_tag 'Ajouter aux favoris', class: 'btn btn-primary bookmark' %>
+    <%= button_tag '' do %>
+      <%= image_tag 'icone/bookmark_empty.png' %>
+    <% end %>
   </div>
 <% end %>
