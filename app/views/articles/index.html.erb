@@ -58,36 +58,13 @@
             </div>
             <div>
               <% if current_user %>
-                <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
-                  <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
-                    <div class='unbookmark-parent'>
-                      <%= hidden_field_tag "article[aylien_id]", story.id %>
-                      <%= submit_tag 'Supprimer des favoris', class: 'btn btn-info unbookmark' %>
-                      <%= submit_tag 'Supprimé des favoris', class: 'btn btn-info unbookmark-confirmation' %>
-                    </div>
+                <div class="bookmark_form_container" data-story-id="<%= story.id %>">
+                  <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
+                    <%= render 'unbookmark_form', story: story %>
+                  <% else %>
+                    <%= render 'bookmark_form', story: story, hash_source_url: @hash_source_url %>
                   <% end %>
-
-                <% else %>
-                  <%= form_tag bookmark_path, method: :post, id: 'article' do %>
-                    <div class='bookmark-parent'>
-                      <%= hidden_field_tag "article[source_id]", Source.where(aylien_id: story.source.id.to_i).first.id %>
-                      <%= hidden_field_tag "article[title]", story.title %>
-                      <% unless story.media[0].nil? %>
-                        <%= hidden_field_tag "article[pic_url]", story.media[0].url %>
-                      <% end %>
-                      <%= hidden_field_tag "journalist[aylien_id]", story.author.id %>
-                      <%= hidden_field_tag "journalist[last_name]", story.author.name %>
-                      <%= hidden_field_tag "article[date]", story.published_at %>
-                      <%= hidden_field_tag "article[abstract]", story.summary.sentences.join("\n") %>
-                      <%= hidden_field_tag "article[words_count]", story.words_count %>
-                      <%= hidden_field_tag "article[aylien_id]", story.id %>
-                      <%= hidden_field_tag "article[source_url]", story.links.permalink %>
-                      <%= hidden_field_tag "article[opposite_url]", story_opposite_url(story, @hash_source_url) %>
-                      <%= submit_tag 'Ajouter aux favoris', class: 'btn btn-primary bookmark' %>
-                      <%= submit_tag 'Favoris', class: 'btn btn-primary bookmark-confirmation' %>
-                    </div>
-                  <% end %>
-                <% end %>
+                </div>
               <% end %>
             </div>
           </div>
@@ -151,9 +128,6 @@
   <script>
     $(document).ready(function(){
 
-      $('.bookmark-confirmation').hide();
-      $('.unbookmark-confirmation').hide();
-
       window.scroll(0, 60);
 
       $('#topic_search').click(function(){
@@ -173,19 +147,6 @@
         });
       });
 
-      $('.bookmark').click( function() {
-        // setTimeout(function() {}, 10);
-        $(this).hide(50);
-        $(this).closest('.bookmark-parent').children('.bookmark-confirmation').show(50);
-        // $(this).closest('.panel-heading').find('.unbookmark').show(50);
-      });
-
-      $('.unbookmark').click( function() {
-        $(this).hide(50);
-        $(this).closest('.unbookmark-parent').children('.unbookmark-confirmation').show(50);
-      });
-
-
-    })
+    });
   </script>
 <% end %>

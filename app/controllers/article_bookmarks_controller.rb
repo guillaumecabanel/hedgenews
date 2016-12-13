@@ -30,7 +30,12 @@ class ArticleBookmarksController < ApplicationController
     @article_bookmark.user = current_user
     @article_bookmark.article = @article
     @article_bookmark.save
-    # redirect_to articles_path # remettre avec le mot recherché
+
+    respond_to do |format|
+      format.html { redirect_to articles_path } # remettre avec le mot recherché
+      format.js # app/views/article_bookmarks/create.js.erb
+    end
+    # redirect_to articles_path
   end
 
   def destroy
@@ -38,6 +43,12 @@ class ArticleBookmarksController < ApplicationController
     @article = Article.find_by_aylien_id(params[:article][:aylien_id])
     @article_bookmark = current_user.article_bookmarks.find_by_article_id(@article.id)
     @article_bookmark.destroy
+
+    respond_to do |format|
+      format.html { redirect_to articles_path } # remettre avec le mot recherché
+      format.js # app/views/article_bookmarks/destroy.js.erb
+    end
+
     #redirect_to articles_path # remettre avec le mot recherché
   end
 
