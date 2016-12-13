@@ -1,5 +1,10 @@
-<div class="navbar-wagon navbar-wagon-fixed">
-  <!-- Logo -->
+<div class="navbar-wagon navbar-wagon-fixed flex-box-space-between">
+  <div class="flex-item">
+    <%= render 'shared/search_bar_in_navbar' %>
+  </div>
+
+    <!-- logo -->
+  <div class="flex-body">
     <div class="navbar-wagon-logotype">
         <a href="/" class="navbar-wagon-brand text-center">
           <h2 class= "navbar-hedgenews">
@@ -8,24 +13,44 @@
           </h2>
         </a>
     </div>
+  </div>
+
+    <div class="flex-item">
+      <div class="flex-box-right">
+      <!-- Right navigation-->
+      <div class="navbar-wagon-right">
+          <!-- Button (call-to-action) -->
+        <div class='sub-navbar'>
+          <% if current_user %>
+            <%= link_to 'Mes Revues de presse', topics_path, class: "navbar-wagon-item navbar-wagon-link font-oswald blue-hover" %>
+            <%= link_to 'Mes Bookmarks', article_bookmarks_path, class: "navbar-wagon-item navbar-wagon-link font-oswald blue-hover" %>
+            <!-- Profile picture and dropdown -->
+            <div class="navbar-wagon-item">
+              <div class="dropdown">
+               <i class="fa fa-user-o" aria-hidden="true" id= "navbar-wagon-menu" data-toggle="dropdown"></i>
+                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                  <li><%= link_to 'Mon compte', edit_user_registration_path, class: "red-hover" %></li>
+                  <li><%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </div>
+            </div>
+              <%else%>
+                <%= link_to 'Se connecter', new_user_session_path, class: "navbar-wagon-item  btn btn-bordered btn-bordered-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
-
   <!-- Right Navigation -->
-  <div class="container">
+<div class="container">
   <div class="navbar-wagon-second hidden-xs hidden-sm font-oswald">
-
     <div>
-    <!-- Text link -->
-      <a href="" class="navbar-wagon-item navbar-wagon-link red-hover">EN CE MOMENT</a>
-
-      <a href="" class="navbar-wagon-item navbar-wagon-link red-hover">INTERNATIONAL</a>
-
-      <a href="" class="navbar-wagon-item navbar-wagon-link red-hover">ÉCONOMIE</a>
-
-      <a href="" class="navbar-wagon-item navbar-wagon-link red-hover">POLITIQUE</a>
-
-      <a href="" class="navbar-wagon-item navbar-wagon-link red-hover">CULTURE</a>
+      En ce moment :
+      <% topics.each do |topic| %>
+        <%= link_to topic.name.capitalize, articles_path(topic_search: topic.name), class: "navbar-wagon-item navbar-wagon-link red-hover" %>
+      <% end %>
     </div>
 
 <!-- Notification link-->
@@ -38,40 +63,30 @@
 
 
     <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
-    </div>
-  </div>
-
-    <!-- Right Navigation -->
-    <div class="navbar-wagon-right">
-      <!-- Button (call-to-action) -->
-      <div class='sub-navbar'>
-      <% if current_user %>
-        <%= link_to 'Mes Revues de presse', topics_path, class: "navbar-wagon-item navbar-wagon-link font-oswald blue-hover" %>
-        <%= link_to 'Mes Favoris', article_bookmarks_path, class: "navbar-wagon-item navbar-wagon-link font-oswald blue-hover" %>
-        <!-- Profile picture and dropdown -->
-        <div class="navbar-wagon-item">
-          <div class="dropdown">
-            <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li><%= link_to 'Mon compte', edit_user_registration_path, class: "red-hover" %></li>
-              <li><%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %></li>
-            </ul>
-          </div>
-        </div>
-      <%else%>
-        <%= link_to 'Se connecter', new_user_session_path, class: "navbar-wagon-item  btn btn-bordered btn-bordered-primary" %>
-      <% end %>
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Some mobile link</a></li>
+          <li><a href="#">Other one</a></li>
+          <li><a href="#">Other one</a></li>
+        </ul>
       </div>
     </div>
-
   </div>
 </div>
 
-</div>
+<%= content_for(:after_js) do %>
+  <script>
+    $searchWrapperHeightOffset      = $("#search-wrapper").offset().top; // 180
+    $searchWrapperHeight            = $("#search-wrapper").height();     // 155
+    $heightToMakeNavSearchBarAppear = $searchWrapperHeightOffset + $searchWrapperHeight
+    $(window).scroll(function(e){
+      $scrollSpyHeight = $(this).scrollTop();
+      if ($scrollSpyHeight > $heightToMakeNavSearchBarAppear) {
+        $("#navbar-search").removeClass("hidden");
+      } else {
+        $("#navbar-search").addClass("hidden");
+      };
+    });
+  </script>
+<% end %>
