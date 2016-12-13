@@ -57,7 +57,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find(params[:topic][:id])
+    @topic = Topic.find(params[:id])
     @topic.destroy
   end
 
