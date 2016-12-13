@@ -81,96 +81,99 @@ financialtimes = Source.create!(name: "The Financial Times",
 # presse française :
 # manque aylien_id pour l'humanite, alternatives eco, nouvel obs
 monde = Source.create!(name: "Le Monde",
-                       presentation: "Le Monde est un journal français fondé par Hubert Beuve-Méry en 1944. C'est l'un des derniers quotidiens français dits « du soir », qui paraît à Paris en début d'après-midi, daté du lendemain, et est distribué en province le matin suivant. \n
-                       Rangé parmi les quotidiens français « de référence » depuis plusieurs décennies, il est le plus diffusé à l'étranger jusque dans les années 2000 avec une diffusion journalière hors France de 40 000 exemplaires tombée en 2012 à 26 000 exemplaires.\n
-                       Sa ligne éditoriale est parfois présentée comme étant de centre gauche, bien que cette affirmation soit récusée par le journal lui-même, qui revendique un traitement non partisan, et son lectorat est majoritairement orienté à gauche. \n
-                       Le journal est édité par le groupe Le Monde, détenu depuis 2010 à 64 % par la société Le Monde libre, elle-même propriété des hommes d'affaires Xavier Niel, Pierre Bergé et Matthieu Pigasse, ainsi que par le groupe de presse espagnol Prisa. Il est aussi disponible dans une version en ligne.",
+                       presentation: "<p>Le Monde est un journal français fondé par Hubert Beuve-Méry en 1944. C'est l'un des derniers quotidiens français dits « du soir », qui paraît à Paris en début d'après-midi, daté du lendemain, et est distribué en province le matin suivant.</p>
+                      <p>Sa ligne éditoriale est parfois présentée comme étant de centre gauche, bien que cette affirmation soit récusée par le journal lui-même, qui revendique un traitement non partisan, et son lectorat est majoritairement orienté à gauche.</p>
+                      <p>Le journal est édité par le groupe Le Monde, détenu depuis 2010 à 64 % par la société Le Monde libre, elle-même propriété des hommes d'affaires Xavier Niel, Pierre Bergé et Matthieu Pigasse, ainsi que par le groupe de presse espagnol Prisa. Il est aussi disponible dans une version en ligne.</p>",
                        orientation: "centre-gauche",
                        aylien_id: 675)
 
 figaro = Source.create!(name: "Le Figaro",
-                        presentation: "Le Figaro est un quotidien français fondé en 1826 sous le règne de Charles X. Il est à ce titre le plus ancien quotidien de la presse française encore publié. Il a été nommé d'après Figaro, le personnage de Beaumarchais, dont il met en exergue la réplique : « Sans la liberté de blâmer, il n'est point d'éloge flatteur. » \n
-                        Sa ligne éditoriale est de droite gaulliste et conservatrice, selon le spectre politique français habituellement utilisé, et réunit une majorité de lecteurs de droite. Le Figaro est, depuis 2004, la propriété de l'industriel et sénateur Serge Dassault via la Société du Figaro et Dassault media.",
+                        presentation: "<p>Le Figaro est un quotidien français fondé en 1826 sous le règne de Charles X. Il est à ce titre le plus ancien quotidien de la presse française encore publié. Il a été nommé d'après Figaro, le personnage de Beaumarchais, dont il met en exergue la réplique : « Sans la liberté de blâmer, il n'est point d'éloge flatteur. » <p>
+                        <p>Sa ligne éditoriale est de droite gaulliste et conservatrice, selon le spectre politique français habituellement utilisé, et réunit une majorité de lecteurs de droite. <p>
+                        <p>Le Figaro est, depuis 2004, la propriété de l'industriel et sénateur Serge Dassault via la Société du Figaro et Dassault media.<p>",
                         orientation: "droite",
                         aylien_id: 641)
 
 liberation = Source.create!(name: "Libération",
-                            presentation: "Libération est un quotidien français paraissant le matin, disponible également dans une version en ligne. Fondé sous l'égide de Jean-Paul Sartre, le journal paraît pour la première fois le 18 avril 1973 et reprend le nom d'un titre de presse similaire créé en 1927 par le libertaire Jules Vignes, nom qui sera également celui d'un des journaux de la Résistance dirigé par Emmanuel d'Astier de La Vigerie. \n
-                            Situé à l'extrême gauche à ses débuts, Libération évolue vers la gauche sociale-démocrate à la fin des années 1970 après la démission de Jean-Paul Sartre en 1974. Aujourd'hui, sa ligne éditoriale est toujours de centre gauche ou de gauche sociale-démocrate. \n
-                            Libération a pour actionnaires de référence les hommes d'affaires Bruno Ledoux — propriétaire du siège du journal — et Patrick Drahi — président-fondateur du consortium luxembourgeois Altice.",
+                            presentation: "<p>Libération est un quotidien français paraissant le matin, disponible également dans une version en ligne. Fondé sous l'égide de Jean-Paul Sartre, le journal paraît pour la première fois le 18 avril 1973 et reprend le nom d'un titre de presse similaire créé en 1927 par le libertaire Jules Vignes, nom qui sera également celui d'un des journaux de la Résistance dirigé par Emmanuel d'Astier de La Vigerie. <p>
+                            <p>Situé à l'extrême gauche à ses débuts, Libération évolue vers la gauche sociale-démocrate à la fin des années 1970 après la démission de Jean-Paul Sartre en 1974. Aujourd'hui, sa ligne éditoriale est toujours de centre gauche ou de gauche sociale-démocrate.<p>
+                            <p>Libération a pour actionnaires de référence les hommes d'affaires Bruno Ledoux — propriétaire du siège du journal — et Patrick Drahi — président-fondateur du consortium luxembourgeois Altice.<p>",
                             orientation: "gauche",
                             aylien_id: 251)
 
 echos = Source.create!(name: "Les Échos",
-                       presentation: "Les Échos est un quotidien français d’information économique et financière qui traite et analyse l'ensemble de l'actualité nationale, régionale et internationale ayant des répercussions sur la vie des affaires. \n
-                       Fondé en 1908 par les frères Robert et Émile Servan-Schreiber, le journal est d'orientation libérale et est actuellement propriété du Groupe Les Échos, pôle média du groupe LVMH et dirigé depuis avril 2013 par Nicolas Barré ",
+                       presentation: "<p>Les Échos est un quotidien français d’information économique et financière qui traite et analyse l'ensemble de l'actualité nationale, régionale et internationale ayant des répercussions sur la vie des affaires.<p>
+                       <p>Fondé en 1908 par les frères Robert et Émile Servan-Schreiber, le journal est d'orientation libérale. <p>
+                       <p>Il est actuellement propriété du Groupe Les Échos, pôle média du groupe LVMH et dirigé depuis avril 2013 par Nicolas Barré. <p>",
                        orientation: "libéral",
                        aylien_id: 684)
 
 humanite = Source.create!(name: "L'Humanité",
-                          presentation: "L’Humanité est un tabloïde français — socialiste jusqu'à fin 1920, puis communiste — fondé en 1904 par le dirigeant socialiste Jean Jaurès,qui mettait la lutte pour la paix, la « communion avec le mouvement ouvrier » et l'indépendance face aux « groupes d'intérêt » au cœur de ses priorités. Aujourd'hui, il se range parmi les porte-paroles des mouvements, associations, et partis qui se réclament de la « gauche antilibérale. \n
-                          Organe central du Parti communiste français de 1920 à 1994, il en reste très proche après l’ouverture de ses pages à d'autres composantes de la gauche.\n
-                          Il est aujourd'hui encore et toujours possédé par   Société nouvelle du journal L'Humanité et dirigé par le directeur de redaction Patrick Apel-Muller et la directeur de publication Patrick Le Hyaric.",
+                          presentation: "<p>L’Humanité est un tabloïde français socialiste jusqu'à fin 1920, puis communiste fondé en 1904 par le dirigeant socialiste Jean Jaurès,qui mettait la lutte pour la paix, la « communion avec le mouvement ouvrier » et l'indépendance face aux « groupes d'intérêt » au cœur de ses priorités. Aujourd'hui, il se range parmi les porte-paroles des mouvements, associations, et partis qui se réclament de «la gauche antilibérale.» <p>
+                          <p>Organe central du Parti communiste français de 1920 à 1994, il en reste très proche après l’ouverture de ses pages à d'autres composantes de la gauche.<p>
+                          <p>Il est aujourd'hui encore et toujours possédé par   Société nouvelle du journal L'Humanité et dirigé par le directeur de redaction Patrick Apel-Muller et la directeur de publication Patrick Le Hyaric.<p>",
                           orientation: "gauche communiste",
                           aylien_id: nil)
 
 express = Source.create!(name: "L'Express",
-                         presentation: "L'Express est un magazine d'actualité hebdomadaire français fondé le 16 mai 1953 par Jean-Jacques Servan-Schreiber et Françoise Giroud comme supplément politique du journal économique libéral Les Échos. \n
-                         Le journal fut très critique à l'encontre de la SFIO et du socialisme, et son anticommunisme racinaire à partir des années 1960 l'incline inéluctablement vers l'option centriste. \n
-                         Aujourd'hui, il appartient au Groupe L'Express, filiale de Altice Media Group créé par l'entrepreneur franco-israélien Patrick Drahi et l'homme d'affaires français Marc Laufer.",
+                         presentation: "<p>L'Express est un magazine d'actualité hebdomadaire français fondé le 16 mai 1953 par Jean-Jacques Servan-Schreiber et Françoise Giroud comme supplément politique du journal économique libéral Les Échos.<p>
+                         <p>Le journal fut très critique à l'encontre de la SFIO et du socialisme, et son anticommunisme racinaire à partir des années 1960 l'incline inéluctablement vers l'option centriste. <p>
+                         <p>Aujourd'hui, il appartient au Groupe L'Express, filiale de Altice Media Group créé par l'entrepreneur franco-israélien Patrick Drahi et l'homme d'affaires français Marc Laufer.<p>",
                          orientation: "centre",
                          aylien_id: 233)
 
 nouvel_observateur = Source.create!(name: "Le Nouvel Observateur",
-                                    presentation: "L’Obs (un temps intitulé France Observateur, puis Le Nouvel Observateur — familièrement surnommé Le Nouvel Obs — jusqu’au 23 octobre 2014) est un hebdomadaire français d'information générale de gauche. Héritier de L'Observateur politique, économique et littéraire né en 1950, le premier numéro de ce magazine d'actualité a été publié le 19 novembre 1964. \n
-                                    Il s'agit d'un journal social-démocrate de gauche. \n
-                                    Il est aujourd'hui dirigé par Matthieu Croissandeau et possédé à 66 % par Bergé-Niel-Pigasse et 34% par le Groupe Perdriel. ",
+                                    presentation: "<p>L’Obs (un temps intitulé France Observateur, puis Le Nouvel Observateur — familièrement surnommé Le Nouvel Obs — jusqu’au 23 octobre 2014) est un hebdomadaire français d'information générale de gauche. Héritier de L'Observateur politique, économique et littéraire né en 1950, le premier numéro de ce magazine d'actualité a été publié le 19 novembre 1964. <p>
+                                    <p>Il s'agit d'un journal social-démocrate de gauche. <p>
+                                    <p>Il est aujourd'hui dirigé par Matthieu Croissandeau et possédé à 66 % par Bergé-Niel-Pigasse et 34% par le Groupe Perdriel.<p>",
                                     orientation: "gauche",
                                     aylien_id: nil)
 
 point = Source.create!(name: "Le Point",
-                       presentation: "Le Point est un magazine hebdomadaire français d'information générale, fondé en 1972. Son modèle générique est celui du magazine américain Time, fondé par Henry Luce dans les années 1920, ou de son confrère Newsweek. \n
-                        Le magazine ouvre ses pages à toutes les opinions politiques. Sa ligne éditoriale est communément admise comme conservatrice et libérale. \n
-                        En 1997, le journal est racheté par l'homme d'affaire François Pinault, PDG de la holding Artémis et présenté comme un proche de Jacques Chirac. François Pinault prend à travers son groupe le contrôle du Point. Claude Imbert, en garant de la continuité du journal et de sa ligne, demeure l'un des éditorialistes principaux.",
+                       presentation: "<p>Le Point est un magazine hebdomadaire français d'information générale, fondé en 1972. Son modèle générique est celui du magazine américain Time, fondé par Henry Luce dans les années 1920, ou de son confrère Newsweek.<p>
+                        <p>Le magazine ouvre ses pages à toutes les opinions politiques. Sa ligne éditoriale est communément admise comme conservatrice et libérale.<p>
+                        <p>En 1997, le journal est racheté par l'homme d'affaire François Pinault, PDG de la holding Artémis et présenté comme un proche de Jacques Chirac. François Pinault prend à travers son groupe le contrôle du Point. Claude Imbert, en garant de la continuité du journal et de sa ligne, demeure l'un des éditorialistes principaux.<p>",
                        orientation: "droite",
                        aylien_id: 1192)
 
 marianne = Source.create!(name: "Marianne",
-                          presentation: "Marianne est un magazine d'information hebdomadaire français créé par Jean-François Kahn et Maurice Szafran en 1997. Refondu à partir du 29 juin 2013, le titre reprend celui de Marianne, un ancien journal politique et littéraire orienté à gauche qui fut publié à Paris dans les années 1930. \n
-                          Le Marianne actuel combat ce qu'il nomme la pensée unique. Il se veut centriste révolutionnaire. \n
-                          Les principaux actionnaires sont aujourd'hui à 57% Yves de Chaisemartin, à 31% Marianne Fiances (Maurice Szafran), ainsi que Paul Lederman, Guy Sitbon, Thierry Verret et Frank Ullman.",
+                          presentation: "<p>Marianne est un magazine d'information hebdomadaire français créé par Jean-François Kahn et Maurice Szafran en 1997. Refondu à partir du 29 juin 2013, le titre reprend celui de Marianne, un ancien journal politique et littéraire orienté à gauche qui fut publié à Paris dans les années 1930.<p>
+                          <p>Le Marianne actuel combat ce qu'il nomme la pensée unique. Il se veut centriste révolutionnaire. <p>
+                          <p>Les principaux actionnaires sont aujourd'hui à 57% Yves de Chaisemartin, à 31% Marianne Finances (Maurice Szafran), ainsi que Paul Lederman, Guy Sitbon, Thierry Verret et Frank Ullman.<p>",
                           orientation: "extrême gauche",
                           aylien_id: 1234)
 
 
 croix = Source.create!(name: "La Croix",
-                       presentation: "La Croix est un journal quotidien français, propriété du groupe Bayard Presse depuis 1880. Fondé par la congrégation des assomptionnistes, le journal se réclame ouvertement chrétien et catholique, même si ce positionnement a pu évoluer au cours de son histoire. \n
-                       Depuis l'élection de Benoît XVI, le journal qui se dit toujours très attaché au concile Vatican II, a modéré sa critique vis-à-vis des positions du Saint-Siège mais « reste reconnu pour ses prises de position progressistes24 ». Son traitement de l'information reste plutôt défavorable aux tendances traditionnelles. \n
-                       Il est possédé par le Groupe Bayard Presse et depuis 2015, Guillaume Goubert est le nouveau directeur de La Croix.",
+                       presentation: "<p>La Croix est un journal quotidien français, propriété du groupe Bayard Presse depuis 1880. Fondé par la congrégation des assomptionnistes, le journal se réclame ouvertement chrétien et catholique, même si ce positionnement a pu évoluer au cours de son histoire.<p>
+                       <p>Depuis l'élection de Benoît XVI, le journal qui se dit toujours très attaché au concile Vatican II, a modéré sa critique vis-à-vis des positions du Saint-Siège mais reste reconnu pour ses prises de position progressistes. Son traitement de l'information reste plutôt défavorable aux tendances traditionnelles.<p>
+                       <p>Il est possédé par le Groupe Bayard Presse et depuis 2015, Guillaume Goubert est le nouveau directeur de La Croix.<p>",
                        orientation: "droite",
                        aylien_id: 1142)
 
 tribune = Source.create!(name: "La Tribune",
-                         presentation: "La Tribune est un journal économique hebdomadaire et financier français, créé en janvier 1985 par Bruno Bertez, principal concurrent du quotidien Les Échos. Il aborde principalement les secteurs de l'industrie, des services, des hautes technologies, des médias, des pays émergents et du management. \n
-                         Il est aujourd'hui possédé par le Groupe Hima (Jean-Christophe Tortora) à 68%, Laurant Alexandre à 28% et JCG Médias : 4%.",
+                         presentation: "<p>La Tribune est un journal économique hebdomadaire et financier français, créé en janvier 1985 par Bruno Bertez, principal concurrent du quotidien Les Échos. Il aborde principalement les secteurs de l'industrie, des services, des hautes technologies, des médias, des pays émergents et du management. <p>
+                         <p>Il est aujourd'hui possédé par le Groupe Hima (Jean-Christophe Tortora) à 68%, Laurant Alexandre à 28% et JCG Médias à 4%.<p>",
                          orientation: "liberal",
                          aylien_id: 1174)
 
 mediapart = Source.create!(name: "Médiapart",
-                           presentation: "Mediapart est un site web d'information et d'opinion créé en 2008 par François Bonnet, Gérard Desportes, Laurent Mauduit et Edwy Plenel1. Il est l'un des rares « tout en ligne » grand public payant du marché français de l'information. Il a atteint son équilibre financier à l'automne 20102. \n
-                           Mediapart héberge à la fois les articles rédigés par ses équipes propres (« le journal ») et ceux de ses utilisateurs (« le club »). Le site a joué un rôle clé dans la révélation de l'affaire Woerth-Bettencourt en 20103 et de l'affaire Cahuzac en 2012-20134. Le site est disponible en français, anglais et espagnol.",
-                           orientation: "",
+                           presentation: "<p>Mediapart est un site web d'information et d'opinion créé en 2008 par François Bonnet, Gérard Desportes, Laurent Mauduit et Edwy Plenel. Il a atteint son équilibre financier à l'automne 2010. <p>
+                           <p>Mediapart héberge à la fois les articles rédigés par ses équipes propres (« le journal ») et ceux de ses utilisateurs (« le club »). Le site a joué un rôle clé dans la révélation de l'affaire Woerth-Bettencourt en 2010 et de l'affaire Cahuzac en 2012-2013. Mediapart défend un modèle où l'abonnement payant doit garantir l'indépendance du travail des journalistes, tout en permettant l'accès à un club participatif de qualité dont les contenus sont en accès libre.<p>
+                           <p>Aujourd'hui les actionnaires directs ou indirects sont nombreux, comme Godefroy Beauvaller, Francois Bonnet, Gérard Desportes, Laurent Mauduit, Edwy Plenel, Marie-Hélène Smiéjan, Laurant Chemla, F.Vitrani, la Société Ecofinance, la Société Doxa et la Société des amis de Mediapart.<p>",
+                           orientation: "centre",
                            aylien_id: 1243)
 
 alternatives_economiques = Source.create!(name: "Alternatives Economiques",
-                                          presentation: "Alternatives économiques, dit aussi Alter éco, est un magazine mensuel traitant de questions économiques et sociales. Ses auteurs sont des universitaires proches des théories économiques néo-keynésienne, régulationniste ou post-keynésienne.",
+                                          presentation: "<p>Alternatives économiques est un magazine mensuel traitant de questions économiques et sociales.<p>
+                                          <p>Alternatives économiques a été fondée par l'économiste Denis Clerc en 1980.Proche du keynésianisme,Alternatives économiques traite également des thèmes altermondialistes et se montre critique vis-à-vis du néolibéralisme et de l'école néoclassique. Le journal revendique explicitement une ligne éditoriale « de gauche ». <p>",
                                           orientation: "gauche",
                                           aylien_id: nil)
 
 valeurs_actuelles = Source.create!(name: "Valeurs Actuelles",
-                                   presentation: "Valeurs actuelles est un magazine hebdomadaire français créé en 1966 par Raymond Bourgine en reprenant le contenu de l'hebdomadaire Finances, qui était essentiellement une revue d'information boursière. Devenu peu à peu un journal d'opinion et un magazine généraliste, Valeurs actuelles traite de tous les sujets de société.\n
-                                   Aujourd'hui le journal se situe très à droite sur l'échiquier politique, avec une ligne éditoriale généralement libérale-conservatrice2 voire réactionnaire. \n
-                                   Comme Jours de Chasse et Jours de Cheval, il fait partie du groupe Valmonde. Celui-ci est la propriété de Privinvest Médias, une filiale de la holding Privinvest de l'homme d'affaires Iskandar Safa dont Étienne Mougeotte et Charles Villeneuve sont actionnaires.",
+                                   presentation: "<p>Valeurs actuelles est un magazine hebdomadaire français créé en 1966 par Raymond Bourgine en reprenant le contenu de l'hebdomadaire Finances, qui était essentiellement une revue d'information boursière. Devenu peu à peu un journal d'opinion et un magazine généraliste, Valeurs actuelles traite de tous les sujets de société.<p>
+                                   <p>Aujourd'hui le journal se situe très à droite sur l'échiquier politique, avec une ligne éditoriale généralement libérale-conservatrice2 voire réactionnaire.<p>
+                                  <p>Il fait partie du groupe Valmonde. Celui-ci est la propriété de Privinvest Médias, une filiale de la holding Privinvest de l'homme d'affaires Iskandar Safa dont Étienne Mougeotte et Charles Villeneuve sont actionnaires.<p>",
                                    orientation: "extrême droite",
                                    aylien_id: 1615)
 
