@@ -5,6 +5,9 @@ class TopicsController < ApplicationController
     @topics = current_user.topics
   end
 
+  def show
+  end
+
   def create
 
     @topic = Topic.new(topic_params)

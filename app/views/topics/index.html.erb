@@ -6,7 +6,7 @@
         <h4 class= "font-header-app">Faites une recherche pour trouver des sujets intéressants, que vous pourrez ajouter à cette section :</h4>
         <%= render 'shared/search_bar', value: "" %>
       <% else %>
-        <h2 class="font-header-app"><%= pluralize(@topics.count, 'sujet selectionné', plural: 'sujets sélectionnés')%></h2>
+        <h2 class="font-header-app"><%= pluralize(@topics.count, 'revue de presse', plural: 'revues de presse')%></h2>
       <%end%>
     </div>
   </div>

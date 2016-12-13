@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
   resources :topics, only: [:index]
   post 'topic', to: 'topics#create'
-  get 'topic', to: 'topics#edit'
-  patch 'topic', to: 'topics#update'
   delete 'topic', to: 'topics#destroy'
 
   post 'bookmark', to: 'article_bookmarks#create'
