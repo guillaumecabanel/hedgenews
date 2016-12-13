@@ -47,6 +47,13 @@ body {
   flex-wrap: wrap;
 }
 
+.flex-box-space-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
 .flex-box-right {
   display: flex;
   justify-content: flex-end;
