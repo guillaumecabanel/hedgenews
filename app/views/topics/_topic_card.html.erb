@@ -12,8 +12,7 @@
         <p class= "font-header-app"><%= topic.number_sources %> Sources - <%= topic.articles.count %> Articles </p>
         <p class="font-header-app"><%= link_to 'Visualiser', articles_path(topic_search: topic.name) %></p>
         <p class="font-header-app"><%= link_to 'Éditer', class: 'btn btn-bordered btn-bordered-info suppress' %></p>
-        <%= form_tag topic_path, method: :delete, id: 'topic' do %>
-          <%= hidden_field_tag "topic[id]", topic.id %>
+        <%= form_tag topic_path(topic), method: :delete do %>
           <%= submit_tag 'Supprimer', class: 'btn btn-bordered btn-bordered-info suppress' %>
         <% end %>
       </div>
