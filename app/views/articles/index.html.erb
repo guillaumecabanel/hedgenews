@@ -62,8 +62,8 @@
                   <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
                     <div class='unbookmark-parent'>
                       <%= hidden_field_tag "article[aylien_id]", story.id %>
-                      <%= submit_tag 'Unbookmark', class: 'btn btn-info unbookmark' %>
-                      <%= submit_tag 'Article unbookmarked !', class: 'btn btn-info unbookmark-confirmation' %>
+                      <%= submit_tag 'Supprimer des favoris', class: 'btn btn-info unbookmark' %>
+                      <%= submit_tag 'Favoris', class: 'btn btn-info unbookmark-confirmation' %>
                     </div>
                   <% end %>
 
@@ -83,8 +83,8 @@
                       <%= hidden_field_tag "article[aylien_id]", story.id %>
                       <%= hidden_field_tag "article[source_url]", story.links.permalink %>
                       <%= hidden_field_tag "article[opposite_url]", story_opposite_url(story, @hash_source_url) %>
-                      <%= submit_tag 'Bookmark', class: 'btn btn-primary bookmark' %>
-                      <%= submit_tag 'Article bookmarked !', class: 'btn btn-primary bookmark-confirmation' %>
+                      <%= submit_tag 'Ajouter aux favoris', class: 'btn btn-primary bookmark' %>
+                      <%= submit_tag 'Favoris', class: 'btn btn-primary bookmark-confirmation' %>
                     </div>
                   <% end %>
                 <% end %>
