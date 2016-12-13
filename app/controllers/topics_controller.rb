@@ -6,6 +6,13 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @topic = Topic.find(params[:id])
+
+    @selected_urls = []
+
+    @topic.articles.each do |article|
+      @selected_urls << article.source_url
+    end
   end
 
   def create

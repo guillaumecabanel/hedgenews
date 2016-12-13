@@ -10,11 +10,16 @@
     <div class="panel-body">
       <div class="topic-card-legend">
         <p class= "font-header-app"><%= topic.number_sources %> Sources - <%= topic.articles.count %> Articles </p>
-        <p class="font-header-app"><%= link_to 'Visualiser', articles_path(topic_search: topic.name) %></p>
-        <p class="font-header-app"><%= link_to 'Éditer', edit_topic_path(topic), class: 'btn btn-bordered btn-bordered-info suppress' %></p>
-        <%= form_tag topic_path(topic), method: :delete do %>
-          <%= submit_tag 'Supprimer', class: 'btn btn-bordered btn-bordered-info suppress' %>
-        <% end %>
+        <div class="flex-box-space-around font-header-app" >
+          <%= link_to 'Prévisualiser', topic_path(topic) %>
+          <%= link_to 'Relancer la recherche', articles_path(topic_search: topic.name) %>
+          <%= link_to 'Éditer', edit_topic_path(topic) %>
+        </div>
+        <div class="flex-box-center">
+          <%= form_tag topic_path(topic), method: :delete do %>
+            <%= submit_tag 'Supprimer', class: 'btn btn-bordered btn-bordered-info suppress' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

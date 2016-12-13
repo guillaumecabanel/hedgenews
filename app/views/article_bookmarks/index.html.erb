@@ -108,15 +108,16 @@
         });
       });
 
-      var nbarticle = $('.articles_bookmarked').data('number')
-
       $('.unbookmark').click( function() {
-        nbarticle = nbarticle - 1
+        var nbarticle = $('.articles_bookmarked').data('number')
+        nbarticle = nbarticle - 1;
+
+        $('.articles_bookmarked').data('number', nbarticle);
         console.log(nbarticle);
         $(this).closest('.card').fadeOut('slow', function(){
           $(this).remove();
         });
-        $('#number_articles_bookmarked').replaceWith("<h2 class='font-header-app'>" + nbarticle + " article(s) sauvegardé(s)</h2>");
+        $('#number_articles_bookmarked').html(nbarticle + " article(s) sauvegardé(s)");
       });
 
 

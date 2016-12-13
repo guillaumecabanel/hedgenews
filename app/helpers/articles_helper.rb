@@ -23,4 +23,5 @@ module ArticlesHelper
 
     return nil
   end
+
 end
