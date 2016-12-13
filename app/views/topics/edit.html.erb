@@ -1,0 +1,20 @@
+<div class="list-group">
+  <% @topic.articles.each do |article| %>
+    <div class="list-group-item font-header-app">
+      <div class='flex-box-space-between'>
+        <div class='article-box'>
+          <%= link_to article.source_url do %>
+            <%= image_tag article.pic_url, width:'100px' %>
+          <%end%>
+          <%= link_to article.title, article.source_url, target: '_blank'%>
+          <%= article.source.name %>
+        </div>
+        <div>
+          <i class="fa fa-angle-up" aria-hidden="true"></i>
+          <i class="fa fa-angle-down" aria-hidden="true"></i>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
