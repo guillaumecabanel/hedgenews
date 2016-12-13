@@ -152,7 +152,7 @@ croix = Source.create!(name: "La Croix",
 
 tribune = Source.create!(name: "La Tribune",
                          presentation: "La Tribune est un journal économique hebdomadaire et financier français, créé en janvier 1985 par Bruno Bertez, principal concurrent du quotidien Les Échos. Il aborde principalement les secteurs de l'industrie, des services, des hautes technologies, des médias, des pays émergents et du management. \n
-                         Il est aujourd'hui posédé par le Groupe Hima (Jean-Christophe Tortora) à 68%, Laurant Alexandre à 28% et JCG Médias : 4%.",
+                         Il est aujourd'hui possédé par le Groupe Hima (Jean-Christophe Tortora) à 68%, Laurant Alexandre à 28% et JCG Médias : 4%.",
                          orientation: "liberal",
                          aylien_id: 1174)
 
