@@ -6,6 +6,8 @@ tmp/*
 .DS_Store
 public/assets
 
+/local
+
 # Ignore application configuration
 /config/application.yml
 
