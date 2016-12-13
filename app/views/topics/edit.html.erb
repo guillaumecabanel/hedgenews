@@ -1,8 +1,8 @@
 <div class="container">
   <div class = "wrapper-white">
     <div>
-      <h2 class="font-header-app">Revue de presse : "Titre"</h2>
-      <h4 class="font-header-app">X Articles - Y sources</h4>
+      <h2 class="font-header-app">Revue de presse pour "<%= @topic.name %>"</h2>
+      <h4 class="font-header-app"><%= @topic.articles.count %> Articles - <%= @topic.number_sources %> sources</h4>
     </div>
   </div>
 
