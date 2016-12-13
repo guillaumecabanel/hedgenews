@@ -47,9 +47,22 @@ body {
   flex-wrap: wrap;
 }
 
+.flex-box-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .flex-box-right {
   display: flex;
   justify-content: flex-end;
+}
+
+.flex-item {
+  flex: 0 0 30%;
+}
+
+.flex-body {
+  flex: 1 0 auto;
 }
 
 .wrapper-grey {

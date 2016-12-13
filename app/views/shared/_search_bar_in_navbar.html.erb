@@ -1,9 +1,9 @@
-<div class="search-bar search-bar-xs hidden" id="navbar-search">
+<div class="search-bar-xs hidden" id="navbar-search">
   <%= form_tag(articles_path, method: "get") do %>
     <div>
       <%= text_field_tag :topic_search, nil, placeholder: "", required: true, value: @topic_search, id: "topic_search_navbar" %>
       <%= button_tag "", class: "search-button" do %>
-        <%= image_tag "icone/loupe.png" %>
+        <%= image_tag "icone/loupe.png", id: "loupe-navbar" %>
       <%end%>
     </div>
   <% end %>
