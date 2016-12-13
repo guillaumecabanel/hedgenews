@@ -24,13 +24,14 @@
       </div>
     </div>
     <div class="flex-box-center">
-      <div>
-        <a href="#" id="open-all" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
-        <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
-        <% end %>
-      </div>
+      <a href="#" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
+      <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
+      <% end %>
       <%if current_user %>
-        <%= link_to 'Ajouter le sujet à mes revues de presse', root_path, class: "btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background open-all" %>
+        <%= form_tag topic_path, method: :post, id: 'topic' do %>
+          <%= hidden_field_tag "topic[name]", @topic_search %>
+          <%= submit_tag 'Ajouter le sujet à mes revues de presse', class: 'btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background' %>
+        <% end %>
       <% end %>
     </div>
     <br>
@@ -49,13 +50,7 @@
           <% end %>
           <div class="panel article-panel card-body">
             <div class="panel-heading">
-              <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
-              <h5><strong><%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %></strong></h5>
-              <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> <% if story.author.name != "" %>par <%= story.author.name %><% end %></h6>
-              <ul class= "list-inline">
-                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-                <li><h6><%= time_to_read(story.words_count) %></h6></li>
-              </ul>
+              <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
 
               <% if current_user %>
                 <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
@@ -81,19 +76,37 @@
                       <%= hidden_field_tag "article[words_count]", story.words_count %>
                       <%= hidden_field_tag "article[aylien_id]", story.id %>
                       <%= hidden_field_tag "article[source_url]", story.links.permalink %>
-                      <%= hidden_field_tag "article[opposite_url]", @hash_source_url[@opposite_media[Source.where(aylien_id: story.source.id.to_i).first.name]] %>
+                      <%= hidden_field_tag "article[opposite_url]", story_opposite_url(story, @hash_source_url) %>
                       <%= submit_tag 'Bookmark', class: 'btn btn-primary bookmark' %>
-                      <%= submit_tag 'Article bookmarked !', class: 'btn btn-info bookmark-confirmation' %>
+                      <%= submit_tag 'Article bookmarked !', class: 'btn btn-primary bookmark-confirmation' %>
                     </div>
                   <% end %>
                 <% end %>
               <% end %>
 
+              <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
+              <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> <% if story.author.name != "" %>par <%= story.author.name %><% end %></h6>
+              <ul class= "list-inline">
+                <li>
+                  <% story.hashtags.each_with_index do |hashtag, index| %>
+                    <% next if index > 4%>
+                    <span class="hashtag"><%= hashtag %></span>
+                  <% end %>
+                </li>
+              </ul>
+              <ul class= "list-inline">
+                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+                <li><h6><%= time_to_read(story.words_count) %></h6></li>
+              </ul>
 
   <!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
             </div>
             <div class="panel-body">
-              <p><%=story.summary.sentences.join("\n") %></p>
+              <% if story.summary.sentences.join("\n") == ""%>
+                <p>Nous n'avons pas pu accéder à un extrait de cet article.</p>
+              <% else %>
+                <p><%=story.summary.sentences.join("\n") %></p>
+              <% end %>
               <!-- <p><%= story.body %></p> -->
             </div>
             <div class="panel-body">
@@ -109,7 +122,7 @@
             </div>
             <div class="flex-box-center">
               <%= link_to "Lire l'article complet", story.links.permalink, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
-              <%= link_to "Découvrir une opinion différente", @hash_source_url[@opposite_media[Source.where(aylien_id: story.source.id.to_i).first.name]], class: "btn btn-bordered btn-bordered-primary" , target: '_blank'%>
+              <%= link_to "Découvrir une opinion différente", story_opposite_url(story, @hash_source_url), class: "btn btn-bordered btn-bordered-primary" , target: '_blank'%>
             </div>
 
           </div>
@@ -133,13 +146,13 @@
       $('.bookmark-confirmation').hide();
       $('.unbookmark-confirmation').hide();
 
-      window.scroll(0, 140);
+      window.scroll(0, 60);
 
       $('#topic_search').click(function(){
         $(this).val("");
       });
 
-      $('#open-all').click(function(e) {
+      $('a.open-all').click(function(e) {
         e.preventDefault();
         $('.selected_urls').data('url').forEach(function(url_source) {
           setTimeout(function() {}, 1000);

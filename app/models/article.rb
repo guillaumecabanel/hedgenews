@@ -1,4 +1,18 @@
 class Article < ApplicationRecord
+  OPPOSITE_MEDIA = {
+    "L'Express" => ["Marianne", "Médiapart", "Libération"],
+    "La Croix" => ["Marianne", "Médiapart", "Libération"],
+    "La Tribune" => ["Marianne", "Médiapart", "Libération"],
+    "Le Figaro" => ["Médiapart", "Marianne", "Libération"],
+    "Le Monde" => ["Valeurs Actuelles", "Le Figaro", "Le Point"],
+    "Le Point" => ["Médiapart", "Marianne", "Libération"],
+    "Les Echos" => ["Libération"],
+    "Libération" => ["Les Echos", "Le Figaro"],
+    "Marianne" => ["La Tribune"],
+    "Médiapart" => ["Le Point"],
+    "Valeurs Actuelles" => ["Le Monde"]
+  }
+
   belongs_to :source
   # belongs_to :category
   belongs_to :journalist
@@ -23,4 +37,5 @@ class Article < ApplicationRecord
 
     random_articles.first(articles_quantity)
   end
+
 end

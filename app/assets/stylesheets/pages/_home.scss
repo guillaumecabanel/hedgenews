@@ -58,11 +58,11 @@ a {
 .main-topic-legend {
   text-align: center;
   list: line;
-  margin-left: 20px;
-  margin-right: 20px;
-  position: relative;
-  top: -20px;
-  padding: 10px;
+  // margin-left: 20px;
+  // margin-right: 20px;
+  // position: relative;
+  // top: -20px;
+  // padding: 10px;
 }
 
 .logo-source {
@@ -168,10 +168,20 @@ a {
   }
 }
 
-.list-inline {
-  text-align: center;
-  padding-right: 20px;
+.hashtag {
+  color: #888888;
+  font-size: 13px;
+  border-radius: 0px;
+  background-color: transparent;
+  padding: 5px;
+  font-family: Oswald;
 }
+
+// .list-inline {
+//   text-align: center;
+//   padding-right: 20px;
+
+
 
 // .padding-home-search-bar {
 //   padding: 20px;
@@ -181,4 +191,5 @@ a {
 //   margin-bottom: 50px;
 //   text-align: center;
 //   max-width: 1000px;
+
 // }

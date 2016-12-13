@@ -70,7 +70,7 @@ financialtimes = Source.create!(name: "The Financial Times",
           # "la tribune":   1174,
           # "le figaro":    641,
           # "le monde":     675,
-      # "le parisien":  642,
+          # "le parisien":  642,
           # "le point":     1192,
           # "les échos":    684,
           # "libération":   251,
@@ -96,50 +96,64 @@ figaro = Source.create!(name: "Le Figaro",
 
 liberation = Source.create!(name: "Libération",
                             presentation: "Libération est un quotidien français paraissant le matin, disponible également dans une version en ligne. Fondé sous l'égide de Jean-Paul Sartre, le journal paraît pour la première fois le 18 avril 1973 et reprend le nom d'un titre de presse similaire créé en 1927 par le libertaire Jules Vignes, nom qui sera également celui d'un des journaux de la Résistance dirigé par Emmanuel d'Astier de La Vigerie. \n
-                            Situé à l'extrême gauche à ses débuts, Libération évolue vers la gauche sociale-démocrate à la fin des années 1970 après la démission de Jean-Paul Sartre en 1974. En 1978, le journal n'a déjà plus rien de maoïste : Serge July le décrit alors comme « libéral-libertaire ». Aujourd'hui, sa ligne éditoriale est toujours de centre gauche ou de gauche sociale-démocrate, selon l'échiquier politique français habituellement utilisé, et son lectorat est majoritairement de gauche. \n
-                            Une Société des rédacteurs a pour mission de veiller à l'indépendance journalistique. La rédaction respecte le principe de protection des sources d'information des journalistes. Libération a pour actionnaires de référence les hommes d'affaires Bruno Ledoux — propriétaire du siège du journal — et Patrick Drahi — président-fondateur du consortium luxembourgeois Altice.",
+                            Situé à l'extrême gauche à ses débuts, Libération évolue vers la gauche sociale-démocrate à la fin des années 1970 après la démission de Jean-Paul Sartre en 1974. Aujourd'hui, sa ligne éditoriale est toujours de centre gauche ou de gauche sociale-démocrate. \n
+                            Libération a pour actionnaires de référence les hommes d'affaires Bruno Ledoux — propriétaire du siège du journal — et Patrick Drahi — président-fondateur du consortium luxembourgeois Altice.",
                             orientation: "gauche",
                             aylien_id: 251)
 
 echos = Source.create!(name: "Les Échos",
-                       presentation: "Les Échos est un quotidien français d’information économique et financière qui traite et analyse l'ensemble de l'actualité nationale, régionale et internationale ayant des répercussions sur la vie des affaires. Fondé en 1908 par les frères Robert et Émile Servan-Schreiber, le journal est d'orientation libérale et est actuellement propriété du Groupe Les Échos, pôle média du groupe LVMH.",
+                       presentation: "Les Échos est un quotidien français d’information économique et financière qui traite et analyse l'ensemble de l'actualité nationale, régionale et internationale ayant des répercussions sur la vie des affaires. \n
+                       Fondé en 1908 par les frères Robert et Émile Servan-Schreiber, le journal est d'orientation libérale et est actuellement propriété du Groupe Les Échos, pôle média du groupe LVMH et dirigé depuis avril 2013 par Nicolas Barré ",
                        orientation: "libéral",
                        aylien_id: 684)
 
 humanite = Source.create!(name: "L'Humanité",
-                          presentation: "L’Humanité est un journal français — socialiste jusqu'à fin 1920, puis communiste — fondé en 1904 par le dirigeant socialiste Jean Jaurès. Organe central du Parti communiste français de 1920 à 1994, il en reste très proche après l’ouverture de ses pages à d'autres composantes de la gauche.",
+                          presentation: "L’Humanité est un tabloïde français — socialiste jusqu'à fin 1920, puis communiste — fondé en 1904 par le dirigeant socialiste Jean Jaurès,qui mettait la lutte pour la paix, la « communion avec le mouvement ouvrier » et l'indépendance face aux « groupes d'intérêt » au cœur de ses priorités. Aujourd'hui, il se range parmi les porte-paroles des mouvements, associations, et partis qui se réclament de la « gauche antilibérale. \n
+                          Organe central du Parti communiste français de 1920 à 1994, il en reste très proche après l’ouverture de ses pages à d'autres composantes de la gauche.\n
+                          Il est aujourd'hui encore et toujours possédé par   Société nouvelle du journal L'Humanité et dirigé par le directeur de redaction Patrick Apel-Muller et la directeur de publication Patrick Le Hyaric.",
                           orientation: "gauche communiste",
                           aylien_id: nil)
 
 express = Source.create!(name: "L'Express",
-                         presentation: "L'Express est un magazine d'actualité hebdomadaire français appartenant au Groupe L'Express, filiale de Altice Media Group créé par l'entrepreneur franco-israélien Patrick Drahi et l'homme d'affaires français Marc Laufer.",
-                         orientation: "droite",
+                         presentation: "L'Express est un magazine d'actualité hebdomadaire français fondé le 16 mai 1953 par Jean-Jacques Servan-Schreiber et Françoise Giroud comme supplément politique du journal économique libéral Les Échos. \n
+                         Le journal fut très critique à l'encontre de la SFIO et du socialisme, et son anticommunisme racinaire à partir des années 1960 l'incline inéluctablement vers l'option centriste. \n
+                         Aujourd'hui, il appartient au Groupe L'Express, filiale de Altice Media Group créé par l'entrepreneur franco-israélien Patrick Drahi et l'homme d'affaires français Marc Laufer.",
+                         orientation: "centre",
                          aylien_id: 233)
 
 nouvel_observateur = Source.create!(name: "Le Nouvel Observateur",
-                                    presentation: "L’Obs (un temps intitulé France Observateur, puis Le Nouvel Observateur — familièrement surnommé Le Nouvel Obs — jusqu’au 23 octobre 2014) est un hebdomadaire français d'information générale de gauche. Héritier de L'Observateur politique, économique et littéraire né en 19503, le premier numéro de ce magazine d'actualité a été publié le 19 novembre 1964.",
+                                    presentation: "L’Obs (un temps intitulé France Observateur, puis Le Nouvel Observateur — familièrement surnommé Le Nouvel Obs — jusqu’au 23 octobre 2014) est un hebdomadaire français d'information générale de gauche. Héritier de L'Observateur politique, économique et littéraire né en 1950, le premier numéro de ce magazine d'actualité a été publié le 19 novembre 1964. \n
+                                    Il s'agit d'un journal social-démocrate de gauche. \n
+                                    Il est aujourd'hui dirigé par Matthieu Croissandeau et possédé à 66 % par Bergé-Niel-Pigasse et 34% par le Groupe Perdriel. ",
                                     orientation: "gauche",
                                     aylien_id: nil)
 
 point = Source.create!(name: "Le Point",
-                       presentation: "Le Point est un magazine hebdomadaire français d'information générale, fondé en 1972. Son modèle générique est celui du magazine américain Time, fondé par Henry Luce dans les années 1920, ou de son confrère Newsweek. Le magazine ouvre ses pages à toutes les opinions politiques (interviews, analyses, etc.) ; sa ligne éditoriale est communément admise comme conservatrice et libérale2. Il appartient à François Pinault via le holding Artémis.",
+                       presentation: "Le Point est un magazine hebdomadaire français d'information générale, fondé en 1972. Son modèle générique est celui du magazine américain Time, fondé par Henry Luce dans les années 1920, ou de son confrère Newsweek. \n
+                        Le magazine ouvre ses pages à toutes les opinions politiques. Sa ligne éditoriale est communément admise comme conservatrice et libérale. \n
+                        En 1997, le journal est racheté par l'homme d'affaire François Pinault, PDG de la holding Artémis et présenté comme un proche de Jacques Chirac. François Pinault prend à travers son groupe le contrôle du Point. Claude Imbert, en garant de la continuité du journal et de sa ligne, demeure l'un des éditorialistes principaux.",
                        orientation: "droite",
                        aylien_id: 1192)
 
 marianne = Source.create!(name: "Marianne",
-                          presentation: "Marianne est un magazine d'information hebdomadaire français créé par Jean-François Kahn et Maurice Szafran en 1997. Refondu à partir du 29 juin 2013, il est rebaptisé Le Nouveau Marianne puis de nouveau, simplement Marianne. Son site internet est accessible à l'adresse Marianne.net.",
+                          presentation: "Marianne est un magazine d'information hebdomadaire français créé par Jean-François Kahn et Maurice Szafran en 1997. Refondu à partir du 29 juin 2013, le titre reprend celui de Marianne, un ancien journal politique et littéraire orienté à gauche qui fut publié à Paris dans les années 1930. \n
+                          Le Marianne actuel combat ce qu'il nomme la pensée unique. Il se veut centriste révolutionnaire. \n
+                          Les principaux actionnaires sont aujourd'hui à 57% Yves de Chaisemartin, à 31% Marianne Fiances (Maurice Szafran), ainsi que Paul Lederman, Guy Sitbon, Thierry Verret et Frank Ullman.",
                           orientation: "extrême gauche",
                           aylien_id: 1234)
 
 
 croix = Source.create!(name: "La Croix",
-                       presentation: "La Croix est un journal quotidien français, propriété du groupe Bayard Presse depuis 1880. Fondé par la congrégation des assomptionnistes, le journal se réclame ouvertement chrétien et catholique, même si ce positionnement a pu évoluer au cours de son histoire.",
+                       presentation: "La Croix est un journal quotidien français, propriété du groupe Bayard Presse depuis 1880. Fondé par la congrégation des assomptionnistes, le journal se réclame ouvertement chrétien et catholique, même si ce positionnement a pu évoluer au cours de son histoire. \n
+                       Depuis l'élection de Benoît XVI, le journal qui se dit toujours très attaché au concile Vatican II, a modéré sa critique vis-à-vis des positions du Saint-Siège mais « reste reconnu pour ses prises de position progressistes24 ». Son traitement de l'information reste plutôt défavorable aux tendances traditionnelles. \n
+                       Il est possédé par le Groupe Bayard Presse et depuis 2015, Guillaume Goubert est le nouveau directeur de La Croix.",
                        orientation: "droite",
                        aylien_id: 1142)
 
 tribune = Source.create!(name: "La Tribune",
-                         presentation: "La Tribune est un journal économique et financier français, créé en janvier 1985 par Bruno Bertez, principal concurrent du quotidien Les Échos jusqu'à la fin de son édition papier quotidienne en janvier 2012, remplacée depuis par une édition hebdomadaire.",
-                         orientation: "droite",
+                         presentation: "La Tribune est un journal économique hebdomadaire et financier français, créé en janvier 1985 par Bruno Bertez, principal concurrent du quotidien Les Échos. Il aborde principalement les secteurs de l'industrie, des services, des hautes technologies, des médias, des pays émergents et du management. \n
+                         Il est aujourd'hui possédé par le Groupe Hima (Jean-Christophe Tortora) à 68%, Laurant Alexandre à 28% et JCG Médias : 4%.",
+                         orientation: "liberal",
                          aylien_id: 1174)
 
 mediapart = Source.create!(name: "Médiapart",
@@ -221,13 +235,16 @@ environment = Category.create!(name: "Environment")
 # TopicArticle.create!(topic: cop22, article: trump_cop_22)
 # TopicArticle.create!(topic: cop22, article: carbon_capture)
 
-#Look for topics through aylien API
-puts("Look for topics through aylien API")
-Topic.get
-
 # Topic_articles
 puts("Creating Users")
+User.create!(email: 'hedgy@hedgenews.eu', password: 'coucou')
 User.create!(email: 'raphaelle.coudin@gmail.com', password: 'coucou')
 User.create!(email: 'julie.moiton@bluewin.ch', password: 'coucou')
 User.create!(email: 'guillaume.cabanel@gmail.com', password: 'coucou')
 User.create!(email: 'isauretroesch@gmail.com', password: 'coucou')
+
+#Look for topics through aylien API
+#A topic needs to have a user
+puts("Look for topics through aylien API")
+Topic.get
+Topic.get
