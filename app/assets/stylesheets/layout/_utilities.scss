@@ -59,6 +59,14 @@ body {
   justify-content: flex-end;
 }
 
+.flex-item {
+  flex: 0 0 30%;
+}
+
+.flex-body {
+  flex: 1 0 auto;
+}
+
 .wrapper-grey {
   background-color: $grey;
   // #B3B5BB
