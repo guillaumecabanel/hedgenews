@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+ArticleBookmark.destroy_all
 TopicArticle.destroy_all
 Article.destroy_all
 Category.destroy_all
@@ -240,11 +241,11 @@ environment = Category.create!(name: "Environment")
 
 # Topic_articles
 puts("Creating Users")
-User.create!(email: 'hedgy@hedgenews.eu', password: 'coucou')
-User.create!(email: 'raphaelle.coudin@gmail.com', password: 'coucou')
-User.create!(email: 'julie.moiton@bluewin.ch', password: 'coucou')
-User.create!(email: 'guillaume.cabanel@gmail.com', password: 'coucou')
-User.create!(email: 'isauretroesch@gmail.com', password: 'coucou')
+User.create!(email: 'hedgy@hedgenews.eu', password: 'coucou', admin: true)
+User.create!(email: 'raphaelle.coudin@gmail.com', password: 'coucou', admin: true)
+User.create!(email: 'julie.moiton@bluewin.ch', password: 'coucou', admin: true)
+User.create!(email: 'guillaume.cabanel@gmail.com', password: 'coucou', admin: true)
+User.create!(email: 'isauretroesch@gmail.com', password: 'coucou', admin: true)
 
 #Look for topics through aylien API
 #A topic needs to have a user
