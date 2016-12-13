@@ -78,6 +78,7 @@ GEM
       sass (>= 3.2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    hashie (3.4.6)
     i18n (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -152,6 +153,7 @@ GEM
     redis (3.3.2)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    rufus-scheduler (3.1.10)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -166,6 +168,12 @@ GEM
       redis (~> 3.2, >= 3.2.1)
     sidekiq-failures (0.4.5)
       sidekiq (>= 2.16.0)
+    sidekiq-scheduler (2.0.21)
+      hashie (~> 3.4)
+      redis (~> 3)
+      rufus-scheduler (~> 3.1.8)
+      sidekiq (>= 3)
+      tilt (>= 1.4.0)
     simple_form (3.3.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
@@ -227,6 +235,7 @@ DEPENDENCIES
   sass-rails
   sidekiq
   sidekiq-failures
+  sidekiq-scheduler (~> 2.0)
   simple_form
   sinatra (>= 2.0.0.beta2)
   spring
