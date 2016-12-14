@@ -11,14 +11,19 @@
     <% @topic.articles.each do |article| %>
       <div class="list-group-item font-header-app">
         <div class='flex-box-space-between'>
-          <div class='article-box'>
-            <%= link_to article.source_url do %>
-              <%= image_tag article.pic_url, width:'100px' %>
-            <%end%>
-            <%= link_to article.title, article.source_url, target: '_blank'%>
-            <%= article.source.name %>
+          <div class='flex-box-space-between'>
+            <div class="image-table">
+              <%= link_to article.source_url, target: '_blank' do %>
+                <%= image_tag article.pic_url, width:'100px', class: 'image-table' %>
+              <%end%>
+            </div>
+            <div class='logo-title'>
+              <%= image_tag "logo/logos_custom/#{article.source.name}-logo-black.png", class: 'table-logo', width: "70px" %>
+              <%= link_to article.title, article.source_url, target: '_blank'%>
+            </div>
           </div>
-          <div>
+
+          <div class="flex-box-space-between table-buttons">
             <%= link_to 'Haut', class: 'btn btn-bordered btn-bordered-info up' %>
             <%= link_to 'Bas', class: 'btn btn-bordered btn-bordered-info down' %>
             <%= form_tag article_path(article), method: :delete do %>
