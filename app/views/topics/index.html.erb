@@ -1,12 +1,13 @@
 <div class="container">
   <div class = "wrapper-white">
     <div>
-      <% if @topics.count ==0 %>
+      <% if @topics.empty? %>
         <h2 class="font-header-app">Vous n'avez pas encore créé de revues de presse</h2>
         <h4 class= "font-header-app">Faites une recherche pour trouver des sujets intéressants, que vous pourrez ajouter à cette section :</h4>
         <%= render 'shared/search_bar', value: "" %>
       <% else %>
-        <h2 class="font-header-app"><%= pluralize(@topics.count, 'revue de presse', plural: 'revues de presse')%></h2>
+        <h2 id="number_topics_bookmarked", class="font-header-app"><%= pluralize(@topics.count, 'revue de presse sauvegardée', plural: 'revues de presse sauvegardées')%></h2>
+        <div class="topics_bookmarked" data-number="<%= @topics.count %>"></div>
       <%end%>
     </div>
   </div>
@@ -19,3 +20,23 @@
     <% end %>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+
+      $('.suppress').click( function() {
+        var nbtopic = $('.topics_bookmarked').data('number')
+        nbtopic = nbtopic - 1;
+
+        $('.topics_bookmarked').data('number', nbtopic);
+
+        $(this).closest('.topic-card').fadeOut('slow', function(){
+          $(this).remove();
+        });
+        $('#number_topics_bookmarked').html(nbtopic + " revue(s) de presse sauvegardée(s)");
+      });
+
+    })
+  </script>
+<% end %>

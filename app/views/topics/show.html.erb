@@ -1,1 +1,139 @@
-<p>Coucou</p>
+<% if @topic.articles.empty? %>
+
+  <div class='container'>
+    <div class="flex-box-space-around catchline wrapper-white font-header-app">
+      <div>
+        <h2 class= "font-header-app">Aucun article dans la revue de presse <em><%= @topic.name %></em>.</h2>
+        <h4 class= "font-header-app">Faites une recherche pour trouver des articles intéressants, que vous pourrez ajouter à votre revue de presse :</h4>
+        <%= render 'shared/search_bar', value: "" %>
+      </div>
+    </div>
+    <%= link_to root_path do %>
+      <%= image_tag "icone/hedgenews_logo.FF682F.png", class: "animate-logo" %>
+    <%end%>
+  </div>
+
+<% else %>
+  <div class="container">
+    <div class="flex-box-space-around font-header-app">
+      <div id="search-wrapper" class="wrapper-white">
+        <div>
+          <h2 class="font-header-app"><%= pluralize(@topic.articles.count, 'article selectionné', plural: 'articles sélectionnés')%> pour la revue de presse sur <em>"<%= @topic.name %>"</em></h2>
+        </div>
+      </div>
+    </div>
+    <div class="flex-box-center">
+      <a href="#" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background open-all">Lire tous les articles complets</a>
+      <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
+      <% end %>
+    </div>
+    <br>
+  </div>
+
+  <div class='container'>
+    <div class='row-fix'>
+      <% @topic.articles.each do |article| %>
+        <div class='card'>
+          <h3><%= link_to article.source_url, target: '_blank' do %></h3>
+            <div class='image-article-card'>
+              <% unless article.pic_url.empty?%>
+                <%= image_tag article.pic_url %>
+              <% end %>
+            </div>
+          <% end %>
+
+          <div class="panel article-panel card-body">
+            <div class="panel-heading">
+
+          <div class="flex-box-space-between">
+            <div>
+              <%= image_tag "logo/logos_custom/#{article.source.name.gsub('é' ,'e').gsub('É' ,'E')}-logo-black.png", width: "80px" %>
+            </div>
+          </div>
+
+              <h3><%= link_to article.title, article.source_url, target: '_blank' %></h3>
+              <h6>Publié il y a <%= distance_of_time_in_words(article.date, Time.now) %> <% if article.journalist.last_name != "" %>par <%= article.journalist.last_name %><% end %></h6>
+              <ul class= "list-inline">
+                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+                <li><h6><%= time_to_read(article.words_count) %></h6></li>
+              </ul>
+            </div>
+            <div class="panel-body">
+              <% if article.abstract == ""%>
+                <p>Nous n'avons pas pu accéder à un extrait de cet article.</p>
+              <% else %>
+                <p><%= article.abstract %></p>
+              <% end %>
+            </div>
+            <div class="panel-body">
+              <h6><strong>Contexte :</strong></h6>
+              <% if ["Le Monde", "Le Figaro", "Le Point"].include?(article.source.name) %>
+                <h6>A propos du <%= article.source.name.split(" ").last %></strong></h6>
+              <% elsif ["Les Échos"].include?(article.source.name) %>
+                <h6>A propos des <%= article.source.name.split(" ").last %></strong></h6>
+              <% else %>
+                <h6>A propos de <%= article.source.name %></strong></h6>
+              <% end %>
+              <%= raw(article.source.presentation) %>
+            </div>
+            <div class="flex-box-center">
+              <%= link_to "Lire l'article complet", article.source_url, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
+              <%= link_to "Découvrir une opinion différente", article.opposite_url, class: "btn btn-bordered btn-bordered-primary" , target: '_blank'%>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container text-center">
+    <%= link_to topics_path do %>
+      <%= image_tag "icone/rewind.FF682F.png", class: 'image-small' %>
+    <%end%>
+  </div>
+
+<% end %>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+
+      $('.bookmark-confirmation').hide();
+      $('.unbookmark-confirmation').hide();
+
+      window.scroll(0, 60);
+
+      $('#topic_search').click(function(){
+        $(this).val("");
+      });
+
+      $('a.open-all').click(function(e) {
+        e.preventDefault();
+        $('.selected_urls').data('url').forEach(function(url_source) {
+          setTimeout(function() {}, 1000);
+          window.open(url_source);
+          self.focus();
+          // if(!win){
+          //   //Broswer has blocked it
+          //   alert('Please allow popups for this site');
+          // }
+        });
+      });
+
+      $('.bookmark').click( function() {
+        // setTimeout(function() {}, 10);
+        $(this).hide(50);
+        $(this).closest('.bookmark-parent').children('.bookmark-confirmation').show(50);
+        // $(this).closest('.panel-heading').find('.unbookmark').show(50);
+      });
+
+      $('.unbookmark').click( function() {
+        $(this).hide(50);
+        $(this).closest('.unbookmark-parent').children('.unbookmark-confirmation').show(50);
+      });
+
+
+    })
+  </script>
+<% end %>
