@@ -2,7 +2,7 @@
   <%= form_tag(articles_path, method: "get") do %>
     <div>
       <%= text_field_tag :topic_search, nil, class: 'font-header-app', placeholder: "", required: true, value: value  %>
-      <%= button_tag "", class: "search-button" do %>
+      <%= button_tag "", class: "search-button icon" do %>
         <%= image_tag "icone/loupe.png" %>
       <%end%>
     </div>
