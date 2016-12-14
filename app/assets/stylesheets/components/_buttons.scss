@@ -72,3 +72,19 @@
   border-bottom: 1px solid $blue;
   background-color: transparent;
 }
+
+.bookmark {
+  border: none;
+  background-color: transparent;
+  img {
+    height: 40px;
+  }
+}
+
+.unbookmark {
+  border: none;
+  background-color: transparent;
+  img {
+    height: 40px;
+  }
+}

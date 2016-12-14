@@ -45,11 +45,9 @@ class ArticleBookmarksController < ApplicationController
     @article_bookmark.destroy
 
     respond_to do |format|
-      format.html { redirect_to articles_path } # remettre avec le mot recherché
+      format.html { redirect_to article_bookmarks_path } # remettre avec le mot recherché
       format.js # app/views/article_bookmarks/destroy.js.erb
     end
-
-    #redirect_to articles_path # remettre avec le mot recherché
   end
 
   private
