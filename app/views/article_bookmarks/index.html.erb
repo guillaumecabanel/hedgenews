@@ -69,7 +69,7 @@
                                     <%= render 'articles/article_create', article: article, hash_source_url: @hash_source_url %>
                                   <% end %>
                                   <%= hidden_field_tag "topic[id]", topic.id %>
-                                  <%= button_tag topic.name, class: 'red-hover button-tag'%>
+                                  <%= button_tag topic.name, class: 'red-hover button-tag press-review-title'%>
                                 <% end %>
                               </li>
                             <% end %>

@@ -11,7 +11,7 @@
   <%= hidden_field_tag "article[words_count]", story.words_count %>
   <%= hidden_field_tag "article[aylien_id]", story.id %>
   <%= hidden_field_tag "article[source_url]", story.links.permalink %>
-  <%= hidden_field_tag "article[opposite_url]", story_opposite_url(story, hash_source_url) %>
+  <%= hidden_field_tag "article[opposite_url]", story_opposite_url(story, @hash_source_url) %>
 <% else %>
   <%= hidden_field_tag "article[source_id]", article.source_id %>
   <%= hidden_field_tag "article[title]", article.title %>
@@ -26,7 +26,4 @@
   <%= hidden_field_tag "article[aylien_id]", article.aylien_id %>
   <%= hidden_field_tag "article[source_url]", article.source_url %>
   <%= hidden_field_tag "article[opposite_url]", article.opposite_url %>
-<% end %>
-<%= button_tag '', class: 'bookmark icon button-tag button-tag-bookmark' do %>
-  <%= image_tag 'icone/bookmark_empty_blue.png' %>
 <% end %>
