@@ -52,34 +52,33 @@
           <div class="panel article-panel card-body">
             <div class="panel-heading">
 
-          <div class="flex-box-space-between">
+          <div class="flex-box-space-between align-items-center">
             <div>
               <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
             </div>
             <div>
-              <div class="navbar-wagon-item">
+              <div class="navbar-wagon-item font-header-app">
                 <div class="dropdown">
-                 <i class="fa fa-plus" aria-hidden="true" id= "navbar-wagon-menu" data-toggle="dropdown"></i>
-                  <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-                    <li><%= link_to "Ajouter l'article à une revue de presse :", root_path, class: "red-hover" %></li>
-                    <% current_user.topics.each do |topic| %>
-                      <li>
-                        <%= form_tag topic_article_path, method: :post, id: 'article' do %>
-
-                          <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
-                            <%= render 'article_create', story: story %>
-                          <% else %>
-                            <%= render 'article_create', story: story, hash_source_url: @hash_source_url %>
+                  <div>
+                   <i class="fa fa-plus text-blue" aria-hidden="true" id= "navbar-wagon-menu" data-toggle="dropdown"></i>
+                    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu dropdown-press-review-ul">
+                      <li class="dropdown-press-review-li">Ajouter l'article à une revue de presse :</li>
+                      <hr>
+                      <% current_user.topics.each do |topic| %>
+                        <li class="dropdown-press-review-li">
+                          <%= form_tag topic_article_path, method: :post, id: 'article' do %>
+                            <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
+                              <%= render 'article_create', story: story %>
+                            <% else %>
+                              <%= render 'article_create', story: story, hash_source_url: @hash_source_url %>
+                            <% end %>
+                            <%= hidden_field_tag "topic[id]", topic.id %>
+                            <%= button_tag topic.name, class: 'red-hover button-tag'%>
                           <% end %>
-
-                          <%= hidden_field_tag "topic[id]", topic.id %>
-                          <%= button_tag topic.name, class: 'red-hover button-tag'%>
-                        <% end %>
-                      </li>
-<!--                       <li><%= link_to topic.name, root_path, method: :post, class: "red-hover" %></li> -->
-                    <% end %>
-                    <li><%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete %></li>
-                  </ul>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
