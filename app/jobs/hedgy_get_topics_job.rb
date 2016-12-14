@@ -7,3 +7,5 @@ class HedgyGetTopicsJob < ApplicationJob
     puts "Hedgy: 'I'm done!'"
   end
 end
+
+# HedgyGetTopicsJob.perform_later
