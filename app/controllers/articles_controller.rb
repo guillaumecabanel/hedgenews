@@ -16,4 +16,10 @@ class ArticlesController < ApplicationController
       @hash_source_url[Source.where(aylien_id: story.source.id.to_i).first.name] = story.links.permalink
     end
   end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.topic_articles.destroy_all
+  end
+
 end

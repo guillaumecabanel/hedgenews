@@ -72,3 +72,18 @@
   border-bottom: 1px solid $blue;
   background-color: transparent;
 }
+
+.icon:focus {
+  outline: 0;
+}
+
+.button-tag {
+  border: none;
+  background-color: transparent;
+}
+
+.button-tag-bookmark {
+  img {
+    height: 40px;
+  }
+}
