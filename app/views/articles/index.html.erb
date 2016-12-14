@@ -57,32 +57,36 @@
               <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
             </div>
 
-              <div>
-                <div class="navbar-wagon-item font-header-app">
-                  <div class="dropdown">
-                    <div>
-                     <i class="fa fa-plus text-blue" aria-hidden="true" id= "navbar-wagon-menu" data-toggle="dropdown"></i>
-                      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu dropdown-press-review-ul">
-                        <li class="dropdown-press-review-li">Ajouter l'article à une revue de presse :</li>
-                        <hr>
-                        <% current_user.topics.order(:created_at).reverse.each do |topic| %>
-                          <li class="dropdown-press-review-li">
-                            <%= form_tag topic_article_path, method: :post, id: 'article' do %>
-                              <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
-                                <%= render 'article_create', story: story %>
-                              <% else %>
-                                <%= render 'article_create', story: story, hash_source_url: @hash_source_url %>
-                              <% end %>
-                              <%= hidden_field_tag "topic[id]", topic.id %>
-                              <%= button_tag topic.name, class: 'red-hover button-tag'%>
+              <% if current_user %>
+                <% unless current_user.topics.empty? %>
+                  <div>
+                    <div class="navbar-wagon-item font-header-app">
+                      <div class="dropdown">
+                        <div>
+                         <i class="fa fa-plus text-blue" aria-hidden="true" id= "navbar-wagon-menu" data-toggle="dropdown"></i>
+                          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu dropdown-press-review-ul">
+                            <li class="dropdown-press-review-li">Ajouter l'article à une revue de presse :</li>
+                            <hr>
+                            <% current_user.topics.each do |topic| %>
+                              <li class="dropdown-press-review-li">
+                                <%= form_tag topic_article_path, method: :post, id: 'article' do %>
+                                  <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
+                                    <%= render 'article_create', story: story %>
+                                  <% else %>
+                                    <%= render 'article_create', story: story, hash_source_url: @hash_source_url %>
+                                  <% end %>
+                                  <%= hidden_field_tag "topic[id]", topic.id %>
+                                  <%= button_tag topic.name, class: 'red-hover button-tag'%>
+                                <% end %>
+                              </li>
                             <% end %>
-                          </li>
-                        <% end %>
-                      </ul>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                <% end %>
+              <% end %>
 
               <div>
                 <% if current_user %>
