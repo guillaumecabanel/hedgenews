@@ -30,5 +30,6 @@ module Hedgenews
     config.i18n.default_locale = :fr
     config.active_job.queue_adapter = :sidekiq
 
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

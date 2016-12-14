@@ -19,6 +19,10 @@ body {
   padding-bottom: 5em;
 }
 
+// Text
+.text-blue {
+  color: $brand-info;
+}
 
 // Backgrounds
 .bg-black {
@@ -39,7 +43,7 @@ body {
   justify-content: center;
 }
 
-
+// Flexbox
 .flex-box-space-around{
   display: flex;
   justify-content: space-around;
