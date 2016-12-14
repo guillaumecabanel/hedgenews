@@ -57,6 +57,9 @@
               <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
             </div>
             <div>
+              <%= link_to 'Ajouter à une revue de presse', class: "" %>
+            </div>
+            <div>
               <% if current_user %>
                 <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
                   <%= form_tag bookmark_path, method: :delete, id: 'article' do %>
