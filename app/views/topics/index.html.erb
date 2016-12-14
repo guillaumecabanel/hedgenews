@@ -13,7 +13,7 @@
   </div>
 
   <div class="row">
-    <% @topics.each do |topic| %>
+    <% @topics.order(:created_at).reverse.each do |topic| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <%= render 'topic_card', topic: topic %>
       </div>
