@@ -1,0 +1,29 @@
+
+.team {
+
+  h1 {
+    font-family:$header-app;
+    padding-bottom: 20px;
+  }
+
+  h5 {
+    font-family:$header-app;
+    text-align: justify;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: $black;
+  }
+
+  a:link {
+    text-decoration: none;
+}
+  .avatar{
+    width: 100px;
+    border-radius: 50%;
+  }
+
+}
+
+.fa-linkedin-square {
+  color: #0077B5;
+}
