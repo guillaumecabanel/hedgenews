@@ -47,7 +47,7 @@
 
           <div class="flex-box-space-between">
             <div>
-              <%= image_tag "logo/logos_custom/#{article.source.name}-logo-black.png", width: "80px" %>
+              <%= image_tag "logo/logos_custom/#{article.source.name.gsub('é' ,'e').gsub('É' ,'E')}-logo-black.png", width: "80px" %>
             </div>
           </div>
 
