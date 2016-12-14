@@ -103,12 +103,18 @@ a {
   display: flex;
   align-items: center;
   width: 100%;
+  // pointer-events: none;
   h1 {
     color: $white;
     margin-left: auto;
     margin-right: auto;
   }
 }
+
+// .topic-card-image::before {
+//   background-image: rgba(0,0,0, 0.5);
+// }
+
 
 .topic-card-legend {
   position: relative;
