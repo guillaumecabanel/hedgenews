@@ -18,14 +18,14 @@
               <%end%>
             </div>
             <div class='logo-title'>
-              <%= image_tag "logo/logos_custom/#{article.source.name}-logo-black.png", class: 'table-logo', width: "70px" %>
+              <%= image_tag "logo/logos_custom/#{article.source.name.gsub('é', 'e').gsub('É', 'E')}-logo-black.png", class: 'table-logo', width: "70px" %>
               <%= link_to article.title, article.source_url, target: '_blank'%>
             </div>
           </div>
 
           <div class="flex-box-space-between table-buttons">
-            <%= link_to 'Haut', class: 'btn btn-bordered btn-bordered-info up' %>
-            <%= link_to 'Bas', class: 'btn btn-bordered btn-bordered-info down' %>
+<!--             <%= link_to 'Haut', class: 'btn btn-bordered btn-bordered-info up' %>
+            <%= link_to 'Bas', class: 'btn btn-bordered btn-bordered-info down' %> -->
             <%= form_tag article_path(article), method: :delete do %>
               <%= submit_tag 'Supprimer', class: 'btn btn-bordered btn-bordered-info suppress' %>
             <% end %>
