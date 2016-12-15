@@ -1,6 +1,6 @@
 <div class='form-container'>
 <div class="wrapper-white padding-devise">
-  <h2 class='font-header-app'>Forgot your password?</h2>
+  <h2 class='font-header-app'><%= t('.forgot_your_password') %></h2>
 
   <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
@@ -11,7 +11,7 @@
 
     <div class="flex-box-right">
       <div class="form-actions">
-        <%= f.button :submit, "Send me reset password instructions", class:'btn-bordered btn-bordered-primary-on-grey-background' %>
+        <%= f.button :submit, t('.send_me_reset_password_instructions'), class:'btn-bordered btn-bordered-primary-on-grey-background' %>
       </div>
     </div>
   <% end %>

@@ -1,7 +1,7 @@
 <div class='form-container'>
 <div class="wrapper-white">
 
-  <h2 class='font-header-app'>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2 class='font-header-app'><%= t('.title', resource: "mon compte") %></h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -13,23 +13,23 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
 
-      <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+      <%= f.input :password, autocomplete: "off", hint: t('.leave_blank_if_you_don_t_want_to_change_it'), required: false %>
       <%= f.input :password_confirmation, required: false %>
-      <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+      <%= f.input :current_password, hint: t('.we_need_your_current_password_to_confirm_your_changes'), required: true %>
     </div>
 
     <div class="flex-box-right">
       <div class="form-actions font-header-app">
-        <%= f.button :submit, "Update", class:'btn-bordered btn-bordered-primary-on-grey-background' %>
+        <%= f.button :submit, t('.update'), class:'btn-bordered btn-bordered-primary-on-grey-background' %>
       </div>
     </div>
   <% end %>
 
-  <h3 class='font-header-app'>Cancel my account</h3>
+  <h3 class='font-header-app'><%= t('.cancel_my_account') %></h3>
 
-  <p class='font-header-app'>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p class='font-header-app'><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %></p>
 
-  <%= link_to "Back", :back, class:'font-header-app' %>
+  <%= link_to t('devise.shared.links.back'), :back, class:'font-header-app' %>
 
 </div>
 </div>

@@ -1,6 +1,6 @@
 <div class='form-container'>
 <div class="wrapper-white padding-devise">
-  <h2 class='font-header-app'>Log in</h2>
+  <h2 class='font-header-app'><%= t('.sign_in') %></h2>
   <br>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -12,7 +12,7 @@
 
     <div class="flex-box-right">
       <div class="form-actions">
-        <%= f.button :submit, "Log in", class:'btn-bordered btn-bordered-primary-on-grey-background' %>
+        <%= f.button :submit, t(".sign_in"), class:'btn-bordered btn-bordered-primary-on-grey-background' %>
       </div>
     </div>
   <% end %>
