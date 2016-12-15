@@ -49,8 +49,16 @@
 
 a {
   .main-topic-image {
+    h1{
+      transition: font-size 0.3s ease-out;
+    }
     h1:hover {
       text-decoration: none;
+    }
+  }
+  &:hover{
+    h1{
+      font-size: 300%;
     }
   }
 }
@@ -108,13 +116,28 @@ a {
   text-align: center;
   align-items: center;
   width: 100%;
+
+
   // pointer-events: none;
   h1 {
     color: $white;
     margin-left: auto;
     margin-right: auto;
+    height: auto;
+    transition: font-size 0.3s ease-out;
   }
+
+  &:hover{
+    h1{
+      font-size: 300%;
+    }
+  }
+
+  h1:hover {
+      text-decoration: none;
+    }
 }
+
 
 // .topic-card-image::before {
 //   background-image: rgba(0,0,0, 0.5);
