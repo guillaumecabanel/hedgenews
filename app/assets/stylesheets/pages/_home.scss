@@ -102,6 +102,10 @@ a {
 //   margin: auto;
 // }
 
+.topic-card-topics-index {
+  margin: 40px auto;
+}
+
 
 .topic-card-image {
   height: 45vh;
@@ -109,6 +113,7 @@ a {
   background-origin: center;
   background-repeat: no-repat;
   display: flex;
+  text-align: center;
   align-items: center;
   width: 100%;
 

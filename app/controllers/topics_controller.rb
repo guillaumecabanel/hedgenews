@@ -65,6 +65,11 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:id])
+    @articles = []
+    topic_articles =  @topic.topic_articles.order(:created_at).reverse
+    topic_articles.each do |topic_article|
+      @articles << topic_article.article
+    end
   end
 
   def destroy
