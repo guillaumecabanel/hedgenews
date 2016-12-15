@@ -8,6 +8,14 @@ body {
   margin-top: 70px;
 }
 
+h3.article-title {
+  line-height: 30px;
+}
+
+h1.article-title {
+  line-height: 30px;
+}
+
 ::selection {
   background: $brand-color;
   color: $white;
