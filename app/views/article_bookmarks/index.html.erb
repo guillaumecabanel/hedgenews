@@ -167,6 +167,13 @@
         $('#number_articles_bookmarked').html(nbarticle + " article(s) sauvegardé(s)");
       });
 
+      $('.press-review-title').click(function(e) {
+        setTimeout(function() {}, 10);
+        $(this).closest('.dropdown-menu').fadeOut('slow', function(){
+          $(this).hide();
+        });
+      });
+
 
     })
   </script>
