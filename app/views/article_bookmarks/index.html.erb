@@ -1,4 +1,4 @@
-<% if @articles_bookmarked.empty? %>
+<% if @article_bookmarks.empty? %>
 
   <div class='container'>
     <div class="flex-box-space-around catchline wrapper-white font-header-app">
@@ -18,8 +18,8 @@
     <div class="flex-box-space-around font-header-app">
       <div class = "wrapper-white">
         <div>
-          <h2 id="number_articles_bookmarked" class="font-header-app"><%= pluralize(@articles_bookmarked.count, 'article sauvegardé', plural: 'articles sauvegardés')%></h2>
-          <%= content_tag :div, class: "articles_bookmarked", data: {number: @articles_bookmarked.count} do %>
+          <h2 id="number_articles_bookmarked" class="font-header-app"><%= pluralize(@article_bookmarks.count, 'article sauvegardé', plural: 'articles sauvegardés')%></h2>
+          <%= content_tag :div, class: "articles_bookmarked", data: {number: @article_bookmarks.count} do %>
           <% end %>
         </div>
       </div>
@@ -34,7 +34,7 @@
 
   <div class='container'>
     <div class='row-fix'>
-      <% @articles_bookmarked.each do |article| %>
+      <% @articles.each do |article| %>
         <div class='card'>
           <h3><%= link_to article.source_url, target: '_blank' do %></h3>
             <div class='image-article-card'>

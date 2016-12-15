@@ -180,12 +180,12 @@
         });
       });
 
-      // $('.press-review-title').click(function(e) {
-      //   e.preventDefault();
-      //   $(this).closest('.dropdown-menu').fadeOut('slow', function(){
-      //     $(this).hide();
-      //   });
-      // });
+      $('.press-review-title').click(function(e) {
+        setTimeout(function() {}, 10);
+        $(this).closest('.dropdown-menu').fadeOut('slow', function(){
+          $(this).hide();
+        });
+      });
 
     });
   </script>
