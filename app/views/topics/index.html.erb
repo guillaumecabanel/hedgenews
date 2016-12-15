@@ -14,8 +14,16 @@
 
   <div class="flex-box-center">
     <%if current_user %>
-      <a href="#" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background">Créer une nouvelle revue de presse</a>
+      <a href="#" id="create-press-review" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background">Créer une nouvelle revue de presse</a>
     <% end %>
+  </div>
+
+  <div class="row" >
+    <div class="col-xs-12">
+      <div id="search-bar-create-topic" class="flex-box-space-around catchline padding-home-search-bar wrapper-white font-header-app hidden">
+        <%= render 'shared/search_bar', value: nil %>
+      </div>
+    </div>
   </div>
 
   <div class="row">
@@ -31,6 +39,8 @@
   <script>
     $(document).ready(function(){
 
+
+      // Delete bookmarked topic on click
       $('.suppress').click( function() {
         var nbtopic = $('.topics_bookmarked').data('number')
         nbtopic = nbtopic - 1;
@@ -43,6 +53,11 @@
         $('#number_topics_bookmarked').html(nbtopic + " revue(s) de presse sauvegardée(s)");
       });
 
+
+      // Make search bar appear when create press review button clicked
+      $("#create-press-review").click(function(e){
+        $("#search-bar-create-topic").removeClass("hidden");
+      });
     })
   </script>
 <% end %>
