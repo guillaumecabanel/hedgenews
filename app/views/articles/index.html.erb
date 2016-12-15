@@ -52,55 +52,57 @@
           <div class="panel article-panel card-body">
             <div class="panel-heading">
 
-          <div class="flex-box-space-between align-items-center">
-            <div>
-              <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
-            </div>
+              <div class="flex-box-space-between align-items-center">
+                <div class="flex-box-space-between">
+                  <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
+                </div>
 
-              <% if current_user %>
-                <% unless current_user.topics.empty? %>
-                  <div>
-                    <div class="navbar-wagon-item font-header-app">
-                      <div class="dropdown">
+                  <div class="flex-box-space-between">
+                    <% if current_user %>
+                      <% unless current_user.topics.empty? %>
                         <div>
-                         <%= image_tag "icone/add-review.png", id: "navbar-wagon-menu", height: '40px', data: { toggle: "dropdown"} %>
-                          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu dropdown-press-review-ul">
-                            <li class="dropdown-press-review-li">Ajouter l'article à une revue de presse :</li>
-                            <hr>
-                            <% current_user.topics.order(:created_at).reverse.each do |topic| %>
-                              <li class="dropdown-press-review-li">
-                                <%= form_tag topic_article_path, method: :post, id: 'article' do %>
-                                  <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
-                                    <%= render 'article_create', story: story %>
-                                  <% else %>
-                                    <%= render 'article_create', story: story, hash_source_url: @hash_source_url %>
+                          <div class="navbar-wagon-item font-header-app">
+                            <div class="dropdown">
+                              <div>
+                               <%= image_tag "icone/add-review.png", id: "navbar-wagon-menu", height: '40px', data: { toggle: "dropdown"} %>
+                                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu dropdown-press-review-ul">
+                                  <li class="dropdown-press-review-li">Ajouter l'article à une revue de presse :</li>
+                                  <hr>
+                                  <% current_user.topics.order(:created_at).reverse.each do |topic| %>
+                                    <li class="dropdown-press-review-li">
+                                      <%= form_tag topic_article_path, method: :post, id: 'article' do %>
+                                        <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
+                                          <%= render 'article_create', story: story %>
+                                        <% else %>
+                                          <%= render 'article_create', story: story, hash_source_url: @hash_source_url %>
+                                        <% end %>
+                                        <%= hidden_field_tag "topic[id]", topic.id %>
+                                        <%= button_tag topic.name, class: 'red-hover button-tag press-review-title'%>
+                                      <% end %>
+                                    </li>
                                   <% end %>
-                                  <%= hidden_field_tag "topic[id]", topic.id %>
-                                  <%= button_tag topic.name, class: 'red-hover button-tag press-review-title'%>
-                                <% end %>
-                              </li>
-                            <% end %>
-                          </ul>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      <% end %>
+                    <% end %>
+
+                    <div>
+                      <% if current_user %>
+                        <div class="bookmark_form_container" data-story-id="<%= story.id %>">
+                          <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
+                            <%= render 'unbookmark_form', story: story %>
+                          <% else %>
+                            <%= render 'bookmark_form', story: story, hash_source_url: @hash_source_url %>
+                          <% end %>
+                        </div>
+                      <% end %>
                     </div>
                   </div>
-                <% end %>
-              <% end %>
 
-              <div>
-                <% if current_user %>
-                  <div class="bookmark_form_container" data-story-id="<%= story.id %>">
-                    <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
-                      <%= render 'unbookmark_form', story: story %>
-                    <% else %>
-                      <%= render 'bookmark_form', story: story, hash_source_url: @hash_source_url %>
-                    <% end %>
-                  </div>
-                <% end %>
               </div>
-
-          </div>
 
               <h3><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
               <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> <% if story.author.name != "" %>par <%= story.author.name %><% end %></h6>
