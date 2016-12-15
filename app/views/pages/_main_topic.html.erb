@@ -1,12 +1,19 @@
 
 <div class="main-topic">
 
-  <%= link_to articles_path(topic_search: topic.name) do %>
-    <div class='main-topic-image' style='background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 90%), url(<%= image_path topic.image_url %>)' >
-      <h1><%= topic.name %></h1>
-    </div>
-  <%end%>
-
+  <% if topic.articles.empty? %>
+    <%= link_to articles_path(topic_search: topic.name) do %>
+      <div class='main-topic-image' style='background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 90%), url(<%= image_path topic.image_url %>)' >
+        <h1><%= topic.name %></h1>
+      </div>
+    <%end%>
+  <% else %>
+    <%= link_to articles_path(topic_search: topic.name) do %>
+      <div class='main-topic-image' style='background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 90%), url(<%= image_path topic.articles.first.pic_url %>)' >
+        <h1><%= topic.name %></h1>
+      </div>
+    <%end%>
+  <% end %>
 
   <div class="panel main-topic-legend">
     <div class="panel-body">
