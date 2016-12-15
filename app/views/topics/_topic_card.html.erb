@@ -17,6 +17,7 @@
           <%= link_to 'Relancer la recherche', articles_path(topic_search: topic.name) %>
           <%= link_to 'Éditer', edit_topic_path(topic) %>
         </div>
+        <br>
         <div class="flex-box-center">
           <%= form_tag topic_path(topic), method: :delete do %>
             <%= button_tag 'Supprimer', class: 'text-blue suppress button-tag font-header-app' %>
