@@ -67,7 +67,7 @@
                           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu dropdown-press-review-ul">
                             <li class="dropdown-press-review-li">Ajouter l'article à une revue de presse :</li>
                             <hr>
-                            <% current_user.topics.order(:created_at).reverse.each do |topic| %>
+                            <% current_user.topics.each do |topic| %>
                               <li class="dropdown-press-review-li">
                                 <%= form_tag topic_article_path, method: :post, id: 'article' do %>
                                   <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>

@@ -82,8 +82,10 @@ ActiveRecord::Schema.define(version: 20161213101035) do
   end
 
   create_table "topic_articles", force: :cascade do |t|
-    t.integer "topic_id"
-    t.integer "article_id"
+    t.integer  "topic_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_topic_articles_on_article_id", using: :btree
     t.index ["topic_id"], name: "index_topic_articles_on_topic_id", using: :btree
   end
