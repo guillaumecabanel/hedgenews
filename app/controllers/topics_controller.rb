@@ -47,7 +47,7 @@ class TopicsController < ApplicationController
                                  journalist_id: Journalist.where(aylien_id: story.author.id).first.id,
                                  )
       end
-      @topic.topic_articles.new(article: article)
+      @topic.topic_articles.new(article: article, created_at: Time.current, updated_at: Time.current)
     end
 
     # faire la topic image url
