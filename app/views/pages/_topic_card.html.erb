@@ -2,9 +2,8 @@
   <%= link_to articles_path(topic_search: topic.name) do %>
     <div class="topic-card-image" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 90%), url('<%= image_path topic.image_url %>')" >
       <h1><%= topic.name %></h1>
-
     </div>
-  <%end%>
+  <% end %>
 
   <div class="panel">
     <div class="panel-body">
@@ -17,6 +16,10 @@
         <% JSON.parse(topic.sources_json)["sources"].each do |source| %>
           <%= image_tag "logo/logos_custom/#{source}-logo-black.png", width: "75px", class: "logo-topic-card" %>
         <% end %>
+        <% (10 - JSON.parse(topic.sources_json)["sources"].count).times do %>
+          <%= image_tag "logo/logos_custom/Le Monde-logo-black.png", width: "75px", class: "logo-topic-card" %>
+        <% end %>
+
       </div>
       </div>
     </div>

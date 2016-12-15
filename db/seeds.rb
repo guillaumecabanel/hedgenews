@@ -43,7 +43,7 @@ isaure = Journalist.create!(first_name: "Isaure",
                             presentation: "I just finished my studies, and I decided to start the wagon in order to complete my CV. I think it is important to know the digital and to get into for the futur.")
 julie = Journalist.create!(first_name: "Julie",
                            last_name:"Moiton",
-                           presentation: "I have obtained a Bachelor of Business & Management (Queen Mary, University of London). I want to learn to code in order to gain technical skills.")
+                           presentation: "I just obtained a Bachelor of Business & Management. I want to learn to code in order to gain technical skills.")
 guillaume = Journalist.create!(first_name: "Guillaume",
                                last_name:"Cabanel",
                                presentation: "I was in sustainable development for construction as an engineer for 6 years. I would like to change my of life by moving to Nantes, learning to code and find a job here.")
