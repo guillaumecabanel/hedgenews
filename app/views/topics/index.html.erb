@@ -12,6 +12,12 @@
     </div>
   </div>
 
+  <div class="flex-box-center">
+    <%if current_user %>
+      <a href="#" class="btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background">Créer une nouvelle revue de presse</a>
+    <% end %>
+  </div>
+
   <div class="row">
     <% @topics.order(:created_at).reverse.each do |topic| %>
       <div class="col-xs-12 col-sm-6 col-md-4">

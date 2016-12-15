@@ -8,14 +8,14 @@
 
 
   <div class="list-group">
-    <% @topic.articles.order(:created_at).reverse.each do |article| %>
+    <% @articles.each do |article| %>
       <div class="list-group-item font-header-app">
         <div class='flex-box-space-between'>
           <div class='flex-box-space-between'>
             <div class="image-table">
               <%= link_to article.source_url, target: '_blank' do %>
                 <%= image_tag article.pic_url, width:'150px', class: 'image-table' %>
-              <%end%>
+              <% end %>
             </div>
             <div class='logo-title'>
               <%= image_tag "logo/logos_custom/#{article.source.name.gsub('é', 'e').gsub('É', 'E')}-logo-black.png", class: 'table-logo', width: "70px" %>
