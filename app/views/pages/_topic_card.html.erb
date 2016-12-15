@@ -19,7 +19,7 @@
           <%= image_tag "logo/logos_custom/#{source}-logo-black.png", width: "75px", class: "logo-topic-card" %>
         <% end %>
         <% (10 - JSON.parse(topic.sources_json)["sources"].count).times do %>
-          <%= image_tag "logo/logos_custom/Le Monde-logo-black.png", width: "75px", class: "logo-topic-card" %>
+          <%= image_tag "logo/logos_custom/empty-logo.png", width: "75px", class: "logo-topic-card" %>
         <% end %>
 
       </div>
