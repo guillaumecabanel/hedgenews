@@ -1,11 +1,20 @@
 class ArticleBookmarksController < ApplicationController
 
   def index
-    @articles_bookmarked = current_user.articles
+    @article_bookmarks = current_user.article_bookmarks.order(:created_at).reverse
 
-    @selected_urls = []
-    @articles_bookmarked.each do |article|
-      @selected_urls << article.source_url
+    unless @article_bookmarks.nil?
+      @articles = []
+      @article_bookmarks.each do |article_bookmark|
+        @articles << article_bookmark.article
+      end
+    end
+
+    unless @articles_bookmarks.nil?
+      @selected_urls = []
+      @articles_bookmarked.each do |article|
+        @selected_urls << article.source_url
+      end
     end
 
   end
