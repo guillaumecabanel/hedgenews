@@ -84,7 +84,7 @@ financialtimes = Source.create!(name: "The Financial Times",
 monde = Source.create!(name: "Le Monde",
                        presentation: "<p>Le Monde est un journal français fondé par Hubert Beuve-Méry en 1944. C'est l'un des derniers quotidiens français dits « du soir », qui paraît à Paris en début d'après-midi, daté du lendemain, et est distribué en province le matin suivant.</p>
                       <p>Sa ligne éditoriale est parfois présentée comme étant de centre gauche, bien que cette affirmation soit récusée par le journal lui-même, qui revendique un traitement non partisan, et son lectorat est majoritairement orienté à gauche.</p>
-                      <p>Le journal est édité par le groupe Le Monde, détenu depuis 2010 à 64 % par la société Le Monde libre, elle-même propriété des hommes d'affaires Xavier Niel, Pierre Bergé et Matthieu Pigasse, ainsi que par le groupe de presse espagnol Prisa. Il est aussi disponible dans une version en ligne.</p>",
+                      <p>Le journal est édité par le groupe Le Monde, détenu depuis 2010 à 64 % par la société Le Monde libre, elle-même propriété des hommes d'affaires Xavier Niel, Pierre Bergé et Matthieu Pigasse, ainsi que par le groupe de presse espagnol Prisa.</p>",
                        orientation: "centre-gauche",
                        aylien_id: 675)
 
@@ -110,7 +110,7 @@ echos = Source.create!(name: "Les Échos",
                        aylien_id: 684)
 
 humanite = Source.create!(name: "L'Humanité",
-                          presentation: "<p>L’Humanité est un tabloïde français socialiste jusqu'à fin 1920, puis communiste fondé en 1904 par le dirigeant socialiste Jean Jaurès,qui mettait la lutte pour la paix, la « communion avec le mouvement ouvrier » et l'indépendance face aux « groupes d'intérêt » au cœur de ses priorités. Aujourd'hui, il se range parmi les porte-paroles des mouvements, associations, et partis qui se réclament de «la gauche antilibérale.» <p>
+                          presentation: "<p>L’Humanité est un tabloïde français, socialiste jusqu'à fin 1920 puis communiste, fondé en 1904 par le dirigeant socialiste Jean Jaurès, qui mettait la lutte pour la paix, la « communion avec le mouvement ouvrier » et l'indépendance face aux « groupes d'intérêt » au cœur de ses priorités. Aujourd'hui, il se range parmi les porte-paroles des mouvements, associations, et partis qui se réclament de «la gauche antilibérale.» <p>
                           <p>Organe central du Parti communiste français de 1920 à 1994, il en reste très proche après l’ouverture de ses pages à d'autres composantes de la gauche.<p>
                           <p>Il est aujourd'hui encore et toujours possédé par   Société nouvelle du journal L'Humanité et dirigé par le directeur de redaction Patrick Apel-Muller et la directeur de publication Patrick Le Hyaric.<p>",
                           orientation: "gauche communiste",
@@ -173,7 +173,7 @@ alternatives_economiques = Source.create!(name: "Alternatives Economiques",
 
 valeurs_actuelles = Source.create!(name: "Valeurs Actuelles",
                                    presentation: "<p>Valeurs actuelles est un magazine hebdomadaire français créé en 1966 par Raymond Bourgine en reprenant le contenu de l'hebdomadaire Finances, qui était essentiellement une revue d'information boursière. Devenu peu à peu un journal d'opinion et un magazine généraliste, Valeurs actuelles traite de tous les sujets de société.<p>
-                                   <p>Aujourd'hui le journal se situe très à droite sur l'échiquier politique, avec une ligne éditoriale généralement libérale-conservatrice2 voire réactionnaire.<p>
+                                   <p>Aujourd'hui le journal se situe très à droite sur l'échiquier politique, avec une ligne éditoriale généralement libérale-conservatrice voire réactionnaire.<p>
                                   <p>Il fait partie du groupe Valmonde. Celui-ci est la propriété de Privinvest Médias, une filiale de la holding Privinvest de l'homme d'affaires Iskandar Safa dont Étienne Mougeotte et Charles Villeneuve sont actionnaires.<p>",
                                    orientation: "extrême droite",
                                    aylien_id: 1615)
