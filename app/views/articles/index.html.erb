@@ -129,14 +129,14 @@
               <% end %>
               <!-- <p><%= story.body %></p> -->
             </div>
+            <hr>
             <div class="panel-body">
-              <h6><strong>Contexte :</strong></h6>
               <% if ["Le Monde", "Le Figaro", "Le Point"].include?(Source.where(aylien_id: story.source.id.to_i).first.name) %>
-                <h6>A propos du <%= Source.where(aylien_id: story.source.id.to_i).first.name.split(" ").last %></strong></h6>
+                <h6><strong>A PROPOS du <%= Source.where(aylien_id: story.source.id.to_i).first.name.split(" ").last %></strong></h6>
               <% elsif ["Les Échos"].include?(Source.where(aylien_id: story.source.id.to_i).first.name) %>
-                <h6>A propos des <%= Source.where(aylien_id: story.source.id.to_i).first.name.split(" ").last %></strong></h6>
+                <h6><strong>A PROPOS des <%= Source.where(aylien_id: story.source.id.to_i).first.name.split(" ").last %></strong></h6>
               <% else %>
-                <h6>A propos de <%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h6>
+                <h6><strong>A PROPOS de <%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h6>
               <% end %>
               <%= raw(Source.where(aylien_id: story.source.id.to_i).first.presentation) %>
             </div>
