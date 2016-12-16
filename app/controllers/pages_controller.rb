@@ -9,12 +9,12 @@ class PagesController < ApplicationController
     # end
 
     if Topic.count >= 4
-      @topics = Topic.all[-4..-2].reverse
+      @topics = Topic.order(:created_at)[-4..-2].reverse
     else
       @topics = Topic.all
     end
 
-    @main_topic = Topic.last
+    @main_topic = Topic.order(:created_at).last
 
   end
 
