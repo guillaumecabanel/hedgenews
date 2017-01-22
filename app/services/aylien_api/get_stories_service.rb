@@ -71,8 +71,14 @@ module AylienAPI
 
     def call
       begin
-        #List stories
-        @api_instance.list_stories(options).stories
+        # List stories
+        result = @api_instance.list_stories(options).stories
+
+        # Limite rate message
+        puts 'API called successfully. Rate limit headers are as follows:'
+        puts "X-RateLimit-Limit: #{result[2]['X-RateLimit-Limit']}"
+        puts "X-RateLimit-Remaining: #{result[2]['X-RateLimit-Remaining']}"
+        puts "X-RateLimit-Reset: #{result[2]['X-RateLimit-Reset']}"
 
       rescue AylienNewsApi::ApiError => e
         puts "Exception when calling DefaultApi->list_stories: #{e}"
