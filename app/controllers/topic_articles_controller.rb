@@ -1,19 +1,19 @@
 class TopicArticlesController < ApplicationController
 
   def create
-    if Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
-      @journalist = Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
-    else
-      @journalist = Journalist.create!(journalist_params)
-    end
+    # if Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
+    #   @journalist = Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
+    # else
+    #   @journalist = Journalist.create!(journalist_params)
+    # end
 
-    if Article.find_by_aylien_id(params[:article][:aylien_id])
-      @article = Article.find_by_aylien_id(params[:article][:aylien_id])
-    else
-      @article = Article.new(article_params)
-      @article.journalist = @journalist
-      @article.save
-    end
+    # if Article.find_by_id(params[:article][:aylien_id])
+      @article = Article.find_by_id(params[:article][:id])
+    # else
+    #   @article = Article.new(article_params)
+    #   @article.journalist = @journalist
+    #   @article.save
+    # end
 
     @topic = Topic.find(params[:topic][:id])
 

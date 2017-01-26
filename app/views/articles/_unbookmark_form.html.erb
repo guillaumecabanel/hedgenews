@@ -1,7 +1,7 @@
 <%= form_tag bookmark_path, method: :delete, remote: true, id: 'article' do %>
   <div class='unbookmark-parent'>
     <% if local_assigns[:story] %>
-      <%= hidden_field_tag "article[aylien_id]", story.id %>
+      <%= hidden_field_tag "article[aylien_id]", story.aylien_id %>
     <% else %>
       <%= hidden_field_tag "article[aylien_id]", article.aylien_id %>
     <% end %>
