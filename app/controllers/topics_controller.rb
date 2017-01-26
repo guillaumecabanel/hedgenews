@@ -36,6 +36,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:id])
     @topic.user = User.find_by_email("hedgy@hedgenews.eu")
+    #problem : i do not use the method destroy, two lines above do not work
   end
 
   private

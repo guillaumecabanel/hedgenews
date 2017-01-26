@@ -28,9 +28,11 @@
       <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
       <% end %>
       <%if current_user %>
-        <%= form_tag topics_path, method: :post, id: 'topic' do %>
-          <%= hidden_field_tag "topic[name]", @topic_search %>
-          <%= submit_tag 'Ajouter le sujet à mes revues de presse', class: 'btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background' %>
+        <%unless current_user.topics.include?(@topic) %>
+          <%= form_tag topics_path, method: :post, id: 'topic' do %>
+            <%= hidden_field_tag "topic[name]", @topic_search %>
+            <%= submit_tag 'Ajouter le sujet à mes revues de presse', class: 'btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background' %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -53,6 +55,9 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function(){
+
+      $('.bookmark-confirmation').hide();
+      $('.unbookmark-confirmation').hide();
 
       window.scroll(0, 60);
 
@@ -91,6 +96,7 @@
         $(this).hide(50);
         $(this).closest('.unbookmark-parent').children('.unbookmark-confirmation').show(50);
       });
+
 
     });
   </script>

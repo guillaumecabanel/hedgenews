@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
     if Topic.pluck(:name).include?(@topic_search)
       @articles = Topic.find_by_name(@topic_search).articles
       @selected_articles = Article.random_sort(@articles)
+      @topic = Topic.find_by_name(@topic_search)
 
     else
       @topic = Topic.new(name: @topic_search)

@@ -3,7 +3,6 @@
       <% @selected_articles.each do |article| %>
         <div class='card'>
 
-          <!-- ok -->
           <h3><%= link_to article.source_url, target: '_blank' do %></h3>
             <div class='image-article-card'>
               <% unless article.pic_url.empty?%>
@@ -11,7 +10,6 @@
               <% end %>
             </div>
           <% end %>
-          <!-- ok -->
 
           <div class="panel article-panel card-body">
 
@@ -99,12 +97,10 @@
               <%= raw(article.source.presentation) %>
             </div>
 
-            <!-- ok -->
             <div class="flex-box-center">
               <%= link_to "Lire l'article complet", article.source_url, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
               <%= link_to "Découvrir une opinion différente", article.opposite_url, class: "btn btn-bordered btn-bordered-primary" , target: '_blank'%>
             </div>
-            <!-- ok -->
 
           </div>
         </div>
