@@ -3,40 +3,80 @@ class Topic < ApplicationRecord
   has_many :articles, through: :topic_articles
   belongs_to :user
 
-  def self.get
+  # Constants for Topic.get
+  N_LATEST_STORIES = 5
+  HASHTAGS_MIN_LENGTH = 5
+  HASHTAGS_MAX_LENGTH = 20
+  RELEVANCE_INDEX = 15
 
+  def self.get
     topics = []
 
-    stories = ::AylienAPI::GetStoriesService.new(source_id: [675, 641, 251, 684], sorted_by: "published_at").call
+    # Main sources:
+    # "libération":   251
     # "le figaro":    641,
     # "le monde":     675,
     # "les échos":    684,
-    # "libération":   251
 
-    sorted_stories = sort_by_source(stories)
+    # Get the N lastest stories from each sources
+    sources_id = [251, 641, 675, 684]
+    sorted_stories = {}
+
+    sources_id.each do |source_id|
+      stories = ::AylienAPI::GetStoriesService.new(source_id: source_id,sorted_by: "published_at", per_page: N_LATEST_STORIES).call
+      source = stories.first.source.name
+      sorted_stories[source] = stories
+    end
+
+    sorted_stories.each do |source, stories|
+      puts "#{source} : #{stories.count} articles"
+    end
 
     sorted_stories.each do |source, stories|
 
-      # For each source, find the first storie with an hashtag that could get more than 20 stories has a search
+      # For each source, find the first story with an hashtag that could get more than 20 stories has a search
       stories.find do |story|
         next if story.hashtags.empty?
+        key_words = []
+        story.hashtags.each do |hashtag|
 
-        # remove the'#' from the hashtag
-        clean_words = story.hashtags.first[1..-1]
+          next if hashtag.length < HASHTAGS_MIN_LENGTH || hashtag.length > HASHTAGS_MAX_LENGTH
+          next if key_words.size >=  2
+          # remove the'#' from the hashtag
+          clean_words = hashtag[1..-1]
 
-        next if clean_words.length > 20
+          # transform 'CamelCase' to 'String with spaces'
+          string_words = clean_words.gsub(/([A-ZÉ]+)([A-ZÉ][a-z])/,'\1 \2').gsub(/([a-z\d])([A-ZÉ])/,'\1 \2')
 
-        # transform 'CamelCase' to 'String with spaces'
-        string_words = clean_words.gsub(/([A-ZÉ]+)([A-ZÉ][a-z])/,'\1 \2').gsub(/([a-z\d])([A-ZÉ])/,'\1 \2')
+          key_words << string_words
+        end
+
+        string_words = key_words.join(' ')
 
         # Number of results for this search
         results_for_hashtag = ::AylienAPI::GetStoriesService.new(topic_search: string_words).call
-        related_stories = results_for_hashtag.count
 
-        if related_stories > 19
+        # Keep only stories with at least one hashtag in common
+        results_with_common_hashtag = []
+
+        results_for_hashtag.each do |story_canditate|
+          common_hashtag = false
+          story_canditate.hashtags.each do |hashtag|
+            next if common_hashtag
+            if story.hashtags.include? hashtag
+              common_hashtag = true
+            end
+          end
+          results_with_common_hashtag << story_canditate if common_hashtag
+        end
+
+        # Test relevance
+        related_stories = results_with_common_hashtag.count
+        if related_stories > RELEVANCE_INDEX
           if topics.find {|topic| topic.name == string_words}
             false # Topic already exists: keep trying to find relevant topic
           else
+            # Record topic
             sources_array = sort_by_source(results_for_hashtag).keys
             sources_hash = {sources: sources_array}
 
@@ -44,7 +84,9 @@ class Topic < ApplicationRecord
                                   user: User.find_by_email('hedgy@hedgenews.eu'),
                                   number_sources: sources_array.count,
                                   image_url: story.media[0].url,
-                                  sources_json: JSON.generate(sources_hash))
+                                  sources_json: JSON.generate(sources_hash)
+                                  # TODO: Save articles
+                                  )
             new_topic.save
 
             topics << new_topic
@@ -54,12 +96,9 @@ class Topic < ApplicationRecord
           false
         end
       end
-
     end
-
     topics
   end
-
 
   def self.sort_by_source(stories)
 
@@ -75,34 +114,4 @@ class Topic < ApplicationRecord
     end
     stories_by_source
   end
-
-
-  # @hashtags = []
-
-  # first_articles = []
-
-  # sources_id = []
-
-  # @stories.each do |article|
-  #   first_articles << article unless sources_id.include? article.source
-  #   sources_id << article.source unless sources_id.include? article.source
-  # end
-
-  # first_articles.each do |story|
-  #     @hashtags  << story.source.name
-  #     story.hashtags.each_with_index do |h, index|
-  #       next if index > 2
-  #       @hashtags <<  h unless h.length > 20
-  #     end
-  # end
-
-  # + les echos
-
-  # on prend une source
-    # on prend le premier article // hotness
-      # on prend le premier hashtag
-      # si > 10 articles => topic
-      # sinon on passe à l'article suivant de la source
-  # on passe à la source suivante
-
 end
