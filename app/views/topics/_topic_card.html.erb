@@ -19,9 +19,7 @@
         </div>
         <br>
         <div class="flex-box-center">
-          <%= form_tag topic_path(topic), method: :delete do %>
-            <%= button_tag 'Supprimer', class: 'text-blue suppress button-tag font-header-app' %>
-          <% end %>
+          <%= link_to 'Supprimer', topic_path(topic), class: 'text-blue suppress button-tag font-header-app', method: :patch %>
         </div>
       </div>
     </div>
