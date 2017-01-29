@@ -8,13 +8,15 @@ class PagesController < ApplicationController
     #   @topic_names << topic.name
     # end
 
+    hedgy_id = User.find_by_email("hedgy@hedgenews.eu")
+
     if Topic.count >= 4
-      @topics = Topic.order(:created_at)[-4..-2].reverse
+      @topics = Topic.where(user_id: hedgy_id).order(:created_at)[-4..-2].reverse
     else
-      @topics = Topic.all
+      @topics = Topic.where(user_id: hedgy_id).all
     end
 
-    @main_topic = Topic.order(:created_at).last
+    @main_topic = Topic.where(user_id: hedgy_id).order(:created_at).last
 
   end
 
