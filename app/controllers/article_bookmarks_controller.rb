@@ -4,9 +4,9 @@ class ArticleBookmarksController < ApplicationController
     @article_bookmarks = current_user.article_bookmarks.order(:created_at).reverse
 
     unless @article_bookmarks.nil?
-      @articles = []
+      @selected_articles = []
       @article_bookmarks.each do |article_bookmark|
-        @articles << article_bookmark.article
+        @selected_articles << article_bookmark.article
       end
     end
 

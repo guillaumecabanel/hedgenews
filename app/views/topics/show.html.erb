@@ -30,7 +30,7 @@
     <br>
     <div class="flex-box-center" >
       <div id="search-wrapper">
-        <%= render 'shared/index_articles', value: @articles %>
+        <%= render 'shared/index_articles', value: @selected_articles %>
       </div>
     </div>
   </div>
@@ -47,9 +47,6 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function(){
-
-      $('.bookmark-confirmation').hide();
-      $('.unbookmark-confirmation').hide();
 
       window.scroll(0, 60);
 
@@ -76,19 +73,6 @@
           $(this).hide();
         });
       });
-
-      $('.bookmark').click( function() {
-        // setTimeout(function() {}, 10);
-        $(this).hide(50);
-        $(this).closest('.bookmark-parent').children('.bookmark-confirmation').show(50);
-        // $(this).closest('.panel-heading').find('.unbookmark').show(50);
-      });
-
-      $('.unbookmark').click( function() {
-        $(this).hide(50);
-        $(this).closest('.unbookmark-parent').children('.unbookmark-confirmation').show(50);
-      });
-
 
     })
   </script>

@@ -55,11 +55,11 @@
 
                     <div>
                       <% if current_user %>
-                        <div class="bookmark_form_container" data-story-id="<%= article.id %>">
+                        <div class="bookmark_form_container" data-story-id="<%= article.aylien_id %>">
                           <% if current_user.articles.include?(Article.find_by_aylien_id(article.aylien_id)) %>
-                            <%= render 'articles/unbookmark_form', story: article %>
+                            <%= render 'articles/unbookmark_form', article: article %>
                           <% else %>
-                            <%= render 'articles/bookmark_form', story: article, hash_source_url: @hash_source_url %>
+                            <%= render 'articles/bookmark_form', article: article, hash_source_url: @hash_source_url %>
                           <% end %>
                         </div>
                       <% end %>
