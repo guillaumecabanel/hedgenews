@@ -4,9 +4,9 @@ class ArticleBookmarksController < ApplicationController
     @article_bookmarks = current_user.article_bookmarks.order(:created_at).reverse
 
     unless @article_bookmarks.nil?
-      @articles = []
+      @selected_articles = []
       @article_bookmarks.each do |article_bookmark|
-        @articles << article_bookmark.article
+        @selected_articles << article_bookmark.article
       end
     end
 
@@ -20,19 +20,19 @@ class ArticleBookmarksController < ApplicationController
   end
 
   def create
-    if Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
-      @journalist = Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
-    else
-      @journalist = Journalist.create!(journalist_params)
-    end
+    # if Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
+    #   @journalist = Journalist.find_by_aylien_id(params[:journalist][:aylien_id])
+    # else
+    #   @journalist = Journalist.create!(journalist_params)
+    # end
 
-    if Article.find_by_aylien_id(params[:article][:aylien_id])
+    # if Article.find_by_aylien_id(params[:article][:aylien_id])
       @article = Article.find_by_aylien_id(params[:article][:aylien_id])
-    else
-      @article = Article.new(article_params)
-      @article.journalist = @journalist
-      @article.save
-    end
+    # else
+    #   @article = Article.new(article_params)
+    #   @article.journalist = @journalist
+    #   @article.save
+    # end
 
     # @article.save # TODO add if error
     @article_bookmark = ArticleBookmark.new()

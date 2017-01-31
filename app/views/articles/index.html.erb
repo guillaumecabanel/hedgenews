@@ -1,4 +1,4 @@
-<% if @selected_stories.empty? %>
+<% if @articles.empty? %>
 
   <div class='container'>
     <div class="flex-box-space-around catchline wrapper-white font-header-app">
@@ -18,7 +18,7 @@
     <div class="flex-box-space-around font-header-app">
       <div id="search-wrapper" class="wrapper-white">
         <div>
-          <h2 class="font-header-app"><%= pluralize(@selected_stories.count, 'article selectionné', plural: 'articles sélectionnés')%>  parmi <%= @stories.count %> pour <em><%= @topic_search %></em></h2>
+          <h2 class="font-header-app"><%= pluralize(@selected_articles.count, 'article selectionné', plural: 'articles sélectionnés')%>  parmi <%= @articles.count %> pour <em><%= @topic_search %></em></h2>
         </div>
         <%= render 'shared/search_bar', value: @topic_search %>
       </div>
@@ -28,133 +28,26 @@
       <%= content_tag :div, class: "selected_urls", data: {url: @selected_urls} do %>
       <% end %>
       <%if current_user %>
-        <%= form_tag topics_path, method: :post, id: 'topic' do %>
-          <%= hidden_field_tag "topic[name]", @topic_search %>
-          <%= submit_tag 'Ajouter le sujet à mes revues de presse', class: 'btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background' %>
+        <%unless current_user.topics.include?(@topic) %>
+          <%= form_tag topics_path, method: :post, id: 'topic' do %>
+            <%= hidden_field_tag "topic[name]", @topic_search %>
+            <%= submit_tag 'Ajouter le sujet à mes revues de presse', class: 'btn btn-bordered btn-bordered-info btn-bordered-info-on-grey-background' %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
     <br>
-  </div>
-
-  <div class='container'>
-    <div class='row-fix'>
-      <% @selected_stories.each do |story| %>
-        <div class='card'>
-          <h3 class="article-title"><%= link_to story.links.permalink, target: '_blank' do %></h3>
-            <div class='image-article-card'>
-              <% unless story.media.empty?%>
-                <%= image_tag story.media[0].url %>
-              <% end %>
-            </div>
-          <% end %>
-
-          <div class="panel article-panel card-body">
-            <div class="panel-heading">
-
-              <div class="flex-box-space-between align-items-center">
-                <div class="flex-box-space-between">
-                  <%= image_tag "logo/logos_custom/#{story.source.name}-logo-black.png", width: "80px" %>
-                </div>
-
-                  <div class="flex-box-space-between">
-                    <% if current_user %>
-                      <% unless current_user.topics.empty? %>
-                        <div>
-                          <div class="navbar-wagon-item font-header-app">
-                            <div class="dropdown">
-                              <div>
-                               <%= image_tag "icone/add-review.png", id: "navbar-wagon-menu", height: '40px', data: { toggle: "dropdown"} %>
-                                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu dropdown-press-review-ul">
-                                  <li class="dropdown-press-review-li">Ajouter l'article à une revue de presse :</li>
-                                  <hr>
-                                  <% current_user.topics.order(:created_at).reverse.each do |topic| %>
-                                    <li class="dropdown-press-review-li">
-                                      <%= form_tag topic_article_path, method: :post, id: 'article' do %>
-                                        <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
-                                          <%= render 'article_create', story: story %>
-                                        <% else %>
-                                          <%= render 'article_create', story: story, hash_source_url: @hash_source_url %>
-                                        <% end %>
-                                        <%= hidden_field_tag "topic[id]", topic.id %>
-                                        <%= button_tag topic.name, class: 'red-hover button-tag press-review-title'%>
-                                      <% end %>
-                                    </li>
-                                  <% end %>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      <% end %>
-                    <% end %>
-
-                    <div>
-                      <% if current_user %>
-                        <div class="bookmark_form_container" data-story-id="<%= story.id %>">
-                          <% if current_user.articles.include?(Article.find_by_aylien_id(story.id)) %>
-                            <%= render 'unbookmark_form', story: story %>
-                          <% else %>
-                            <%= render 'bookmark_form', story: story, hash_source_url: @hash_source_url %>
-                          <% end %>
-                        </div>
-                      <% end %>
-                    </div>
-                  </div>
-
-              </div>
-
-              <h3 class="article-title"><%= link_to story.title, story.links.permalink, target: '_blank' %></h3>
-              <h6>Publié il y a <%= distance_of_time_in_words(story.published_at, Time.now) %> <% if story.author.name != "" %>par <%= story.author.name %><% end %></h6>
-              <ul class= "list-inline">
-                <li>
-                  <% story.hashtags.each_with_index do |hashtag, index| %>
-                    <% next if index > 4%>
-                    <span class="hashtag"><%= hashtag %></span>
-                  <% end %>
-                </li>
-              </ul>
-              <ul class= "list-inline">
-                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
-                <li><h6><%= time_to_read(story.words_count) %></h6></li>
-              </ul>
-
-  <!--             <h6><%= story.words_count %> mots | <%= story.sentiment %></h6> -->
-            </div>
-            <div class="panel-body">
-              <% if story.summary.sentences.join("\n") == ""%>
-                <p>Nous n'avons pas pu accéder à un extrait de cet article.</p>
-              <% else %>
-                <p><%=story.summary.sentences.join("\n") %></p>
-              <% end %>
-              <!-- <p><%= story.body %></p> -->
-            </div>
-            <hr>
-            <div class="panel-body">
-              <% if ["Le Monde", "Le Figaro", "Le Point"].include?(Source.where(aylien_id: story.source.id.to_i).first.name) %>
-                <h6><strong>A PROPOS du <%= Source.where(aylien_id: story.source.id.to_i).first.name.split(" ").last %></strong></h6>
-              <% elsif ["Les Échos"].include?(Source.where(aylien_id: story.source.id.to_i).first.name) %>
-                <h6><strong>A PROPOS des <%= Source.where(aylien_id: story.source.id.to_i).first.name.split(" ").last %></strong></h6>
-              <% else %>
-                <h6><strong>A PROPOS de <%= Source.where(aylien_id: story.source.id.to_i).first.name %></strong></h6>
-              <% end %>
-              <%= raw(Source.where(aylien_id: story.source.id.to_i).first.presentation) %>
-            </div>
-            <div class="flex-box-center">
-              <%= link_to "Lire l'article complet", story.links.permalink, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
-              <%= link_to "Découvrir une opinion différente", story_opposite_url(story, @hash_source_url), class: "btn btn-bordered btn-bordered-primary" , target: '_blank'%>
-            </div>
-
-          </div>
-        </div>
-      <% end %>
+    <div class="flex-box-center" >
+      <div id="search-wrapper">
+        <%= render 'shared/index_articles', value: @selected_articles %>
+      </div>
     </div>
   </div>
 
   <div class="container text-center">
     <%= link_to root_path do %>
       <%= image_tag "icone/rewind.FF682F.png", class: 'image-small' %>
-    <%end%>
+    <% end %>
   </div>
 
 <% end %>

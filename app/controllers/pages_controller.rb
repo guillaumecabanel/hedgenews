@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
     hedgy_id = User.find_by_email("hedgy@hedgenews.eu")
 
-    if Topic.count >= 4
+    if Topic.where(user_id: hedgy_id).count >= 4
       @topics = Topic.where(user_id: hedgy_id).order(:created_at)[-4..-2].reverse
     else
       @topics = Topic.where(user_id: hedgy_id).all

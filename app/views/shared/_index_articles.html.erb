@@ -1,0 +1,109 @@
+  <div class='container'>
+    <div class='row-fix'>
+      <% @selected_articles.each do |article| %>
+        <div class='card'>
+
+          <h3><%= link_to article.source_url, target: '_blank' do %></h3>
+            <div class='image-article-card'>
+              <% unless article.pic_url.empty?%>
+                <%= image_tag article.pic_url %>
+              <% end %>
+            </div>
+          <% end %>
+
+          <div class="panel article-panel card-body">
+
+
+            <div class="panel-heading">
+
+              <div class="flex-box-space-between align-items-center">
+                <div class="flex-box-space-between">
+                  <%= image_tag "logo/logos_custom/#{article.source.name.gsub('é' ,'e').gsub('É' ,'E')}-logo-black.png", width: "80px" %>
+                </div>
+
+                  <div class="flex-box-space-between">
+                    <% if current_user %>
+                      <% unless current_user.topics.empty? %>
+                        <div>
+                          <div class="navbar-wagon-item font-header-app">
+                            <div class="dropdown">
+                              <div>
+                               <%= image_tag "icone/add-review.png", id: "navbar-wagon-menu", height: '40px', data: { toggle: "dropdown"} %>
+                                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu dropdown-press-review-ul">
+                                  <li class="dropdown-press-review-li">Ajouter l'article à une revue de presse :</li>
+                                  <hr>
+                                  <% current_user.topics.order(:created_at).reverse.each do |topic| %>
+                                    <li class="dropdown-press-review-li">
+                                      <%= form_tag topic_article_path, method: :post, id: 'article' do %>
+                                        <% if current_user.articles.include?(Article.find_by_aylien_id(article.aylien_id)) %>
+                                          <%= hidden_field_tag "article[id]", article.id %>
+                                        <% else %>
+                                          <%= hidden_field_tag "article[id]", article.id %>
+                                        <% end %>
+                                        <%= hidden_field_tag "topic[id]", topic.id %>
+                                        <%= button_tag topic.name, class: 'red-hover button-tag press-review-title'%>
+                                      <% end %>
+                                    </li>
+                                  <% end %>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
+
+                    <div>
+                      <% if current_user %>
+                        <div class="bookmark_form_container" data-story-id="<%= article.aylien_id %>">
+                          <% if current_user.articles.include?(Article.find_by_aylien_id(article.aylien_id)) %>
+                            <%= render 'articles/unbookmark_form', article: article %>
+                          <% else %>
+                            <%= render 'articles/bookmark_form', article: article, hash_source_url: @hash_source_url %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+
+              <h3 class="article-title"><%= link_to article.title, article.source_url, target: '_blank' %></h3>
+              <h6>Publié il y a <%= distance_of_time_in_words(article.date, Time.now) %> <% if article.journalist.last_name != "" %>par <%= article.journalist.last_name %><% end %></h6>
+
+              <ul class= "list-inline">
+                <li><i class="fa fa-clock-o" aria-hidden="true"></i></li>
+                <li><h6><%= time_to_read(article.words_count) %></h6></li>
+              </ul>
+            </div>
+
+            <div class="panel-body">
+              <% if article.abstract == ""%>
+                <p>Nous n'avons pas pu accéder à un extrait de cet article.</p>
+              <% else %>
+                <p><%= article.abstract %></p>
+              <% end %>
+            </div>
+
+
+            <div class="panel-body">
+              <h6><strong>Contexte :</strong></h6>
+              <% if ["Le Monde", "Le Figaro", "Le Point"].include?(article.source.name) %>
+                <h6>A propos du <%= article.source.name.split(" ").last %></strong></h6>
+              <% elsif ["Les Échos"].include?(article.source.name) %>
+                <h6>A propos des <%= article.source.name.split(" ").last %></strong></h6>
+              <% else %>
+                <h6>A propos de <%= article.source.name %></strong></h6>
+              <% end %>
+              <%= raw(article.source.presentation) %>
+            </div>
+
+            <div class="flex-box-center">
+              <%= link_to "Lire l'article complet", article.source_url, class: "btn btn-bordered btn-bordered-info", target: '_blank' %>
+              <%= link_to "Découvrir une opinion différente", article.opposite_url, class: "btn btn-bordered btn-bordered-primary" , target: '_blank'%>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
