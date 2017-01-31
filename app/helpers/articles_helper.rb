@@ -10,6 +10,7 @@ module ArticlesHelper
     end
   end
 
+  # had to put that method in the articles controller
   def story_opposite_url(story, source_urls)
     source_name = Source.where(aylien_id: story.source.id.to_i).first.name
 
