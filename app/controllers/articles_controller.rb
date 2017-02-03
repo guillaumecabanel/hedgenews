@@ -39,7 +39,9 @@ class ArticlesController < ApplicationController
                                    source_url: story.links.permalink,
                                    opposite_url: story_opposite_url(story, @hash_source_url),
                                    journalist_id: Journalist.where(aylien_id: story.author.id).first.id,
+                                   hashtags: story.hashtags.join(" "),
                                    )
+
         end
         @topic.topic_articles.new(article: article, created_at: Time.current, updated_at: Time.current)
       end

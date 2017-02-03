@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213101035) do
+ActiveRecord::Schema.define(version: 20170203190557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20161213101035) do
     t.datetime "updated_at",    null: false
     t.integer  "aylien_id"
     t.string   "opposite_url"
+    t.string   "hashtags"
     t.index ["category_id"], name: "index_articles_on_category_id", using: :btree
     t.index ["journalist_id"], name: "index_articles_on_journalist_id", using: :btree
     t.index ["source_id"], name: "index_articles_on_source_id", using: :btree
