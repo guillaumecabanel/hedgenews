@@ -35,15 +35,13 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
-    @topic.user = User.find_by_email("hedgy@hedgenews.eu")
+    @topic.user = User.find_by_email("search@hedgenews.eu")
     @topic.save
   end
 
   def destroy
     @topic = Topic.find(params[:id])
     @topic.destroy
-    # @topic.user = User.find_by_email("hedgy@hedgenews.eu")
-    #problem : i do not use the method destroy, two lines above do not work
   end
 
   private

@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
     else
       @topic = Topic.new(name: @topic_search)
-      @topic.user = User.find_by_email("hedgy@hedgenews.eu")
+      @topic.user = User.find_by_email("search@hedgenews.eu")
 
       @stories = ::AylienAPI::GetStoriesService.new(topic_search: @topic_search).call
 
