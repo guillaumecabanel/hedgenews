@@ -242,6 +242,7 @@ environment = Category.create!(name: "Environment")
 # Topic_articles
 puts("Creating Users")
 User.create!(email: 'hedgy@hedgenews.eu', password: 'coucou', admin: true)
+User.create!(email: 'search@hedgenews.eu', password: 'coucou', admin: true)
 User.create!(email: 'raphaelle.coudin@gmail.com', password: 'coucou', admin: true)
 User.create!(email: 'julie.moiton@bluewin.ch', password: 'coucou', admin: true)
 User.create!(email: 'guillaume.cabanel@gmail.com', password: 'coucou', admin: true)

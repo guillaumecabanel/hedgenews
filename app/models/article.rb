@@ -1,16 +1,16 @@
 class Article < ApplicationRecord
   OPPOSITE_MEDIA = {
-    "L'Express" => ["Marianne", "Médiapart", "Libération"],
-    "La Croix" => ["Marianne", "Médiapart", "Libération"],
-    "La Tribune" => ["Marianne", "Médiapart", "Libération"],
-    "Le Figaro" => ["Médiapart", "Marianne", "Libération"],
-    "Le Monde" => ["Valeurs Actuelles", "Le Figaro", "Le Point"],
-    "Le Point" => ["Médiapart", "Marianne", "Libération"],
-    "Les Echos" => ["Libération"],
-    "Libération" => ["Les Echos", "Le Figaro"],
-    "Marianne" => ["La Tribune"],
-    "Médiapart" => ["Le Point"],
-    "Valeurs Actuelles" => ["Le Monde"]
+    "Marianne" => ["La Tribune", "Le Figaro", "Valeurs Actuelles", "Les Echos", "Le Point", "L'Express", "La Croix", "Le Monde"],
+    "Libération" => ["Les Echos", "La Croix", "L'Express", "Le Point", "Valeurs Actuelles" "Le Figaro", "La Tribune", "Le Monde"],
+    "Médiapart" => ["Le Point", "L'Express",  "La Croix", "Valeurs Actuelles", "Le Figaro", "Les Echos", "La Tribune", "Le Monde"],
+    "Le Monde" => ["Valeurs Actuelles", "Le Figaro", "La Tribune", "Les Echos", "L'Express", "La Croix", "Le Point"],
+    "L'Express" => ["Marianne", "Médiapart", "Libération", "Le Monde"],
+    "Le Point" => ["Médiapart", "Libération", "Marianne", "Le Monde"],
+    "La Tribune" => ["Marianne", "Médiapart", "Libération", "Le Monde"],
+    "Les Echos" => ["Libération", "Médiapart", "Marianne", "Le Monde"],
+    "La Croix" => ["Libération", "Marianne", "Médiapart", "Le Monde"],
+    "Le Figaro" => ["Médiapart", "Marianne", "Libération", "Le Monde"],
+    "Valeurs Actuelles" => ["Le Monde", "Marianne", "Libération", "Médiapart"]
   }
 
   belongs_to :source

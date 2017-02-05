@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
     else
       @topic = Topic.new(name: @topic_search)
-      @topic.user = User.find_by_email("hedgy@hedgenews.eu")
+      @topic.user = User.find_by_email("search@hedgenews.eu")
 
       @stories = ::AylienAPI::GetStoriesService.new(topic_search: @topic_search).call
 
@@ -37,9 +37,11 @@ class ArticlesController < ApplicationController
                                    words_count: story.words_count,
                                    aylien_id: story.id,
                                    source_url: story.links.permalink,
-                                   # opposite_url: story_opposite_url(story, @hash_source_url),
+                                   opposite_url: story_opposite_url(story, @hash_source_url),
                                    journalist_id: Journalist.where(aylien_id: story.author.id).first.id,
+                                   hashtags: story.hashtags.join(" "),
                                    )
+
         end
         @topic.topic_articles.new(article: article, created_at: Time.current, updated_at: Time.current)
       end
@@ -76,6 +78,24 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.topic_articles.destroy_all
+  end
+
+  private
+
+  def story_opposite_url(story, source_urls)
+    # name of the source of the story coming from API
+    source_name = Source.where(aylien_id: story.source.id.to_i).first.name
+
+    # find the names - there can be several - of the opposite media to the source of the story
+    opposite_media = Article::OPPOSITE_MEDIA[source_name]
+    return unless opposite_media
+
+    opposite_media.each do |opposite_medium|
+      opposite_url = source_urls[opposite_medium]
+      return opposite_url if opposite_url
+    end
+
+    return nil
   end
 
 end
