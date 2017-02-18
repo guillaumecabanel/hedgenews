@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
     # session[:current_search] = params
     @topic_search = params[:topic_search]
 
-    if Topic.pluck(:name).include?(@topic_search) && Topic.where(name: @topic_search)[0].articles.last.created_at
+    if Topic.pluck(:name).include?(@topic_search)
       @articles = Topic.find_by_name(@topic_search).articles
       @selected_articles = Article.random_sort(@articles)
       @topic = Topic.find_by_name(@topic_search)
