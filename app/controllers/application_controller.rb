@@ -20,8 +20,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_topics
-    # @topics_nav = Topic.get
-
     topics_hedgy = User.find_by_email("hedgy@hedgenews.eu").topics
 
     if topics_hedgy.count >= 4
