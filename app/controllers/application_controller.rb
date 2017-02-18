@@ -20,10 +20,14 @@ class ApplicationController < ActionController::Base
   private
 
   def set_topics
-    if Topic.count >= 4
-      @topics_nav = Topic.last(4).reverse
+    # @topics_nav = Topic.get
+
+    topics_hedgy = User.where(email: "hedgy@hedgenews.eu")[0].topics
+
+    if topics_hedgy.count >= 4
+      @topics_nav = topics_hedgy.last(4).reverse
     else
-      @topics_nav = Topic.all
+      @topics_nav = topics_hedgy.all
     end
   end
 
