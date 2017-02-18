@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def set_topics
     # @topics_nav = Topic.get
 
-    topics_hedgy = User.where(email: "hedgy@hedgenews.eu")[0].topics
+    topics_hedgy = User.find_by_email("hedgy@hedgenews.eu").topics
 
     if topics_hedgy.count >= 4
       @topics_nav = topics_hedgy.last(4).reverse
