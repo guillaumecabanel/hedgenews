@@ -5,10 +5,18 @@ class ArticlesController < ApplicationController
     # session[:current_search] = params
     @topic_search = params[:topic_search]
 
-    if Topic.pluck(:name).include?(@topic_search)
+    if Topic.pluck(:name).include?(@topic_search) && (Time.now - Topic.find_by_name(@topic_search).articles.last.created_at < 86400 )
       @articles = Topic.find_by_name(@topic_search).articles
       @selected_articles = Article.random_sort(@articles)
       @topic = Topic.find_by_name(@topic_search)
+
+      puts 'Dans 1ere branche'
+
+    elsif Topic.pluck(:name).include?(@topic_search)
+
+      @topic = Topic.find_by_name(@topic_search)
+
+
 
     else
       @topic = Topic.new(name: @topic_search)
