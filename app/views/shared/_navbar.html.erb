@@ -48,7 +48,7 @@
   <div class="navbar-wagon-second hidden-xs hidden-sm font-oswald">
     <div>
       En ce moment :
-      <% topics.each do |topic| %>
+      <% @topics_nav.each do |topic| %>
         <%= link_to topic.name.capitalize, articles_path(topic_search: topic.name), class: "navbar-wagon-item navbar-wagon-link red-hover" %>
       <% end %>
     </div>
