@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
     if topics_hedgy.count >= 4
       @topics_nav = topics_hedgy.last(4).reverse
     else
-      @topics_nav = Topic.all
       @topics_nav = topics_hedgy.all
     end
   end
