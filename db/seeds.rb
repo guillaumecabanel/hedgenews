@@ -198,7 +198,6 @@ environment = Category.create!(name: "Environment")
 puts("Creating Topics")
 brexit = Topic.create!(
   name: "François Fillon Henri Guaino",
-  presentation: "The British referendum on leaving the European Union",
   image_url: "http://md1.libe.com/photo/781277-henri-guaino-lors-du-congres-fondateur-du-parti-les-republicains.jpg?modified_at=1433427693&amp;picto=fb&amp;ratio_x=191&amp;ratio_y=100&amp;width=600",
   number_sources: 5,
   sources_json: "{\"sources\":[\"L'Express\",\"Liberation\",\"Le Point\",\"Le Monde\",\"Le Figaro\"]}",
