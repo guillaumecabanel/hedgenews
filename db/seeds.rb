@@ -15,6 +15,13 @@ Journalist.destroy_all
 Topic.destroy_all
 User.destroy_all
 
+puts("Creating Users")
+User.create!(email: 'hedgy@hedgenews.eu', password: 'coucou', admin: true)
+User.create!(email: 'search@hedgenews.eu', password: 'coucou', admin: true)
+User.create!(email: 'raphaelle.coudin@gmail.com', password: 'coucou', admin: true)
+User.create!(email: 'julie.moiton@bluewin.ch', password: 'coucou', admin: true)
+User.create!(email: 'guillaume.cabanel@gmail.com', password: 'coucou', admin: true)
+User.create!(email: 'isauretroesch@gmail.com', password: 'coucou', admin: true)
 # Topics TO DO : add most_used_words
 # puts("Creating Topics")
 # brexit = Topic.create!(name: "Brexit",
@@ -186,6 +193,18 @@ culture = Category.create!(name: "Culture")
 international = Category.create!(name: "International")
 environment = Category.create!(name: "Environment")
 
+
+# Topics
+puts("Creating Topics")
+brexit = Topic.create!(
+  name: "François Fillon Henri Guaino",
+  presentation: "The British referendum on leaving the European Union",
+  image_url: "http://md1.libe.com/photo/781277-henri-guaino-lors-du-congres-fondateur-du-parti-les-republicains.jpg?modified_at=1433427693&amp;picto=fb&amp;ratio_x=191&amp;ratio_y=100&amp;width=600",
+  number_sources: 5,
+  sources_json: "{\"sources\":[\"L'Express\",\"Liberation\",\"Le Point\",\"Le Monde\",\"Le Figaro\"]}",
+  user: hedgy
+)
+
 # Articles TO DO : add full_text, quoted_links, unique_words
 # puts("Creating Articles")
 # brexit_echoes = Article.new(title: "Echoes of ‘Brexit’ in U.S. Election",
@@ -240,16 +259,9 @@ environment = Category.create!(name: "Environment")
 # TopicArticle.create!(topic: cop22, article: carbon_capture)
 
 # Topic_articles
-puts("Creating Users")
-User.create!(email: 'hedgy@hedgenews.eu', password: 'coucou', admin: true)
-User.create!(email: 'search@hedgenews.eu', password: 'coucou', admin: true)
-User.create!(email: 'raphaelle.coudin@gmail.com', password: 'coucou', admin: true)
-User.create!(email: 'julie.moiton@bluewin.ch', password: 'coucou', admin: true)
-User.create!(email: 'guillaume.cabanel@gmail.com', password: 'coucou', admin: true)
-User.create!(email: 'isauretroesch@gmail.com', password: 'coucou', admin: true)
 
 #Look for topics through aylien API
 #A topic needs to have a user
-puts("Look for topics through aylien API")
-Topic.get
-Topic.get
+# puts("Look for topics through aylien API")
+# Topic.get
+# Topic.get
