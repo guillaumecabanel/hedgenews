@@ -16,7 +16,8 @@ Topic.destroy_all
 User.destroy_all
 
 puts("Creating Users")
-User.create!(email: 'hedgy@hedgenews.eu', password: 'coucou', admin: true)
+hedgy = User.new(email: 'hedgy@hedgenews.eu', password: 'coucou', admin: true)
+hedgy.save!
 User.create!(email: 'search@hedgenews.eu', password: 'coucou', admin: true)
 User.create!(email: 'raphaelle.coudin@gmail.com', password: 'coucou', admin: true)
 User.create!(email: 'julie.moiton@bluewin.ch', password: 'coucou', admin: true)
@@ -196,9 +197,32 @@ environment = Category.create!(name: "Environment")
 
 # Topics
 puts("Creating Topics")
-brexit = Topic.create!(
-  name: "François Fillon Henri Guaino",
-  presentation: "The British referendum on leaving the European Union",
+Topic.create!(
+  name: "François Fillon",
+  image_url: "http://md1.libe.com/photo/781277-henri-guaino-lors-du-congres-fondateur-du-parti-les-republicains.jpg?modified_at=1433427693&amp;picto=fb&amp;ratio_x=191&amp;ratio_y=100&amp;width=600",
+  number_sources: 5,
+  sources_json: "{\"sources\":[\"L'Express\",\"Liberation\",\"Le Point\",\"Le Monde\",\"Le Figaro\"]}",
+  user: hedgy
+)
+
+presi = Topic.create!(
+  name: "Présidentielles",
+  image_url: "http://md1.libe.com/photo/781277-henri-guaino-lors-du-congres-fondateur-du-parti-les-republicains.jpg?modified_at=1433427693&amp;picto=fb&amp;ratio_x=191&amp;ratio_y=100&amp;width=600",
+  number_sources: 5,
+  sources_json: "{\"sources\":[\"L'Express\",\"Liberation\",\"Le Point\",\"Le Monde\",\"Le Figaro\"]}",
+  user: hedgy
+)
+
+Topic.create!(
+  name: "Hedgenews",
+  image_url: "http://md1.libe.com/photo/781277-henri-guaino-lors-du-congres-fondateur-du-parti-les-republicains.jpg?modified_at=1433427693&amp;picto=fb&amp;ratio_x=191&amp;ratio_y=100&amp;width=600",
+  number_sources: 5,
+  sources_json: "{\"sources\":[\"L'Express\",\"Liberation\",\"Le Point\",\"Le Monde\",\"Le Figaro\"]}",
+  user: hedgy
+)
+
+Topic.create!(
+  name: "Le Wagon Nantes",
   image_url: "http://md1.libe.com/photo/781277-henri-guaino-lors-du-congres-fondateur-du-parti-les-republicains.jpg?modified_at=1433427693&amp;picto=fb&amp;ratio_x=191&amp;ratio_y=100&amp;width=600",
   number_sources: 5,
   sources_json: "{\"sources\":[\"L'Express\",\"Liberation\",\"Le Point\",\"Le Monde\",\"Le Figaro\"]}",
@@ -218,16 +242,16 @@ brexit = Topic.create!(
 # brexit_echoes.journalist = isaure
 # brexit_echoes.save!
 
-# theresa_may_brexit = Article.new(title: "Exclusive: what Theresa May really thinks about Brexit shown in leaked recording",
-#                                      date: Date.new(2016,10,13),
-#                                      abstract: "Secret audio of Goldman Sachs talk in May shows she feared businesses would leave and wanted the UK to take a lead in Europe",
-#                                      words_count: 1500,
-#                                      time_to_read: 8,
-#                                      source_url: "https://www.theguardian.com/politics/2016/oct/25/exclusive-leaked-recording-shows-what-theresa-may-really-thinks-about-brexit")
-# theresa_may_brexit.source = guardian
-# theresa_may_brexit.category = politics
-# theresa_may_brexit.journalist = julie
-# theresa_may_brexit.save!
+theresa_may_brexit = Article.new(title: "Exclusive: what Theresa May really thinks about Brexit shown in leaked recording",
+                                     date: Date.new(2016,10,13),
+                                     abstract: "Secret audio of Goldman Sachs talk in May shows she feared businesses would leave and wanted the UK to take a lead in Europe",
+                                     words_count: 1500,
+                                    #  time_to_read: 8,
+                                     source_url: "https://www.theguardian.com/politics/2016/oct/25/exclusive-leaked-recording-shows-what-theresa-may-really-thinks-about-brexit")
+theresa_may_brexit.source = guardian
+theresa_may_brexit.journalist = julie
+theresa_may_brexit.topic = presi
+theresa_may_brexit.save!
 
 # trump_cop_22 = Article.new(title: "Trump election casts shadow over COP 22 climate change talks",
 #                                date: Date.new(2016,11,16),

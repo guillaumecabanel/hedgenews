@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
     @topic_search = params[:topic_search]
 
     if Topic.pluck(:name).include?(@topic_search) # topic already exists
+      if Topic.find_by_name(@topic_search).articles.any?
       if Time.now - Topic.find_by_name(@topic_search).articles.last.created_at < 86400 # last article was added to the topic less than 24 hours
         @topic = Topic.find_by_name(@topic_search)
         @articles = @topic.articles.sort_by {|article| article.created_at}.reverse
@@ -68,6 +69,7 @@ class ArticlesController < ApplicationController
         puts 'Dans 2e branche'
 
       end
+    end
 
     else # topic did not exist before
       @topic = Topic.new(name: @topic_search)
