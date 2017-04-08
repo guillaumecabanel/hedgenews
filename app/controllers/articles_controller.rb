@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
           end
         end
 
-        unless @stories = []
+        unless @stories == []
           if @stories.first.media[0].url.empty?
             @topic.image_url = @stories.last.media[0].url
           else
@@ -107,7 +107,7 @@ class ArticlesController < ApplicationController
         @topic.topic_articles.new(article: article, created_at: Time.current, updated_at: Time.current)
       end
 
-      unless @stories = []
+      unless @stories == []
         if @stories.first.media[0].url.empty?
           @topic.image_url = @stories.last.media[0].url
         else
