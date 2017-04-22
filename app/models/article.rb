@@ -22,6 +22,7 @@ class Article < ApplicationRecord
   has_many :article_bookmarks
 
   def self.random_sort(articles)
+    # FIXME revamp random_sort to have only recent articles from each sources
 
     random_articles = []
 
