@@ -83,7 +83,7 @@ class ArticlesController < ApplicationController
 
       topic.image_url = @stories.last.media[0].url
       topic.sources_json = { sources: @hash_source_url.keys }.to_json.gsub("é", "e").gsub("É", "E")
-      topic.number_sources = JSON.parse(@topic.sources_json)["sources"].size
+      topic.number_sources = JSON.parse(topic.sources_json)["sources"].size
     end
     topic.save
   end
