@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   resources :articles, only: [:index, :destroy]
 
-  resources :topics
+  resources :topics do
+    member do
+      post :publish
+    end
+  end
 
   post 'topic_article', to: 'topic_articles#create'
 

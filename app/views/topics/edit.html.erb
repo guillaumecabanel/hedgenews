@@ -7,8 +7,10 @@
   </div>
 
   <div class="flex-box-center">
-    <%if current_user %>
-      <%= link_to 'Publier la revue de presse', root_path, class: "btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background" %>
+    <%if current_user && current_user.admin %>
+      <%= simple_form_for @topic, method: :post, url: publish_topic_path(@topic) do |f| %>
+        <%= f.submit 'Publier la revue de presse', class: "btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background"%>
+      <% end %>
     <% end %>
   </div>
 
@@ -41,8 +43,10 @@
   </div>
 
   <div class="flex-box-center">
-    <%if current_user %>
-      <%= link_to 'Publier la revue de presse', root_path, class: "btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background" %>
+    <%if current_user && current_user.admin %>
+      <%= simple_form_for @topic, method: :post, url: publish_topic_path(@topic) do |f| %>
+        <%= f.submit 'Publier la revue de presse', class: "btn btn-bordered btn-bordered-primary btn-bordered-primary-on-grey-background"%>
+      <% end %>
     <% end %>
   </div>
 
