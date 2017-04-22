@@ -113,22 +113,6 @@ class Topic < ApplicationRecord
     topics
   end
 
-  # FIXME destroy this method ASAP (used in Topic.get with poor style)
-  def story_opposite_url(story, source_urls)
-    # name of the source of the story coming from API
-    source_name = Source.where(aylien_id: story.source.id.to_i).first.name
-
-    # find the names - there can be several - of the opposite media to the source of the story
-    opposite_media = Article::OPPOSITE_MEDIA[source_name]
-    return unless opposite_media
-
-    opposite_media.each do |opposite_medium|
-      opposite_url = source_urls[opposite_medium]
-      return opposite_url if opposite_url
-    end
-
-    return nil
-  end
 
   def sort_by_source(stories)
 
@@ -203,4 +187,19 @@ class Topic < ApplicationRecord
     end
   end
 
+  def story_opposite_url(story, source_urls)
+    # name of the source of the story coming from API
+    source_name = Source.where(aylien_id: story.source.id.to_i).first.name
+
+    # find the names - there can be several - of the opposite media to the source of the story
+    opposite_media = Article::OPPOSITE_MEDIA[source_name]
+    return unless opposite_media
+
+    opposite_media.each do |opposite_medium|
+      opposite_url = source_urls[opposite_medium]
+      return opposite_url if opposite_url
+    end
+
+    return nil
+  end
 end
