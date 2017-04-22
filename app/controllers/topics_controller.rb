@@ -39,6 +39,13 @@ class TopicsController < ApplicationController
     @topic.save
   end
 
+  def publish
+    @topic = Topic.find(params[:id])
+    @topic.user = User.find_by_email("hedgy@hedgenews.eu")
+    @topic.save
+    redirect_to root_path
+  end
+
   def destroy
     @topic = Topic.find(params[:id])
     @topic.destroy
