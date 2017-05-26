@@ -2,9 +2,14 @@
   <div class = "wrapper-white">
     <div>
       <h2 class="font-header-app">Revue de presse pour "<%= @topic.name %>"</h2>
-      <h4 class="font-header-app"><span id="number_articles_in_pr" class="font-header-app"><%= pluralize(@topic.articles.count, 'article', plural: 'articles')%></span>
-          <%= content_tag :div, class: "articles_in_pr", data: {number: @topic.articles.count} do %>
-          <% end %> - <%= @topic.number_sources %> sources</h4>
+      <h4 class="font-header-app">
+        <span id="number_articles_in_pr" class="font-header-app">
+          <%= pluralize(@topic.articles.count, 'article', plural: 'articles')%>
+        </span>
+        <span class="articles_in_pr"  data-number="<%= @topic.articles.count %>">
+          - <%= @topic.number_sources %> sources
+        </span>
+      </h4>
     </div>
   </div>
 
