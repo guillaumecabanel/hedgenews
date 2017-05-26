@@ -71,7 +71,6 @@
         nbarticle = nbarticle - 1;
 
         $('.articles_bookmarked').data('number', nbarticle);
-        console.log(nbarticle);
         $(this).closest('.card').fadeOut('slow', function(){
           $(this).remove();
         });

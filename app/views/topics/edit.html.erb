@@ -2,7 +2,9 @@
   <div class = "wrapper-white">
     <div>
       <h2 class="font-header-app">Revue de presse pour "<%= @topic.name %>"</h2>
-      <h4 class="font-header-app"><%= @topic.articles.count %> Articles - <%= @topic.number_sources %> sources</h4>
+      <h4 class="font-header-app"><span id="number_articles_in_pr" class="font-header-app"><%= pluralize(@topic.articles.count, 'article', plural: 'articles')%></span>
+          <%= content_tag :div, class: "articles_in_pr", data: {number: @topic.articles.count} do %>
+          <% end %> - <%= @topic.number_sources %> sources</h4>
     </div>
   </div>
 
@@ -63,9 +65,14 @@
     $(document).ready(function(){
 
       $('.suppress').click( function() {
+        var nbarticle = $('.articles_in_pr').data('number')
+        nbarticle = nbarticle - 1;
+
+        $('.articles_in_pr').data('number', nbarticle);
         $(this).closest('.list-group-item').fadeOut('slow', function(){
           $(this).remove();
         });
+        $('#number_articles_in_pr').html(nbarticle + " article(s)");
       });
 
       $('.up').click( function() {
