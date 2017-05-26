@@ -3,11 +3,12 @@
     <div>
       <h2 class="font-header-app">Revue de presse pour "<%= @topic.name %>"</h2>
       <h4 class="font-header-app">
-        <span id="number_articles_in_pr" class="font-header-app">
+        <span id="number_articles_in_pr" class="font-header-app" data-number="<%= @topic.articles.count %>">
           <%= pluralize(@topic.articles.count, 'article', plural: 'articles')%>
         </span>
-        <span class="articles_in_pr"  data-number="<%= @topic.articles.count %>">
-          - <%= @topic.number_sources %> sources
+        -
+        <span id="number_sources_in_pr" class="font-header-app" data-number="<%= @topic.number_sources %>">
+          <%= pluralize(@topic.number_sources, 'source', plural: 'sources')%>
         </span>
       </h4>
     </div>
@@ -70,10 +71,9 @@
     $(document).ready(function(){
 
       $('.suppress').click( function() {
-        var nbarticle = $('.articles_in_pr').data('number')
+        var nbarticle = $('#number_articles_in_pr').data('number');
         nbarticle = nbarticle - 1;
-
-        $('.articles_in_pr').data('number', nbarticle);
+        $('#number_articles_in_pr').data('number', nbarticle);
         $(this).closest('.list-group-item').fadeOut('slow', function(){
           $(this).remove();
         });

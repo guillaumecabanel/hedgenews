@@ -18,9 +18,9 @@
     <div class="flex-box-space-around font-header-app">
       <div class = "wrapper-white">
         <div>
-          <h2 id="number_articles_bookmarked" class="font-header-app"><%= pluralize(@article_bookmarks.count, 'article sauvegardé', plural: 'articles sauvegardés')%></h2>
-          <%= content_tag :div, class: "articles_bookmarked", data: {number: @article_bookmarks.count} do %>
-          <% end %>
+          <h2 id="number_articles_bookmarked" class="font-header-app" data-number="<%= @article_bookmarks.count %>">
+            <%= pluralize(@article_bookmarks.count, 'article sauvegardé', plural: 'articles sauvegardés')%>
+          </h2>
         </div>
       </div>
     </div>
@@ -67,10 +67,10 @@
       });
 
       $('.unbookmark').click( function() {
-        var nbarticle = $('.articles_bookmarked').data('number')
+        var nbarticle = $('#number_articles_bookmarked').data('number')
         nbarticle = nbarticle - 1;
 
-        $('.articles_bookmarked').data('number', nbarticle);
+        $('#number_articles_bookmarked').data('number', nbarticle);
         $(this).closest('.card').fadeOut('slow', function(){
           $(this).remove();
         });
