@@ -16,7 +16,7 @@
 <% else %>
   <div class="container">
     <div class="flex-box-space-around font-header-app">
-      <div class = "wrapper-white">
+      <div id="search-wrapper" class="wrapper-white">
         <div>
           <h2 id="number_articles_bookmarked" class="font-header-app"><%= pluralize(@article_bookmarks.count, 'article sauvegardé', plural: 'articles sauvegardés')%></h2>
           <%= content_tag :div, class: "articles_bookmarked", data: {number: @article_bookmarks.count} do %>
