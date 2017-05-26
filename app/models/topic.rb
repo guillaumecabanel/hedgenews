@@ -133,8 +133,17 @@ class Topic < ApplicationRecord
   def new_search
     stories = ::AylienAPI::GetStoriesService.new(topic_search: self.name).call
     unless stories.empty?
+      # skip saving article in the topic if the title doesn't have the topic name in it
+      topic_words = self.name.split(" ")
+      topic_main_words = []
+      topic_words.each do |word|
+        topic_main_words << word if word.length > 3
+      end
+
       hash_source_url = {}
       stories.each do |story|
+        next if title_include_words?(story.title, topic_main_words)
+        next if (story.media[0].url.empty? || story.summary.sentences.join("\n") == "")
         hash_source_url[Source.where(aylien_id: story.source.id.to_i).first.name] = story.links.permalink
       end
 
@@ -163,12 +172,7 @@ class Topic < ApplicationRecord
           )
         end
 
-        # skip saving article in the topic if the title doesn't have the topic name in it
-        topic_words = self.name.split(" ")
-        topic_main_words = []
-        topic_words.each do |word|
-          topic_main_words << word if word.length > 3
-        end
+
 
         if title_include_words?(article.title, topic_main_words)
           # possible that two articles have the same title but not the same source. Change code ? add a condition
