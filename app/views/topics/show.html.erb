@@ -18,6 +18,7 @@
     <div class="flex-box-space-around font-header-app">
       <div id="search-wrapper" class="wrapper-white">
         <div>
+          <%= render 'shared/search_bar', value: "" %>
           <h2 class="font-header-app"><%= pluralize(@topic.articles.count, 'article selectionné', plural: 'articles sélectionnés')%> pour la revue de presse sur <em>"<%= @topic.name %>"</em></h2>
         </div>
       </div>
