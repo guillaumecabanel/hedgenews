@@ -17,9 +17,9 @@ class Article < ApplicationRecord
   # belongs_to :category
   belongs_to :journalist
 
-  has_many :topic_articles
+  has_many :topic_articles, dependent: :destroy
   has_many :topics, through: :topic_articles
-  has_many :article_bookmarks
+  has_many :article_bookmarks, dependent: :destroy
 
   def self.random_sort(articles)
     # FIXME revamp random_sort to have only recent articles from each sources
