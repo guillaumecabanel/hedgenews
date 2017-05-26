@@ -163,11 +163,20 @@ class Topic < ApplicationRecord
           )
         end
 
-        # possible that two articles have the same title but not the same source. Change code ? add a condition
-        article_id_is_in_topic    = self.articles.pluck(:aylien_id).include?(article.aylien_id)
-        article_title_is_in_topic = self.articles.pluck(:title).include?(article.title)
-        unless article_id_is_in_topic || article_title_is_in_topic
-          self.topic_articles.new(article: article, created_at: Time.current, updated_at: Time.current)
+        # skip saving article in the topic if the title doesn't have the topic name in it
+        topic_words = self.name.split(" ")
+        topic_main_words = []
+        topic_words.each do |word|
+          topic_main_words << word if word.length > 3
+        end
+
+        if title_include_words?(article.title, topic_main_words)
+          # possible that two articles have the same title but not the same source. Change code ? add a condition
+          article_id_is_in_topic    = self.articles.pluck(:aylien_id).include?(article.aylien_id)
+          article_title_is_in_topic = self.articles.pluck(:title).include?(article.title)
+          unless article_id_is_in_topic || article_title_is_in_topic
+            self.topic_articles.new(article: article, created_at: Time.current, updated_at: Time.current)
+          end
         end
       end
 
@@ -203,4 +212,13 @@ class Topic < ApplicationRecord
 
     return nil
   end
+
+  def title_include_words?(title, words)
+    title_words = title.split(" ")
+    words.each do |word|
+      return false unless title_words.include? word
+    end
+    true
+  end
+
 end
