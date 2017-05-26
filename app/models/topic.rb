@@ -139,7 +139,8 @@ class Topic < ApplicationRecord
       end
 
       stories.each do |story|
-        next if story.media[0].url.empty?
+        # do not register an article without image or without abstract to display
+        next if (story.media[0].url.empty? || story.summary.sentences.join("\n") == "")
         if Journalist.find_by_aylien_id(story.author.id)
           journalist = Journalist.find_by_aylien_id(story.author.id)
         else
