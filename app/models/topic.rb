@@ -169,14 +169,7 @@ class Topic < ApplicationRecord
           topic_main_words >> word if word.length > 3
         end
 
-        title_include_words?(article.title, topic_main_words)
-        def title_include_words?(title, words)
-          words.each do |word|
-
-          end
-        end
-
-        if article.name
+        if title_include_words?(article.title, topic_main_words)
           # possible that two articles have the same title but not the same source. Change code ? add a condition
           article_id_is_in_topic    = self.articles.pluck(:aylien_id).include?(article.aylien_id)
           article_title_is_in_topic = self.articles.pluck(:title).include?(article.title)
@@ -218,4 +211,13 @@ class Topic < ApplicationRecord
 
     return nil
   end
+
+  def title_include_words?(title, words)
+    title_words = title.split(" ")
+    words.each do |word|
+      return false unless title_words.include? word
+    end
+    true
+  end
+
 end
