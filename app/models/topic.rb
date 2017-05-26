@@ -142,7 +142,7 @@ class Topic < ApplicationRecord
 
       hash_source_url = {}
       stories.each do |story|
-        next if title_include_words?(story.title, topic_main_words)
+        next unless title_include_words?(story.title, topic_main_words)
         next if (story.media[0].url.empty? || story.summary.sentences.join("\n") == "")
         hash_source_url[Source.where(aylien_id: story.source.id.to_i).first.name] = story.links.permalink
       end
