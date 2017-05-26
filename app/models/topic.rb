@@ -166,7 +166,7 @@ class Topic < ApplicationRecord
         topic_words = self.name.split(" ")
         topic_main_words = []
         topic_words.each do |word|
-          topic_main_words >> word if word.length > 3
+          topic_main_words << word if word.length > 3
         end
 
         if title_include_words?(article.title, topic_main_words)
