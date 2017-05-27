@@ -41,7 +41,9 @@
           <div class="flex-box-space-between table-buttons">
 <!--             <%= link_to 'Haut', class: 'btn btn-bordered btn-bordered-info up' %>
             <%= link_to 'Bas', class: 'btn btn-bordered btn-bordered-info down' %> -->
-            <%= form_tag article_path(article), method: :delete do %>
+            <% topic_article = TopicArticle.where(article: article).where(topic: @topic).first %>
+            <%= form_tag topic_article_path(topic_article), method: :delete do %>
+              <%= hidden_field_tag 'topic_article_id', topic_article.id %>
               <%= submit_tag 'Supprimer', class: 'btn btn-bordered btn-bordered-info suppress' %>
             <% end %>
           </div>

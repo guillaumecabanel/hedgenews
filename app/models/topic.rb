@@ -10,6 +10,9 @@ class Topic < ApplicationRecord
   RELEVANCE_INDEX = 15
   OBSOLETE_TIME = 24 * 60 * 60
 
+  # FIXME : really need to do that ?
+  # before_update :update_sources_json
+
 
   def self.get
     topics = []
@@ -223,6 +226,25 @@ class Topic < ApplicationRecord
       return false unless title_words.include? word
     end
     true
+  end
+
+  def update_number_of_sources
+    sources = []
+    self.articles.each do |article|
+      sources << article.source.name unless sources.include?(article.source.name)
+    end
+    self.number_sources = sources.count
+    self.save
+  end
+
+  def update_sources_json
+    sources_json = {sources: []}
+    self.articles.each do |article|
+      sources_json[:sources] << article.source.name unless sources_json[:sources].include?(article.source.name)
+    end
+    # to check
+    self.sources_json = sources_json
+    self.save
   end
 
 end

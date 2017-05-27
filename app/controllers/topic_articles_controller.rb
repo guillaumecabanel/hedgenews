@@ -24,6 +24,14 @@ class TopicArticlesController < ApplicationController
 
   end
 
+  def destroy
+    @topic_article = TopicArticle.find(params[:topic_article_id])
+    @topic = @topic_article.topic
+    @topic_article.destroy
+    @topic.update_sources_json
+    @topic.update_number_of_sources
+  end
+
   private
   def article_params
     params.require(:article).permit(:source_id, :title, :pic_url, :date, :abstract, :words_count, :aylien_id, :source_url, :opposite_url)

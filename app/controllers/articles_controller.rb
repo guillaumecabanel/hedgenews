@@ -35,8 +35,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.topic_articles.destroy_all
   end
 
   private
