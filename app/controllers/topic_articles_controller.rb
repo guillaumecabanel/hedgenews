@@ -22,6 +22,9 @@ class TopicArticlesController < ApplicationController
     @topic_article.topic = @topic
     @topic_article.save
 
+    @topic.update_sources_json
+    @topic.update_number_of_sources
+
   end
 
   def destroy
