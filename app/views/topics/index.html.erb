@@ -1,5 +1,5 @@
 <div class="container">
-  <div class = "wrapper-white">
+  <div id="search-wrapper" class="wrapper-white">
     <div>
       <% if @topics.empty? %>
         <h2 class="font-header-app">Vous n'avez pas encore créé de revues de presse</h2>
@@ -38,7 +38,6 @@
 <% content_for(:after_js) do %>
   <script>
     $(document).ready(function(){
-
 
       // Delete bookmarked topic on click
       $('.suppress').click( function() {

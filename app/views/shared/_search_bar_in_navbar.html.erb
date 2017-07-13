@@ -1,4 +1,4 @@
-<div class="search-bar-xs hidden" id="navbar-search">
+<div class="search-bar-xs <%= hidden_bar_class %>" id="<%= hidden_bar_id%>">
   <%= form_tag(articles_path, method: "get") do %>
     <div>
       <%= text_field_tag :topic_search, nil, placeholder: "", required: true, value: @topic_search, id: "topic-search-navbar" %>
@@ -8,4 +8,3 @@
     </div>
   <% end %>
 </div>
-
