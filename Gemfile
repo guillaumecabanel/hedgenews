@@ -20,6 +20,8 @@ gem 'sidekiq-scheduler', '~> 2.0'
 #   => https://github.com/mperham/sidekiq/wiki/Monitoring
 gem 'sinatra', ">= 2.0.0.beta2", require: false
 
+gem 'letsencrypt_http_challenge', git: 'git://github.com/guillaumecabanel/letsencrypt_http_challenge.git'
+
 # https://newsapi.aylien.com
 gem 'aylien_news_api'
 
@@ -41,5 +43,3 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-
