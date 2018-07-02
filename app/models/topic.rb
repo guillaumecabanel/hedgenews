@@ -10,6 +10,9 @@ class Topic < ApplicationRecord
   RELEVANCE_INDEX = 15
   OBSOLETE_TIME = 24 * 60 * 60
 
+  # FIXME : really need to do that ?
+  # before_update :update_sources_json
+
 
   def self.get
     topics = []
@@ -133,8 +136,17 @@ class Topic < ApplicationRecord
   def new_search
     stories = ::AylienAPI::GetStoriesService.new(topic_search: self.name).call
     unless stories.empty?
+      # skip saving article in the topic if the title doesn't have the topic name in it
+      topic_words = self.name.split(" ")
+      topic_main_words = []
+      topic_words.each do |word|
+        topic_main_words << word if word.length > 3
+      end
+
       hash_source_url = {}
       stories.each do |story|
+        next unless title_include_words?(story.title, topic_main_words)
+        next if (story.media[0].url.empty? || story.summary.sentences.join("\n") == "")
         hash_source_url[Source.where(aylien_id: story.source.id.to_i).first.name] = story.links.permalink
       end
 
@@ -163,12 +175,7 @@ class Topic < ApplicationRecord
           )
         end
 
-        # skip saving article in the topic if the title doesn't have the topic name in it
-        topic_words = self.name.split(" ")
-        topic_main_words = []
-        topic_words.each do |word|
-          topic_main_words << word if word.length > 3
-        end
+
 
         if title_include_words?(article.title, topic_main_words)
           # possible that two articles have the same title but not the same source. Change code ? add a condition
@@ -219,6 +226,25 @@ class Topic < ApplicationRecord
       return false unless title_words.include? word
     end
     true
+  end
+
+  def update_number_of_sources
+    sources = []
+    self.articles.each do |article|
+      sources << article.source.name unless sources.include?(article.source.name)
+    end
+    self.number_sources = sources.count
+    self.save
+  end
+
+  def update_sources_json
+    sources_json = {sources: []}
+    self.articles.each do |article|
+      sources_json[:sources] << article.source.name unless sources_json[:sources].include?(article.source.name)
+    end
+    # to check
+    self.sources_json = sources_json
+    self.save
   end
 
 end

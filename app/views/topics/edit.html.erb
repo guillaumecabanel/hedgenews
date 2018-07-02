@@ -2,7 +2,15 @@
   <div class = "wrapper-white">
     <div>
       <h2 class="font-header-app">Revue de presse pour "<%= @topic.name %>"</h2>
-      <h4 class="font-header-app"><%= @topic.articles.count %> Articles - <%= @topic.number_sources %> sources</h4>
+      <h4 class="font-header-app">
+        <span id="number_articles_in_pr" class="font-header-app" data-number="<%= @topic.articles.count %>">
+          <%= pluralize(@topic.articles.count, 'article', plural: 'articles')%>
+        </span>
+        -
+        <span id="number_sources_in_pr" class="font-header-app" data-number="<%= @topic.number_sources %>">
+          <%= pluralize(@topic.number_sources, 'source', plural: 'sources')%>
+        </span>
+      </h4>
     </div>
   </div>
 
@@ -33,7 +41,9 @@
           <div class="flex-box-space-between table-buttons">
 <!--             <%= link_to 'Haut', class: 'btn btn-bordered btn-bordered-info up' %>
             <%= link_to 'Bas', class: 'btn btn-bordered btn-bordered-info down' %> -->
-            <%= form_tag article_path(article), method: :delete do %>
+            <% topic_article = TopicArticle.where(article: article).where(topic: @topic).first %>
+            <%= form_tag topic_article_path(topic_article), method: :delete do %>
+              <%= hidden_field_tag 'topic_article_id', topic_article.id %>
               <%= submit_tag 'Supprimer', class: 'btn btn-bordered btn-bordered-info suppress' %>
             <% end %>
           </div>
@@ -63,9 +73,13 @@
     $(document).ready(function(){
 
       $('.suppress').click( function() {
+        var nbarticle = $('#number_articles_in_pr').data('number');
+        nbarticle = nbarticle - 1;
+        $('#number_articles_in_pr').data('number', nbarticle);
         $(this).closest('.list-group-item').fadeOut('slow', function(){
           $(this).remove();
         });
+        $('#number_articles_in_pr').html(nbarticle + " article(s)");
       });
 
       $('.up').click( function() {
